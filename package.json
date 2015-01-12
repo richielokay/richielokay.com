@@ -1,0 +1,32 @@
+{
+  "name": "omeg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "omeg": "./bin/omeg",
+    "omeg-build": "./bin/omeg-build"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rvangundy/omeg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rvangundy/omeg/issues"
+  },
+  "homepage": "https://github.com/rvangundy/omeg",
+  "dependencies": {
+    "cheerio": "^0.18.0",
+    "commander": "^2.6.0",
+    "handlebars": "^2.0.0",
+    "q-io": "^1.11.6",
+    "read-dir-files": "^0.1.1",
+    "readdir": "0.0.13"
+  },
+  "devDependencies": {}
+}

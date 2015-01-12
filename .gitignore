@@ -1,0 +1,10 @@
+node_modules
+bower_components
+.tmp
+.site
+dist
+junit.xml
+npm-debug.log
+video
+vendor
+cookies.txt

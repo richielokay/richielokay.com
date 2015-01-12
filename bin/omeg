@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+'use strict';
+
+/******************
+ *  Dependencies  *
+ ******************/
+
+var program = require('commander');
+var omeg = require('../src/omeg-cli');
+var path = require('path');
+
+/***********
+ *  Paths  *
+ ***********/
+
+var CWD = process.cwd();
+var SRC = path.join(CWD, 'app');
+var DEST = path.join(CWD, 'dist');
+
+/*************
+ *  Program  *
+ *************/
+
+program
+    .version('0.0.1');
+
+/***********
+ *  Build  *
+ ***********/
+
+program.command('build [name]')
+    .action(function() {
+        omeg.build(SRC, DEST);
+    });
+
+/*************
+ *  Parsing  *
+ *************/
+
+program.parse(process.argv);
