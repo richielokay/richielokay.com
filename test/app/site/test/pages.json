@@ -7,6 +7,10 @@
         "siteB": {
             "valA": "Hello",
             "valB": "Moon"
+        },
+        "siteC": {
+            "valA": "Hello",
+            "valB": "Moon"
         }
     }
 }

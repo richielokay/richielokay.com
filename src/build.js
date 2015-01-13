@@ -10,13 +10,26 @@ var path = require('path');
 var extend = require('extend');
 var cheerio = require('cheerio');
 var del = require('del');
-var fse = require('fs-extra');
+var fs = require('fs');
+var mkdirp = require('mkdirp');
 var browserify = require('browserify');
 var hbsfy = require('hbsfy');
 var debowerify = require('debowerify');
 var installify = require('installify');
 var envify = require('envify');
 var sass = require('node-sass');
+var chokidar = require('chokidar');
+var staticServer = require('node-static');
+var http = require('http');
+var tinylr = require('tiny-lr');
+
+/***************
+ *  Variables  *
+ ***************/
+
+var port = process.env.WEB_PORT || 8080;
+var lrPort = 35729;
+var lrSnippet = '<script>document.write(\'<script src=\"http://\' + (location.host || \'localhost\').split(\':\')[0] + \':35729/livereload.js?snipver=1\"></\' + \'script>\')</script>';
 
 /**************
  *  Partials  *
@@ -121,6 +134,7 @@ function processSite(files, site, sitePath) {
                 key = sitePath.join('/');
                 site[key] = {
                     key: key,
+                    generated: true,
                     template: templateFn,
                     data: extend({}, defaults, pages[page]),
                     sass: sass,
@@ -280,7 +294,7 @@ function injectStyleRef() {
  * @param {type} [name] [description]
  */
 function writeHTML(site, dest, filters) {
-    var content, filePath;
+    var content, filePath, doc;
 
     for (var page in site) {
         filePath = path.join(dest, page);
@@ -292,9 +306,17 @@ function writeHTML(site, dest, filters) {
             });
         }
 
-        fse.outputFile(filePath, content, function(err) {
-            if (err) { console.log(err); }
-        });
+        // Add livereload snippet
+        doc = cheerio.load(content);
+        doc('body').append(lrSnippet);
+        content = doc.html();
+
+        // Write HTML
+        mkdirp(path.dirname(filePath), function(filePath, content) {
+            fs.writeFile(filePath, content, function(err) {
+                if (err) { console.log(err); }
+            });
+        }.bind(null, filePath, content));
     }
 }
 
@@ -340,18 +362,166 @@ function writeScripts(site, src, dest, modules, filters) {
         b.bundle(function(destPath, err, buffer) {
             var content = buffer.toString();
 
-            if (filters) {
-                filters.forEach(function(filter) {
-                    content = filter(content);
-                });
+            // Catch and report errors
+            if (err) {
+                console.log(err);
+                return;
             }
 
+            // if (filters) {
+            //     filters.forEach(function(filter) {
+            //         content = filter(content);
+            //     });
+            // }
+
             // Write the bundled file
-            fse.outputFile(destPath, content, function(err) {
-                if (err) { console.log(err); }
-            });
+            mkdirp(path.dirname(destPath), function(destPath, content) {
+                fs.writeFile(destPath, content, function(err) {
+                    if (err) { console.log(err); }
+                });
+            }.bind(null, destPath, content));
         }.bind(null, filePath));
     }
+}
+
+/**
+ * Writes all styles using sass
+ * @param {type} [name] [description]
+ */
+function writeStyles(site, src, dest, modules, filters) {
+    var combined, modPath, srcPath, destPath, mapPath;
+
+    for (var page in site) {
+        
+        // Don't compile CSS for generated pages
+        if (site[page].generated) { continue; }
+
+        combined = site[page].sass || '';
+        srcPath = path.join(src, 'site', path.dirname(site[page].key), 'main.scss');
+        destPath = path.join(dest, path.dirname(site[page].key), 'main.css');
+        mapPath = path.join(dest, path.dirname(site[page].key), 'main.css.map');
+
+        site[page].modules.forEach(function(module) {
+            modPath = path.join(src, 'modules', module, 'main.scss');
+            module = modules['module-' + module];
+
+            combined += '\n';
+
+            if (module.sass) {
+                combined += '@import "' + modPath + '";\n';
+            }
+        });
+
+        sass.render({
+            file: srcPath,
+            data: combined,
+            outFile: destPath,
+            outputStyle: 'nested',
+            omitSourceMapUrl: false,
+            sourceComments: true,
+            sourceMap: true,
+
+            success: function(destPath, mapPath, result) {
+
+                // Write the css file
+                mkdirp(path.dirname(destPath), function(destPath, content) {
+                    fs.writeFile(destPath, content, function(err) {
+                        if (err) { console.log(err); }
+                    });
+                }.bind(null, destPath, result.css));
+
+                // Write the source map
+                mkdirp(path.dirname(mapPath), function(mapPath, content) {
+                    fs.writeFile(mapPath, content, function(err) {
+                        if (err) { console.log(err); }
+                    });
+                }.bind(null, mapPath, JSON.stringify(result.map)));
+
+            }.bind(null, destPath, mapPath),
+
+            error: function(error) {
+                console.log(error.message);
+                console.log(error.code);
+                console.log(error.line);
+                console.log(error.column);
+            }
+        });
+    }
+}
+
+/****************
+ *  Dev Server  *
+ ****************/
+
+/**
+ * Creates the static server
+ * @param {type} [name] [description]
+ */
+function createServer(staticPath) {
+    var server = new staticServer.Server(staticPath);
+
+    http.createServer(function(request, response) {
+        request.addListener('end', function() {
+            server.serve(request, response);
+        }).resume();
+    }).listen(port);
+
+    console.log('Server listening on ' + port);
+}
+
+/**
+ * 
+ * @param {type} [name] [description]
+ */
+function createWatch(watchPath, callback) {
+    var watcher = chokidar.watch(watchPath, { persistent: true });
+
+    // Set up watch on source files
+    watcher.on('change', function(path) {
+        console.log('Changed: ' + path);
+        callback();
+    });
+}
+
+/**
+ *  
+ * @param {type} [name] [description]
+ */
+function triggerLivereload(file) {
+    file = file.replace(process.cwd() + '/dist/debug/', '');
+
+    console.log('Triggered ' + file);
+
+    var req = http.request({
+        hostname: '127.0.0.1',
+        port: lrPort,
+        path: '/changed?files=*',
+        method: 'GET'
+    }, function(res) {
+        res.on('error', function(err) {
+            console.log(err);
+        });
+    });
+
+    req.end();
+}
+
+/**
+ *
+ * @param {type} [name] [description]
+ */
+function startLivereload(dest) {
+    var server = tinylr();
+    var watcher = chokidar.watch(dest, { persistent: true });
+
+    server.listen(lrPort, function() {
+        console.log('Livereload listening on port ' + lrPort);
+    });
+
+    // Set up watch on source files
+    watcher.on('change', function(path) {
+        triggerLivereload(path);
+    });
 }
 
 /***********
@@ -359,38 +529,52 @@ function writeScripts(site, src, dest, modules, filters) {
  ***********/
 
 module.exports = function build(src, dest) {
-    var site, modules;
+    var debugPath = path.join(dest, 'debug');
 
-    // Read the entire src tree
-    readDirFiles.read(src, 'utf8', function(err, files) {
+    function runBuild(srcPath, destPath) {
+        var site, modules;
 
-        // Add partials
-        registerPartials(files.partials);
+        // Read the entire src tree
+        readDirFiles.read(srcPath, 'utf8', function(err, files) {
 
-        // Process site
-        site = processSite(files.site);
+            // Add partials
+            registerPartials(files.partials);
 
-        // Registers all module helpers
-        modules = registerModules(files.modules);
+            // Process site
+            site = processSite(files.site);
 
-        // Perform template expansion
-        expandTemplates(site);
+            // Registers all module helpers
+            modules = registerModules(files.modules);
 
-        // Clean distribution folder
-        del(dest, function() {
-            var debugPath = path.join(dest, 'debug');
+            // Perform template expansion
+            expandTemplates(site);
 
-            // Write HTML to debug distribution
-            writeHTML(site, debugPath, [
-                replaceAssets('/assets/'),
-                injectScriptRef(),
-                injectStyleRef()
-            ]);
+            // Clean distribution folder
+            del(destPath, function() {
 
-            // Write JS to debug distribution
-            writeScripts(site, src, debugPath, modules, [
-                replaceAssets('/assets')
-            ]);
+                // Write HTML to debug distribution
+                writeHTML(site, destPath, [
+                    replaceAssets('/assets/'),
+                    injectScriptRef(),
+                    injectStyleRef()
+                ]);
+
+                // Write JS to debug distribution
+                writeScripts(site, srcPath, destPath, modules, [
+                    replaceAssets('/assets/')
+                ]);
+
+                // Write CSS to debug distribution
+                writeStyles(site, srcPath, destPath, modules, [
+                    replaceAssets('/assets/')
+                ]);
+            });
         });
-    });
+    }
+
+    runBuild(src, debugPath);
+
+    createWatch(src, runBuild.bind(null, src, debugPath));
+    startLivereload(debugPath);
+    createServer(debugPath);
 };
