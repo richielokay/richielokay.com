@@ -1,0 +1,15 @@
+{
+    "template.hbs": {
+        "siteA": {
+            "valA": "Hello",
+            "valB": "World"
+        },
+        "siteB": {
+            "valA": "Hello",
+            "valB": "Moon"
+        }
+    },
+    "index.hbs": {
+        "index": {}
+    }
+}
