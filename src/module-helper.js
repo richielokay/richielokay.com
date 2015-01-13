@@ -68,14 +68,14 @@ function moduleHelper(moduleName, options, moduleList, files) {
  *  Exports  *
  *************/
 
-module.exports = function(files, site, moduleList, path) {
+module.exports = function(files, site, moduleList, modulePath) {
     var helper;
-    path = path || [];
+    modulePath = modulePath || [];
 
     for (var file in files) {
         if (file === 'index.hbs') {
             helper = moduleHelper.bind(null, site, moduleList, files[file]);
-            handlebars.registerHelper('module/' + path.join('/'), helper);
+            handlebars.registerHelper('module/' + modulePath.join('/'), helper);
         }
     }
 };
