@@ -1,9 +1,11 @@
 <html>
 <head>
-<script class="inline-scripts"></script>
-<style class="inline-styles"></style>
+{{> meta }}
+<!-- Inline Scripts -->
+<!-- Inline Styles -->
 </head>
 <body>
-{{{module 'modules/test2' data='modules/test2/settings.json' first="Curly"}}}
+assets://something
+{{module-test2 first="Curly"}}
 </body>
 </html>

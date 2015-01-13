@@ -8,8 +8,5 @@
             "valA": "Hello",
             "valB": "Moon"
         }
-    },
-    "index.hbs": {
-        "index": {}
     }
 }
