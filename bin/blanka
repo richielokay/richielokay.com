@@ -13,7 +13,7 @@ var blanka = require('../src/blanka-cli');
  *************/
 
 program
-    .version('0.0.1');
+    .version('0.0.3');
 
 /***********
  *  Build  *
@@ -22,6 +22,11 @@ program
 program.command('build [name]')
     .action(function(name) {
         blanka.build(name);
+    });
+
+program.command('init')
+    .action(function() {
+        blanka.init();
     });
 
 /*************
