@@ -28,6 +28,7 @@ var uglifyjs = require('uglify-js');
 var neat = require('node-neat');
 var bourbon = require('node-bourbon');
 var ncp = require('ncp');
+var log = require('./logger');
 
 /**************
  *  Settings  *
@@ -86,6 +87,23 @@ function registerPartials(partials, partialPath) {
  **********/
 
 /**
+ * Tries to compile the given handlebars hbs
+ * @param {String} content The hbs to template
+ */
+function handlebarsCompile(content) {
+    var result;
+
+    try {
+        result = handlebars.compile(content);
+    } catch (err) {
+        log('Handlebars', err, 'error');
+        result = handlebars.compile('<span></span>');
+    }
+
+    return result;
+}
+
+/**
  * 
  * @param {type} [name] [description]
  */
@@ -105,7 +123,7 @@ function processSite(files, site, sitePath) {
         key = sitePath.join('/');
         site[key] = {
             key: key,
-            template: handlebars.compile(files['index.hbs']),
+            template: handlebarsCompile(files['index.hbs']),
             modules: []
         };
         sitePath.pop();
@@ -141,7 +159,7 @@ function processSite(files, site, sitePath) {
         // Get the template key
         for (var template in pageFile) {
             pages = pageFile[template];
-            templateFn = handlebars.compile(files[template]);
+            templateFn = handlebarsCompile(files[template]);
 
             // Add additional pages to site
             for (var page in pages) {
@@ -253,7 +271,7 @@ function registerModules(files, modules) {
                     if (path.extname(i) === '.hbs') {
                         templateName = path.basename(i, '.hbs');
                         module.templates = module.templates || {};
-                        module.templates[templateName] = handlebars.compile(modFiles[i]);
+                        module.templates[templateName] = handlebarsCompile(modFiles[i]);
                     }
             }
         }
@@ -281,7 +299,13 @@ function expandTemplates(site) {
             page = extend(page, data);
         }
 
-        page.content = page.template(page);
+        try {
+            page.content = page.template(page);    
+        } catch(err) {
+            log('Handlebars', err, 'error');
+            page.content = '<span></span>';
+        }
+        
     }
 }
 
@@ -296,7 +320,7 @@ function expandTemplates(site) {
  */
 function replaceAssets(assets) {
     return function(content) {
-        return content.replace('assets://', assets);
+        return content.replace(/assets:\/\//g, assets);
     };
 }
 
@@ -355,7 +379,7 @@ function writeHTML(site, dest, filters, options) {
         // Write HTML
         mkdirp(path.dirname(filePath), function(filePath, content) {
             fs.writeFile(filePath, content, function(err) {
-                if (err) { console.log(err); }
+                if (err) { throw new Error(err); }
             });
         }.bind(null, filePath, content));
     }
@@ -392,12 +416,15 @@ function writeScripts(site, src, dest, modules, filters, options) {
 
         // Add modules
         site[page].modules.forEach(function(mod) {
+            var module = modules['module-' + mod];
             var name = mod.replace('module-', '');
             var modulePath = path.join(src, 'modules', name);
 
-            b.require(modulePath, {
-                expose: 'module/' + name
-            });
+            if (module.script) {
+                b.require(modulePath, {
+                    expose: 'module/' + name
+                });
+            }
         });
 
         // Add module runner js
@@ -416,10 +443,7 @@ function writeScripts(site, src, dest, modules, filters, options) {
         // Create the bundle
         (options.debug ? w : b).bundle(function(destPath, err, buffer) {
             // Catch and report errors
-            if (err) {
-                console.log(err);
-                return;
-            }
+            if (err) { throw new Error(err); }
 
             var content = buffer.toString();
 
@@ -438,7 +462,7 @@ function writeScripts(site, src, dest, modules, filters, options) {
             // Write the bundled file
             mkdirp(path.dirname(destPath), function(destPath, content) {
                 fs.writeFile(destPath, content, function(err) {
-                    if (err) { console.log(err); }
+                    if (err) { throw new Error(err); }
                 });
             }.bind(null, destPath, content));
         }.bind(null, filePath));
@@ -495,8 +519,16 @@ function writeStyles(site, src, dest, modules, filters, options) {
 
                 // Write the css file
                 mkdirp(path.dirname(destPath), function(destPath, content) {
+
+                    // Pass through optional filters
+                    if (filters) {
+                        filters.forEach(function(filter) {
+                            content = filter(content);
+                        });
+                    }
+
                     fs.writeFile(destPath, content, function(err) {
-                        if (err) { console.log(err); }
+                        if (err) { throw new Error(err); }
                     });
                 }.bind(null, destPath, result.css));
 
@@ -504,7 +536,7 @@ function writeStyles(site, src, dest, modules, filters, options) {
                 if (options.sourcemaps) {
                     mkdirp(path.dirname(mapPath), function(mapPath, content) {
                         fs.writeFile(mapPath, content, function(err) {
-                            if (err) { console.log(err); }
+                            if (err) { throw new Error(err); }
                         });
                     }.bind(null, mapPath, JSON.stringify(result.map)));
                 }
@@ -512,10 +544,9 @@ function writeStyles(site, src, dest, modules, filters, options) {
             }.bind(null, destPath, mapPath),
 
             error: function(error) {
-                console.log(error.message);
-                console.log(error.code);
-                console.log(error.line);
-                console.log(error.column);
+                var file = error.file.replace(process.cwd() + '/', '');
+                var msg = '"' + error.message + '", ' + file + ', line ' + error.line;
+                log('SASS', msg, 'error');
             }
         });
     }
@@ -538,7 +569,7 @@ function createServer(appPath, port) {
         }).resume();
     }).listen(port);
 
-    console.log('Server listening on ' + port);
+    log('Server', 'Listening on ' + port);
 }
 
 /**
@@ -546,12 +577,22 @@ function createServer(appPath, port) {
  * @param {type} [name] [description]
  */
 function createWatch(watchPath, callback) {
+    var shortPath, ready;
     var watcher = chokidar.watch(watchPath, { persistent: true, ignore: /\.js$/ });
+    var filter = ['add', 'change', 'addDir'];
 
     // Set up watch on source files
-    watcher.on('change', function(path) {
-        console.log('Changed: ' + path);
-        callback();
+    watcher.on('all', function(evt, filePath) {
+        if (ready && filter.indexOf(evt) >= 0) {
+            shortPath = filePath.replace(process.cwd() + '/', '');
+            log('Watch', evt.toUpperCase() + ': ' + shortPath);
+            callback();
+        }
+    });
+
+    watcher.on('ready', function() {
+        log('Watch', 'Watching ' + watchPath.replace(process.cwd() + '/', ''));
+        ready = true;
     });
 }
 
@@ -587,11 +628,11 @@ function startLivereload(dest, port) {
     var watcher = chokidar.watch(dest, { persistent: true });
 
     server.listen(port, function() {
-        console.log('Livereload listening on port ' + port);
+        log('LiveReload', 'Listening on port ' + port);
     });
 
     // Set up watch on source files
-    watcher.on('change', function(path) {
+    watcher.on('all', function() {
         triggerLivereload(port);
     });
 }
@@ -621,7 +662,7 @@ module.exports = function build(name) {
         options.browserify.lrPort = options.server.lrPort;
     }
 
-    function runBuild(srcPath, destPath) {
+    function runBuild(srcPath, destPath, callback) {
         var site, modules;
 
         // Set environment variables
@@ -648,7 +689,7 @@ module.exports = function build(name) {
 
             // Clean distribution folder
             del(destPath, function() {
-                var assets = process.env.ASSETS_URL || '/assets';
+                var assets = process.env.ASSETS_URL || '/assets/';
 
                 // Write HTML to debug distribution
                 writeHTML(site, destPath, [
@@ -673,15 +714,18 @@ module.exports = function build(name) {
                         if (err) { console.error(err); }
                     });
                 }
+
+                if (callback) { callback(); }
             });
         });
     }
 
-    runBuild(options.src, options.dest);
-
-    if (options.server) {
-        createWatch(options.src, runBuild.bind(null, options.src, options.dest));    
-        startLivereload(options.dest, options.server.lrPort);
-        createServer(options.dest, options.server.port);
-    }
+    // Run build and start servers
+    runBuild(options.src, options.dest, function() {
+        if (options.server) {
+            createWatch(options.src, runBuild.bind(null, options.src, options.dest));    
+            startLivereload(options.dest, options.server.lrPort);
+            createServer(options.dest, options.server.port);
+        }
+    });
 };
