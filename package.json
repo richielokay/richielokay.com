@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rvangundy/omeg.git"
+    "url": "https://github.com/rvangundy/blanka.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rvangundy/omeg/issues"
+    "url": "https://github.com/rvangundy/blanka/issues"
   },
-  "homepage": "https://github.com/rvangundy/omeg",
+  "homepage": "https://github.com/rvangundy/blanka",
   "dependencies": {
     "browserify": "~8.1.0",
     "cheerio": "^0.18.0",
