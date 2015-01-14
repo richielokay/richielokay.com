@@ -1,7 +1,7 @@
 {
   "name": "blanka",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Blanka builds your static websites",
   "main": "index.js",
   "bin": {
     "blanka": "./bin/blanka"
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "https://github.com/rvangundy/blanka.git"
   },
-  "author": "",
+  "author": "Ryan VanGundy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rvangundy/blanka/issues"
@@ -23,6 +23,7 @@
     "browserify": "~8.1.0",
     "cheerio": "^0.18.0",
     "chokidar": "^0.12.6",
+    "cli-color": "^0.3.2",
     "commander": "^2.6.0",
     "debowerify": "^1.2.0",
     "del": "^1.1.1",
