@@ -27,6 +27,7 @@ var normalizeSettings = require('./normalize-settings');
 var uglifyjs = require('uglify-js');
 var neat = require('node-neat');
 var bourbon = require('node-bourbon');
+var ncp = require('ncp');
 
 /**************
  *  Settings  *
@@ -614,6 +615,8 @@ module.exports = function build(name) {
     // Expand paths
     options.dest = path.join(process.cwd(), options.dest);
     options.src = path.join(process.cwd(), options.src);
+    options.assetDest = path.join(process.cwd(), options.assetDest);
+    options.assetSrc = path.join(process.cwd(), options.assetSrc);
     if (options.server && options.browserify) {
         options.browserify.lrPort = options.server.lrPort;
     }
@@ -663,6 +666,13 @@ module.exports = function build(name) {
                 writeStyles(site, srcPath, destPath, modules, [
                     replaceAssets(assets)
                 ], options.sass);
+
+                // Copy assets
+                if (options.assetDest && options.assetSrc) {
+                    ncp(options.assetSrc, options.assetDest, function(err) {
+                        if (err) { console.error(err); }
+                    });
+                }
             });
         });
     }

@@ -16,6 +16,8 @@
             "ASSETS_URL": "/assets/"
         },
         "html": { "lrSnippet": true },
+        "assetSrc": "assets",
+        "assetDest": "dist/debug/assets",
         "server": {
             "port": 8080,
             "lrPort": 35729
