@@ -1,3 +1,3 @@
 'use strict';
 
-console.log('Loaded this one!!!!!');
+console.log('Loaded this one!');

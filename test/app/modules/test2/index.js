@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = function(element) {
-    element.innerHTML = 'Test2!';
+    // element.innerHTML = 'Test2!';
 };

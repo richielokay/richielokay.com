@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(element) {
-	var assets = 'assets://';
+	// var assets = 'assets://';
 	
-    element.innerHTML = 'Test!';
+ //    element.innerHTML = 'Test!!!';
 };
