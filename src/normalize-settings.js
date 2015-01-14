@@ -33,11 +33,12 @@ var defaults = {
         lrSnippet: false,
         gzip: false
     },
-    assets: {
-        src: 'assets',
-        dest: 'dist/prod/assets',
-        gzip: false
-    }
+    assets: false
+    // assets: {
+    //     src: 'assets',
+    //     dest: 'dist/prod/assets',
+    //     gzip: false
+    // }
     // server: {
     //     'port': 8080,
     //     'lrPort': 35729

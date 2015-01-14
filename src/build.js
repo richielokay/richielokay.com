@@ -562,7 +562,7 @@ function writeStyles(site, src, dest, modules, filters, options) {
                             if (err) { throw new Error(err); }
                         });
                     }
-                    
+
                 }.bind(null, destPath, result.css));
 
                 // Write the source map
@@ -689,10 +689,13 @@ module.exports = function build(name) {
     // Expand paths
     options.dest = path.join(process.cwd(), options.dest);
     options.src = path.join(process.cwd(), options.src);
-    options.assets = {
-        src: path.join(process.cwd(), options.assets.src),
-        dest: path.join(process.cwd(), options.assets.dest)
-    };
+
+    if (options.assets) {
+        options.assets = {
+            src: path.join(process.cwd(), options.assets.src),
+            dest: path.join(process.cwd(), options.assets.dest)
+        };
+    }
 
     // Copy over livereload port to browserify for watch
     if (options.server && options.browserify) {
@@ -746,7 +749,7 @@ module.exports = function build(name) {
                 ], options.sass);
 
                 // Copy assets
-                if (options.assets.dest && options.assets.src) {
+                if (options.assets) {
                     ncp(options.assets.src, options.assets.dest, function(err) {
                         if (err) { console.error(err); }
                     });
