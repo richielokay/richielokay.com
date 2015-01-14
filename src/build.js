@@ -329,7 +329,7 @@ function replaceAssets(assets) {
  * @param {type} [name] [description]
  */
 function injectScriptRef() {
-    var comment = '<!-- Inline Scripts -->';
+    var comment = '<!-- Inject Scripts -->';
     var tag = '<script src="index.js"></script>';
 
     return function(content) {
@@ -342,7 +342,7 @@ function injectScriptRef() {
  * @param {type} [name] [description]
  */
 function injectStyleRef() {
-    var comment = '<!-- Inline Styles -->';
+    var comment = '<!-- Inject Styles -->';
     var tag = '<link rel="stylesheet" type="text/css" href="main.css">';
 
     return function(content) {
