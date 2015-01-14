@@ -6,7 +6,7 @@
  ******************/
 
 var program = require('commander');
-var omeg = require('../src/omeg-cli');
+var ehonda = require('../src/ehonda-cli');
 var path = require('path');
 
 /***********
@@ -14,8 +14,6 @@ var path = require('path');
  ***********/
 
 var CWD = process.cwd();
-var SRC = path.join(CWD, 'app');
-var DEST = path.join(CWD, 'dist');
 
 /*************
  *  Program  *
@@ -29,8 +27,8 @@ program
  ***********/
 
 program.command('build [name]')
-    .action(function() {
-        omeg.build(SRC, DEST);
+    .action(function(name) {
+        ehonda.build(name);
     });
 
 /*************
