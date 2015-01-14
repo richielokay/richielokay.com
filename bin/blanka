@@ -6,14 +6,7 @@
  ******************/
 
 var program = require('commander');
-var ehonda = require('../src/ehonda-cli');
-var path = require('path');
-
-/***********
- *  Paths  *
- ***********/
-
-var CWD = process.cwd();
+var blanka = require('../src/blanka-cli');
 
 /*************
  *  Program  *
@@ -28,7 +21,7 @@ program
 
 program.command('build [name]')
     .action(function(name) {
-        ehonda.build(name);
+        blanka.build(name);
     });
 
 /*************
