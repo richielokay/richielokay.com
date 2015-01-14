@@ -16,20 +16,28 @@ var defaults = {
     src: 'app',
     packed: false,
     browserify: {
-        debug: false
+        debug: false,
+        gzip: false
     },
     sass: {
         sourcemaps: false,
         outputStyle: 'nested',
-        includePaths: []
+        includePaths: [],
+        gzip: false
     },
     env: {
         NODE_ENV: 'production',
         ASSETS_URL: '/assets/'
     },
-    html: { lrSnippet: false },
-    assetSrc: 'assets',
-    assetDest: 'dist/prod/assets'
+    html: {
+        lrSnippet: false,
+        gzip: false
+    },
+    assets: {
+        src: 'assets',
+        dest: 'dist/prod/assets',
+        gzip: false
+    }
     // server: {
     //     'port': 8080,
     //     'lrPort': 35729

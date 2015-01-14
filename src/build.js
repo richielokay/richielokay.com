@@ -29,6 +29,7 @@ var neat = require('node-neat');
 var bourbon = require('node-bourbon');
 var ncp = require('ncp');
 var log = require('./logger');
+var zlib = require('zlib');
 
 /**************
  *  Settings  *
@@ -378,9 +379,20 @@ function writeHTML(site, dest, filters, options) {
 
         // Write HTML
         mkdirp(path.dirname(filePath), function(filePath, content) {
-            fs.writeFile(filePath, content, function(err) {
-                if (err) { throw new Error(err); }
-            });
+
+            // Gzip
+            if (options.gzip) {
+                zlib.gzip(content, function(err, result) {
+                    fs.writeFile(filePath, result.toString(), function(err) {
+                        if (err) { throw new Error(err); }
+                    });
+                });
+            } else {
+                fs.writeFile(filePath, content, function(err) {
+                    if (err) { throw new Error(err); }
+                });
+            }
+
         }.bind(null, filePath, content));
     }
 }
@@ -461,9 +473,20 @@ function writeScripts(site, src, dest, modules, filters, options) {
 
             // Write the bundled file
             mkdirp(path.dirname(destPath), function(destPath, content) {
-                fs.writeFile(destPath, content, function(err) {
-                    if (err) { throw new Error(err); }
-                });
+
+                // Gzip
+                if (options.gzip) {
+                    zlib.gzip(content, function(err, result) {
+                        fs.writeFile(destPath, result.toString(), function(err) {
+                            if (err) { throw new Error(err); }
+                        });
+                    });
+                } else {
+                    fs.writeFile(destPath, content, function(err) {
+                        if (err) { throw new Error(err); }
+                    });
+                }
+
             }.bind(null, destPath, content));
         }.bind(null, filePath));
 
@@ -527,9 +550,19 @@ function writeStyles(site, src, dest, modules, filters, options) {
                         });
                     }
 
-                    fs.writeFile(destPath, content, function(err) {
-                        if (err) { throw new Error(err); }
-                    });
+                    // Gzip
+                    if (options.gzip) {
+                        zlib.gzip(content, function(err, result) {
+                            fs.writeFile(destPath, result.toString(), function(err) {
+                                if (err) { throw new Error(err); }
+                            });
+                        });
+                    } else {
+                        fs.writeFile(destPath, content, function(err) {
+                            if (err) { throw new Error(err); }
+                        });
+                    }
+                    
                 }.bind(null, destPath, result.css));
 
                 // Write the source map
@@ -656,8 +689,12 @@ module.exports = function build(name) {
     // Expand paths
     options.dest = path.join(process.cwd(), options.dest);
     options.src = path.join(process.cwd(), options.src);
-    options.assetDest = path.join(process.cwd(), options.assetDest);
-    options.assetSrc = path.join(process.cwd(), options.assetSrc);
+    options.assets = {
+        src: path.join(process.cwd(), options.assets.src),
+        dest: path.join(process.cwd(), options.assets.dest)
+    };
+
+    // Copy over livereload port to browserify for watch
     if (options.server && options.browserify) {
         options.browserify.lrPort = options.server.lrPort;
     }
@@ -709,8 +746,8 @@ module.exports = function build(name) {
                 ], options.sass);
 
                 // Copy assets
-                if (options.assetDest && options.assetSrc) {
-                    ncp(options.assetSrc, options.assetDest, function(err) {
+                if (options.assets.dest && options.assets.src) {
+                    ncp(options.assets.src, options.assets.dest, function(err) {
                         if (err) { console.error(err); }
                     });
                 }
