@@ -22,13 +22,27 @@ var chokidar = require('chokidar');
 var staticServer = require('node-static');
 var http = require('http');
 var tinylr = require('tiny-lr');
+var watchify = require('watchify');
+var normalizeSettings = require('./normalize-settings');
+var uglifyjs = require('uglify-js');
+var neat = require('node-neat');
+var bourbon = require('node-bourbon');
+
+/**************
+ *  Settings  *
+ **************/
+
+try {
+    var buildSettings = require(path.join(process.cwd(), '.builds.json'));
+    var settings = normalizeSettings(buildSettings);
+} catch (err) {
+    console.warn('Could not find .builds.json');
+}
 
 /***************
  *  Variables  *
  ***************/
 
-var port = process.env.WEB_PORT || 8080;
-var lrPort = 35729;
 var lrSnippet = '<script>document.write(\'<script src=\"http://\' + (location.host || \'localhost\').split(\':\')[0] + \':35729/livereload.js?snipver=1\"></\' + \'script>\')</script>';
 
 /**************
@@ -171,13 +185,20 @@ function processSite(files, site, sitePath) {
  * @param {type} [name] [description]
  */
 function moduleHelper(module, object) {
-    var html, doc;
+    var html, doc, template;
     var data = object.data;
     var name = object.name;
     var hash = object.hash;
     var page = data.root ? data.root : null;
 
     name = name.replace('module-', '');
+
+    // Use an alternate template file if requested
+    if (hash.template) {
+        template = module.templates[hash.template];
+    } else {
+        template = module.template;
+    }
 
     // Add module to list of modules
     if (page && page.modules && page.modules.indexOf(name) < 0) {
@@ -188,7 +209,7 @@ function moduleHelper(module, object) {
     page = extend(page, module.defaults, hash);
 
     // Generate the HTML
-    html = module.template ? module.template(page) : '<span></span>';
+    html = template ? template(page) : '<span></span>';
 
     // Add data-module attribute
     doc = cheerio.load(html);
@@ -203,19 +224,38 @@ function moduleHelper(module, object) {
  * @param {type} [name] [description]
  */
 function registerModules(files, modules) {
-    var module, modFiles;
+    var module, modFiles, templateName;
     modules = modules || {};
 
     for (var key in files) {
         modFiles = files[key];
 
-        // Resolve module source
-        module = modules['module-' + key] = {
-            template: modFiles['index.hbs'] ? handlebars.compile(modFiles['index.hbs']) : null,
-            defaults: modFiles['defaults.json'] ? JSON.parse(modFiles['defaults.json']) : {},
-            sass: modFiles['main.scss'],
-            script: modFiles['index.js']
-        };
+        module = modules['module-' + key] = {};
+
+        for (var i in modFiles) {
+            switch (i) {
+                case 'index.hbs':
+                    module.template = modFiles['index.hbs'] ? handlebars.compile(modFiles['index.hbs']) : null;
+                    break;
+                case 'defaults.json':
+                    module.defaults = modFiles['defaults.json'] ? JSON.parse(modFiles['defaults.json']) : {};
+                    break;
+                case 'main.scss':
+                    module.sass = modFiles['main.scss'];
+                    break;
+                case 'index.js':
+                    module.script = modFiles['index.js'];
+                    break;
+
+                // Collect additional templates
+                default:
+                    if (path.extname(i) === '.hbs') {
+                        templateName = path.basename(i, '.hbs');
+                        module.templates = module.templates || {};
+                        module.templates[templateName] = handlebars.compile(modFiles[i]);
+                    }
+            }
+        }
 
         handlebars.registerHelper('module-' + key, moduleHelper.bind(null, module));
     }
@@ -293,7 +333,7 @@ function injectStyleRef() {
  * Writes HTML to the distribution folder
  * @param {type} [name] [description]
  */
-function writeHTML(site, dest, filters) {
+function writeHTML(site, dest, filters, options) {
     var content, filePath, doc;
 
     for (var page in site) {
@@ -308,7 +348,7 @@ function writeHTML(site, dest, filters) {
 
         // Add livereload snippet
         doc = cheerio.load(content);
-        doc('body').append(lrSnippet);
+        if (options.lrSnippet) { doc('body').append(lrSnippet); }
         content = doc.html();
 
         // Write HTML
@@ -324,18 +364,30 @@ function writeHTML(site, dest, filters) {
  * Writes all javascript files using browserify
  * @param {type} [name] [description]
  */
-function writeScripts(site, src, dest, modules, filters) {
-    var filePath, b;
+function writeScripts(site, src, dest, modules, filters, options) {
+    var filePath, b, w;
+    var args = Array.prototype.slice(arguments, 0);
 
     // Add modules
     for (var page in site) {
-        b = browserify({ debug: true });
+
+        // Only write JS for one site
+        if (site[page].generated) { continue; }
+
+        b = browserify({
+            debug: options.debug,
+            cache: {},
+            packageCache: {},
+            fullPaths: true
+        });
 
         // Add transforms
         b.transform(hbsfy);
         b.transform(debowerify);
         b.transform(installify);
         b.transform(envify);
+        
+        if (options.debug) { w = watchify(b); }
 
         // Add modules
         site[page].modules.forEach(function(mod) {
@@ -348,7 +400,9 @@ function writeScripts(site, src, dest, modules, filters) {
         });
 
         // Add module runner js
-        b.add(path.join(__dirname, 'client-runmodules.js'));
+        b.add(path.join(__dirname, 'client-runmodules.js'), {
+            expose: 'client-runmodules'
+        });
 
         // Add index.js
         if (site[page].script) {
@@ -359,20 +413,26 @@ function writeScripts(site, src, dest, modules, filters) {
         filePath = path.join(dest, path.dirname(page), 'index.js');
 
         // Create the bundle
-        b.bundle(function(destPath, err, buffer) {
-            var content = buffer.toString();
-
+        (options.debug ? w : b).bundle(function(destPath, err, buffer) {
             // Catch and report errors
             if (err) {
                 console.log(err);
                 return;
             }
 
-            // if (filters) {
-            //     filters.forEach(function(filter) {
-            //         content = filter(content);
-            //     });
-            // }
+            var content = buffer.toString();
+
+            if (filters) {
+                filters.forEach(function(filter) {
+                    content = filter(content);
+                });
+            }
+
+            // Uglify the script
+            if (options.uglify) {
+                content = uglifyjs.minify(content, {fromString: true});
+                content = content.code;
+            }
 
             // Write the bundled file
             mkdirp(path.dirname(destPath), function(destPath, content) {
@@ -381,6 +441,13 @@ function writeScripts(site, src, dest, modules, filters) {
                 });
             }.bind(null, destPath, content));
         }.bind(null, filePath));
+
+        if (options.debug) {
+            w.on('update', function(options) {
+                writeScripts.apply(null, args);
+                triggerLivereload(options.lrPort);
+            }.bind(null, options));
+        }
     }
 }
 
@@ -388,8 +455,9 @@ function writeScripts(site, src, dest, modules, filters) {
  * Writes all styles using sass
  * @param {type} [name] [description]
  */
-function writeStyles(site, src, dest, modules, filters) {
+function writeStyles(site, src, dest, modules, filters, options) {
     var combined, modPath, srcPath, destPath, mapPath;
+    var includePaths = bourbon.includePaths.concat(neat.includePaths.concat(options.includePaths))
 
     for (var page in site) {
         
@@ -416,10 +484,11 @@ function writeStyles(site, src, dest, modules, filters) {
             file: srcPath,
             data: combined,
             outFile: destPath,
-            outputStyle: 'nested',
-            omitSourceMapUrl: false,
-            sourceComments: true,
-            sourceMap: true,
+            outputStyle: options.outputStyle,
+            omitSourceMapUrl: !options.sourcemaps,
+            sourceComments: options.sourcemaps,
+            sourceMap: options.sourcemaps,
+            includePaths: includePaths,
 
             success: function(destPath, mapPath, result) {
 
@@ -431,11 +500,13 @@ function writeStyles(site, src, dest, modules, filters) {
                 }.bind(null, destPath, result.css));
 
                 // Write the source map
-                mkdirp(path.dirname(mapPath), function(mapPath, content) {
-                    fs.writeFile(mapPath, content, function(err) {
-                        if (err) { console.log(err); }
-                    });
-                }.bind(null, mapPath, JSON.stringify(result.map)));
+                if (options.sourcemaps) {
+                    mkdirp(path.dirname(mapPath), function(mapPath, content) {
+                        fs.writeFile(mapPath, content, function(err) {
+                            if (err) { console.log(err); }
+                        });
+                    }.bind(null, mapPath, JSON.stringify(result.map)));
+                }
 
             }.bind(null, destPath, mapPath),
 
@@ -457,7 +528,7 @@ function writeStyles(site, src, dest, modules, filters) {
  * Creates the static server
  * @param {type} [name] [description]
  */
-function createServer(staticPath) {
+function createServer(staticPath, port) {
     var server = new staticServer.Server(staticPath);
 
     http.createServer(function(request, response) {
@@ -474,7 +545,7 @@ function createServer(staticPath) {
  * @param {type} [name] [description]
  */
 function createWatch(watchPath, callback) {
-    var watcher = chokidar.watch(watchPath, { persistent: true });
+    var watcher = chokidar.watch(watchPath, { persistent: true, ignore: /\.js$/ });
 
     // Set up watch on source files
     watcher.on('change', function(path) {
@@ -487,17 +558,17 @@ function createWatch(watchPath, callback) {
  *  
  * @param {type} [name] [description]
  */
-function triggerLivereload(file) {
-    file = file.replace(process.cwd() + '/dist/debug/', '');
-
-    console.log('Triggered ' + file);
-
+function triggerLivereload(port) {
     var req = http.request({
         hostname: '127.0.0.1',
-        port: lrPort,
+        port: port,
         path: '/changed?files=*',
         method: 'GET'
     }, function(res) {
+
+        // Nothing happens without a data event
+        res.on('data', function() {});
+
         res.on('error', function(err) {
             console.log(err);
         });
@@ -510,17 +581,17 @@ function triggerLivereload(file) {
  *
  * @param {type} [name] [description]
  */
-function startLivereload(dest) {
+function startLivereload(dest, port) {
     var server = tinylr();
     var watcher = chokidar.watch(dest, { persistent: true });
 
-    server.listen(lrPort, function() {
-        console.log('Livereload listening on port ' + lrPort);
+    server.listen(port, function() {
+        console.log('Livereload listening on port ' + port);
     });
 
     // Set up watch on source files
     watcher.on('change', function(path) {
-        triggerLivereload(path);
+        triggerLivereload(port);
     });
 }
 
@@ -528,11 +599,34 @@ function startLivereload(dest) {
  *  Build  *
  ***********/
 
-module.exports = function build(src, dest) {
-    var debugPath = path.join(dest, 'debug');
+module.exports = function build(name) {
+    var options = {};
+
+    name = name || 'prod';
+
+    // Get desired settings
+    settings.forEach(function(setting) {
+        if (setting.name === name) {
+            options = setting;
+        }
+    });
+
+    // Expand paths
+    options.dest = path.join(process.cwd(), options.dest);
+    options.src = path.join(process.cwd(), options.src);
+    if (options.server && options.browserify) {
+        options.browserify.lrPort = options.server.lrPort;
+    }
 
     function runBuild(srcPath, destPath) {
         var site, modules;
+
+        // Set environment variables
+        if (options.env) {
+            for (var env in options.env) {
+                process.env[env] = options.env[env];
+            }
+        }
 
         // Read the entire src tree
         readDirFiles.read(srcPath, 'utf8', function(err, files) {
@@ -551,30 +645,33 @@ module.exports = function build(src, dest) {
 
             // Clean distribution folder
             del(destPath, function() {
+                var assets = process.env.ASSETS_URL || '/assets';
 
                 // Write HTML to debug distribution
                 writeHTML(site, destPath, [
-                    replaceAssets('/assets/'),
+                    replaceAssets(assets),
                     injectScriptRef(),
                     injectStyleRef()
-                ]);
+                ], options.html);
 
                 // Write JS to debug distribution
                 writeScripts(site, srcPath, destPath, modules, [
-                    replaceAssets('/assets/')
-                ]);
+                    replaceAssets(assets)
+                ], options.browserify);
 
                 // Write CSS to debug distribution
                 writeStyles(site, srcPath, destPath, modules, [
-                    replaceAssets('/assets/')
-                ]);
+                    replaceAssets(assets)
+                ], options.sass);
             });
         });
     }
 
-    runBuild(src, debugPath);
+    runBuild(options.src, options.dest);
 
-    createWatch(src, runBuild.bind(null, src, debugPath));
-    startLivereload(debugPath);
-    createServer(debugPath);
+    if (options.server) {
+        createWatch(options.src, runBuild.bind(null, options.src, options.dest));    
+        startLivereload(options.dest, options.server.lrPort);
+        createServer(options.dest, options.server.port);
+    }
 };
