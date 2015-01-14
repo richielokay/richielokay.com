@@ -528,12 +528,12 @@ function writeStyles(site, src, dest, modules, filters, options) {
  * Creates the static server
  * @param {type} [name] [description]
  */
-function createServer(staticPath, port) {
-    var server = new staticServer.Server(staticPath);
+function createServer(appPath, port) {
+    var appServer = new staticServer.Server(appPath);
 
     http.createServer(function(request, response) {
         request.addListener('end', function() {
-            server.serve(request, response);
+            appServer.serve(request, response);
         }).resume();
     }).listen(port);
 
