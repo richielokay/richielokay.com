@@ -6,6 +6,7 @@
 
 var handlebars = require('handlebars');
 var cheerio = require('cheerio');
+var log = require('./logger');
 
 /************
  *  Helper  *
@@ -22,7 +23,7 @@ var cheerio = require('cheerio');
  *     {{module "path/to/module" val1="lime" val2=5}}
  */
 function moduleHelper(moduleName, options, moduleList, files) {
-    var template, html, doc;
+    var template, html, doc, hasScript;
     var moduleHTML = files.modules;
     var path = moduleName.split('/');
     var hash = options.hash;
@@ -32,6 +33,8 @@ function moduleHelper(moduleName, options, moduleList, files) {
     path.forEach(function(step) {
         moduleHTML = moduleHTML[step];
     });
+
+    hasScript = moduleHTML['index.js'];
 
     // Get the module's template markup
     moduleHTML = moduleHTML['module.hbs'];
@@ -50,15 +53,20 @@ function moduleHelper(moduleName, options, moduleList, files) {
 
     // Template handlebars
     if (moduleHTML) {
-        template = handlebars.compile(moduleHTML);
-        html = template(data);
+        try {
+            template = handlebars.compile(moduleHTML);
+            html = template(data);
+        } catch (err) {
+            log('Handlebars', err, 'error');
+            html = '<span></span>';
+        }
     } else {
         html = '<span></span>';
     }
 
     // Add data-module attribute
     doc = cheerio.load(html);
-    doc(':root').attr('data-module', moduleName);
+    if (hasScript) { doc(':root').attr('data-module', moduleName); }
 
     // Return templated html
     return new handlebars.SafeString(doc.html());
