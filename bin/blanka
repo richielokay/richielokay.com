@@ -24,9 +24,14 @@ program.command('build [name]')
         blanka.build(name);
     });
 
-program.command('init')
-    .action(function() {
-        blanka.init();
+program.command('module [name]')
+    .action(function(name) {
+        if (!name) {
+            console.error('Please specify a module name');
+            return;
+        }
+        
+        blanka.createModule(name);
     });
 
 /*************

@@ -42,6 +42,8 @@
     "q-io": "^1.11.6",
     "read-dir-files": "^0.1.1",
     "readdir": "0.0.13",
+    "recursive-readdir": "^1.2.1",
+    "swig": "^1.4.2",
     "tiny-lr": "^0.1.4",
     "uglify-js": "^2.4.16",
     "watchify": "^2.2.1"

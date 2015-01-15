@@ -13,9 +13,11 @@ var clc = require('cli-color');
 var groups = {
     Server: clc.blueBright.bold,
     LiveReload: clc.cyanBright.bold,
-    Watch: clc.green.bold,
+    Watch: clc.yellow.bold,
     SASS: clc.magenta.bold,
-    Handlebars: clc.xterm(208).bold
+    Handlebars: clc.xterm(208).bold,
+    FileIO: clc.green.bold,
+    Browserify: clc.xterm(136).bold
 };
 
 var warn = clc.yellowBright.bold;

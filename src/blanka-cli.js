@@ -8,6 +8,7 @@
 
 var build = require('./build');
 var init = require('./init');
+var createModule = require('./create-module');
 
 /*************
  *  Exports  *
@@ -15,3 +16,4 @@ var init = require('./init');
 
 exports.build = build;
 exports.init = init;
+exports.createModule = createModule;
