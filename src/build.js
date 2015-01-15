@@ -384,12 +384,12 @@ function writeHTML(site, dest, filters, options) {
             if (options.gzip) {
                 zlib.gzip(content, function(err, result) {
                     fs.writeFile(filePath, result, function(err) {
-                        if (err) { throw new Error(err); }
+                        if (err) { log('FileIO', err, 'error'); }
                     });
                 });
             } else {
                 fs.writeFile(filePath, content, function(err) {
-                    if (err) { throw new Error(err); }
+                    if (err) { log('FileIO', err, 'error'); }
                 });
             }
 
@@ -454,8 +454,12 @@ function writeScripts(site, src, dest, modules, filters, options) {
 
         // Create the bundle
         (options.debug ? w : b).bundle(function(destPath, err, buffer) {
+            
             // Catch and report errors
-            if (err) { throw new Error(err); }
+            if (err) {
+                log('Browserify', err, 'error');
+                return;
+            }
 
             var content = buffer.toString();
 
@@ -478,12 +482,12 @@ function writeScripts(site, src, dest, modules, filters, options) {
                 if (options.gzip) {
                     zlib.gzip(content, function(err, result) {
                         fs.writeFile(destPath, result, function(err) {
-                            if (err) { throw new Error(err); }
+                            if (err) { log('FileIO', err, 'error'); }
                         });
                     });
                 } else {
                     fs.writeFile(destPath, content, function(err) {
-                        if (err) { throw new Error(err); }
+                        if (err) { log('FileIO', err, 'error'); }
                     });
                 }
 
@@ -517,6 +521,7 @@ function writeStyles(site, src, dest, modules, filters, options) {
         destPath = path.join(dest, path.dirname(site[page].key), 'main.css');
         mapPath = path.join(dest, path.dirname(site[page].key), 'main.css.map');
 
+        // Add module @import statements
         site[page].modules.forEach(function(module) {
             modPath = path.join(src, 'modules', module, 'main.scss');
             module = modules['module-' + module];
@@ -554,12 +559,12 @@ function writeStyles(site, src, dest, modules, filters, options) {
                     if (options.gzip) {
                         zlib.gzip(content, function(err, result) {
                             fs.writeFile(destPath, result, function(err) {
-                                if (err) { throw new Error(err); }
+                                if (err) { log('FileIO', err, 'error'); }
                             });
                         });
                     } else {
                         fs.writeFile(destPath, content, function(err) {
-                            if (err) { throw new Error(err); }
+                            if (err) { log('FileIO', err, 'error'); }
                         });
                     }
 
@@ -569,7 +574,7 @@ function writeStyles(site, src, dest, modules, filters, options) {
                 if (options.sourcemaps) {
                     mkdirp(path.dirname(mapPath), function(mapPath, content) {
                         fs.writeFile(mapPath, content, function(err) {
-                            if (err) { throw new Error(err); }
+                            if (err) { log('FileIO', err, 'error'); }
                         });
                     }.bind(null, mapPath, JSON.stringify(result.map)));
                 }
@@ -689,7 +694,6 @@ module.exports = function build(name) {
     // Expand paths
     options.dest = path.join(process.cwd(), options.dest);
     options.src = path.join(process.cwd(), options.src);
-
     if (options.assets) {
         options.assets = {
             src: path.join(process.cwd(), options.assets.src),
@@ -697,7 +701,7 @@ module.exports = function build(name) {
         };
     }
 
-    // Copy over livereload port to browserify for watch
+    // Copy over livereload port to browserify options for watch
     if (options.server && options.browserify) {
         options.browserify.lrPort = options.server.lrPort;
     }
