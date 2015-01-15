@@ -13,7 +13,7 @@ var blanka = require('../src/blanka-cli');
  *************/
 
 program
-    .version('0.0.7');
+    .version('0.0.8');
 
 /***********
  *  Build  *
@@ -30,7 +30,7 @@ program.command('module [name]')
             console.error('Please specify a module name');
             return;
         }
-        
+
         blanka.createModule(name);
     });
 
