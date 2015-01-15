@@ -28,8 +28,10 @@ try {
 module.exports = function createModule(name) {
     var shortPath = path.join(settings[0].src, 'modules', name);
     var modulePath = path.join(process.cwd(), shortPath);
-    var templateDir = path.resolve('../scaffolds/module');
+    var templateDir = path.join(__dirname, '../scaffolds/module');
     var data = { name: name };
+
+    console.log(templateDir);
 
     if (fs.existsSync(modulePath)) {
         console.error('Module ' + name + ' already exists');
@@ -38,9 +40,11 @@ module.exports = function createModule(name) {
 
     fs.mkdir(modulePath, function() {
         readdir(templateDir, function(err, files) {
-            var numFiles = files.length;
+            var numFiles;
 
             if (err) { throw new Error(err); }
+
+            numFiles = files.length;
 
             files.forEach(function(file) {
                 var tmpl;
