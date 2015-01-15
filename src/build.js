@@ -383,7 +383,7 @@ function writeHTML(site, dest, filters, options) {
             // Gzip
             if (options.gzip) {
                 zlib.gzip(content, function(err, result) {
-                    fs.writeFile(filePath, result.toString(), function(err) {
+                    fs.writeFile(filePath, result, function(err) {
                         if (err) { throw new Error(err); }
                     });
                 });
@@ -477,7 +477,7 @@ function writeScripts(site, src, dest, modules, filters, options) {
                 // Gzip
                 if (options.gzip) {
                     zlib.gzip(content, function(err, result) {
-                        fs.writeFile(destPath, result.toString(), function(err) {
+                        fs.writeFile(destPath, result, function(err) {
                             if (err) { throw new Error(err); }
                         });
                     });
@@ -553,7 +553,7 @@ function writeStyles(site, src, dest, modules, filters, options) {
                     // Gzip
                     if (options.gzip) {
                         zlib.gzip(content, function(err, result) {
-                            fs.writeFile(destPath, result.toString(), function(err) {
+                            fs.writeFile(destPath, result, function(err) {
                                 if (err) { throw new Error(err); }
                             });
                         });
