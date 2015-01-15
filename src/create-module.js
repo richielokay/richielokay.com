@@ -38,6 +38,10 @@ module.exports = function createModule(name) {
 
     fs.mkdir(modulePath, function() {
         readdir(templateDir, function(err, files) {
+            var numFiles = files.length;
+
+            if (err) { throw new Error(err); }
+
             files.forEach(function(file) {
                 var tmpl;
                 var basename = path.basename(file);
@@ -47,8 +51,9 @@ module.exports = function createModule(name) {
 
                 fs.writeFile(dest, tmpl(data), function(name, err) {
                     if (err) { throw new Error(err); }
+                    numFiles--;
 
-                    console.log('Created ' + path.join(shortPath, basename));
+                    if (!numFiles) { console.log('Module created at ' + shortPath); }
                 }.bind(null, basename));
             });
         });
