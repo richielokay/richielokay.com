@@ -1,0 +1,17 @@
+{
+  "name": "{{ name }}",
+  "version": "0.0.1",
+  "description": "",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {},
+  "author": "",
+  "devDependencies": {},
+  "dependencies": {},
+  "peerDependencies": {
+    "blanka": "~0.0.12"
+  }
+}

@@ -10,28 +10,31 @@ var path = require('path');
 var normalizeSettings = require('./normalize-settings');
 var fs = require('fs');
 
-/**************
- *  Settings  *
- **************/
+/***************
+ *  Variables  *
+ ***************/
 
-try {
-    var buildSettings = require(path.join(process.cwd(), '.builds.json'));
-    var settings = normalizeSettings(buildSettings);
-} catch (err) {
-    console.warn('Could not find .builds.json');
-}
+var settings;
 
 /*************
  *  Exports  *
  *************/
 
 module.exports = function createModule(name) {
+    var buildSettings;
+
+    // Settings
+    try {
+        buildSettings = require(path.join(process.cwd(), 'builds.json'));
+        settings = normalizeSettings(buildSettings);
+    } catch (err) {
+        console.warn('Could not find builds.json');
+    }
+
     var shortPath = path.join(settings[0].src, 'modules', name);
     var modulePath = path.join(process.cwd(), shortPath);
     var templateDir = path.join(__dirname, '../scaffolds/module');
     var data = { name: name };
-
-    console.log(templateDir);
 
     if (fs.existsSync(modulePath)) {
         console.error('Module ' + name + ' already exists');

@@ -34,6 +34,11 @@ program.command('module [name]')
         blanka.createModule(name);
     });
 
+program.command('init [name]')
+    .action(function(name) {
+        blanka.init(name);
+    });
+
 /*************
  *  Parsing  *
  *************/

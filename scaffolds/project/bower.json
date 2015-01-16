@@ -1,0 +1,13 @@
+{
+  "name": "{{ name }}",
+  "version": "0.0.1",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {}
+}

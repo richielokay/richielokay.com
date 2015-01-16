@@ -31,21 +31,11 @@ var ncp = require('ncp');
 var log = require('./logger');
 var zlib = require('zlib');
 
-/**************
- *  Settings  *
- **************/
-
-try {
-    var buildSettings = require(path.join(process.cwd(), '.builds.json'));
-    var settings = normalizeSettings(buildSettings);
-} catch (err) {
-    console.warn('Could not find .builds.json');
-}
-
 /***************
  *  Variables  *
  ***************/
 
+var settings;
 var lrSnippet = '<script>document.write(\'<script src=\"http://\' + (location.host || \'localhost\').split(\':\')[0] + \':35729/livereload.js?snipver=1\"></\' + \'script>\')</script>';
 
 /**************
@@ -680,7 +670,16 @@ function startLivereload(dest, port) {
  ***********/
 
 module.exports = function build(name) {
+    var buildSettings;
     var options = {};
+
+    // Settings
+    try {
+        buildSettings = require(path.join(process.cwd(), 'builds.json'));
+        settings = normalizeSettings(buildSettings);
+    } catch (err) {
+        console.warn('Could not find builds.json');
+    }
 
     name = name || 'prod';
 
