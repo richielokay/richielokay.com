@@ -9,7 +9,7 @@
         "sass": {
             "sourcemaps": true,
             "outputStyle": "nested",
-            "includePaths": []
+            "includePaths": ["app/style"]
         },
         "env": {
             "NODE_ENV": "development",
@@ -34,7 +34,7 @@
         },
         "sass": {
             "outputStyle": "compressed",
-            "includePaths": []
+            "includePaths": ["app/style"]
         },
         "env": {
             "NODE_ENV": "production",

@@ -55,7 +55,8 @@ module.exports = function createProject(name) {
         });
     });
 
-    // Manually create assets/images
+    // Manually create empty folders
     mkdirp(path.join(process.cwd(), 'assets', 'images'));
+    mkdirp(path.join(process.cwd(), 'app', 'styles'));
 
 };
