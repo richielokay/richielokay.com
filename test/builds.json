@@ -1,12 +1,12 @@
 [
     {
         "name": "debug",
-        "dest": "dist/debug",
         "src": "app",
-        "browserify": {
+        "dest": "dist/debug",
+        "scripts": {
             "debug": true
         },
-        "sass": {
+        "styles": {
             "sourcemaps": true,
             "outputStyle": "nested",
             "includePaths": ["vendor", "app/style"]
@@ -27,19 +27,13 @@
     },
     {
         "name": "prod",
-        "dest": "dist/prod",
         "src": "app",
-        "browserify": {
-            "uglify": true,
-            "gzip": true
-        },
-        "sass": {
+        "dest": "dist/prod",
+        "gzip": true,
+        "scripts": { "uglify": true },
+        "styles": {
             "outputStyle": "compressed",
-            "includePaths": ["vendor", "app/style"],
-            "gzip": true
-        },
-        "html": {
-            "gzip": true
+            "includePaths": ["vendor", "app/style"]
         },
         "env": {
             "NODE_ENV": "production",
