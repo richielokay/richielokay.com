@@ -5,6 +5,8 @@
  ******************/
 
 var clc = require('cli-color');
+var notifier = require('node-notifier');
+var path = require('path');
 
 /***********************
  *  Color Definitions  *
@@ -33,6 +35,11 @@ module.exports = function log(group, message, severity) {
     if (severity) {
         switch (severity.toLowerCase()) {
             case 'warn':
+                notifier.notify({
+                    type: 'info',
+                    title: group + ' Warning',
+                    message: message
+                });
                 notice = warn('(Warning) ');
                 break;
             case 'error':
