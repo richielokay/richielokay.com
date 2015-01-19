@@ -30,7 +30,6 @@ var bourbon = require('node-bourbon');
 var ncp = require('ncp');
 var log = require('./logger');
 var zlib = require('zlib');
-var notifier = require('node-notifier');
 
 /***************
  *  Variables  *
@@ -294,13 +293,6 @@ function expandTemplates(site) {
         try {
             page.content = page.template(page);    
         } catch(err) {
-            notifier.notify({
-                title: 'Handlebars Error',
-                message: err,
-                icon: path.join(__dirname, '../bin/sfa3_blanka-1.gif'),
-                sound: true,
-                wait: true
-            });
             log('Handlebars', err, 'error');
             page.content = '<span></span>';
         }
@@ -455,15 +447,6 @@ function writeScripts(site, src, dest, modules, filters, options) {
             
             // Catch and report errors
             if (err) {
-
-                notifier.notify({
-                    title: 'JavaScript Error',
-                    message: err,
-                    icon: path.join(__dirname, '../bin/sfa3_blanka-1.gif'),
-                    sound: true,
-                    wait: true
-                });
-                
                 log('Browserify', err, 'error');
                 return;
             }
@@ -591,15 +574,6 @@ function writeStyles(site, src, dest, modules, filters, options) {
             error: function(error) {
                 var file = error.file.replace(process.cwd() + '/', '');
                 var msg = '"' + error.message + '", ' + file + ', line ' + error.line;
-
-                notifier.notify({
-                    title: 'SASS Error',
-                    message: error.message,
-                    icon: path.join(__dirname, '../bin/sfa3_blanka-1.gif'),
-                    sound: true,
-                    wait: true
-                });
-                
                 log('SASS', msg, 'error');
             }
         });
@@ -649,10 +623,6 @@ function createWatch(watchPath, callback) {
         ready = true;
     });
 }
-
-/****************
- *  Livereload  *
- ****************/
 
 /**
  *  
@@ -708,7 +678,7 @@ module.exports = function build(name) {
         buildSettings = require(path.join(process.cwd(), 'builds.json'));
         settings = normalizeSettings(buildSettings);
     } catch (err) {
-        console.warn(err);
+        console.warn('Could not find builds.json');
     }
 
     name = name || 'prod';
