@@ -1,0 +1,43 @@
+[
+    {
+        "name": "debug",
+        "src": "app",
+        "dest": "dist/debug",
+        "scripts": {
+            "debug": true
+        },
+        "styles": {
+            "sourcemaps": true,
+            "outputStyle": "nested",
+            "includePaths": ["vendor", "app/style"]
+        },
+        "env": {
+            "NODE_ENV": "development",
+            "ASSETS_URL": "/assets/"
+        },
+        "html": { "lrSnippet": true },
+        "assets": {
+            "src": "assets",
+            "dest": "dist/debug/assets"
+        },
+        "server": {
+            "port": 8080,
+            "lrPort": 35729
+        }
+    },
+    {
+        "name": "prod",
+        "src": "app",
+        "dest": "dist/prod",
+        "gzip": true,
+        "scripts": { "uglify": true },
+        "styles": {
+            "outputStyle": "compressed",
+            "includePaths": ["vendor", "app/style"]
+        },
+        "env": {
+            "NODE_ENV": "production",
+            "ASSETS_URL": "/assets/"
+        }
+    }
+]

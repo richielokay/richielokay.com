@@ -4,7 +4,6 @@
  *  Dependencies  *
  ******************/
 
-var Promise = require('promise');
 var extend = require('extend');
 var path = require('path');
 var defaults = require(path.join(__dirname, 'defaults.json'));
@@ -39,17 +38,15 @@ function normalize(def, settings) {
 
 module.exports = function getSettings(name) {
     var settings;
-    return new Promise(function(resolve, reject) {
+
+    // Try loading a builds.json file
+    try {
+        settings = require(BUILDS_JSON_PATH);
+        settings = settings.filter(function(item) {
+            return item.name === name;
+        })[0];
         
-        // Try loading a builds.json file
-        try {
-            settings = require(BUILDS_JSON_PATH);
-            settings = settings.filter(function(item) {
-                return item.name === name;
-            })[0];
-            
-            resolve(normalize(defaults, settings));
-        }
-        catch (err) { resolve(defaults); }
-    });
+        return normalize(defaults, settings);
+    }
+    catch (err) { return defaults; }
 };

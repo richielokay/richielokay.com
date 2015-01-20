@@ -4,25 +4,37 @@
  *  Modules  *
  *************/
 
-var getSettings = require('./settings');
-var createApp = require('./app');
-var buildHTML = require('./html');
+var getSettings = require('./get-settings');
+var loadApp = require('./load-app');
+var templateSiteHTML = require('./template-site-html');
+var loadPartials = require('./load-partials');
 // var scripts = require('./scripts');
 // var styles = require('./styles');
 // var server = require('./server');
 // var lrServer = require('./lr-server');
 
 /***********
+ *  Tasks  *
+ ***********/
+
+/***********
  *  Build  *
  ***********/
 
 module.exports = function build(name) {
-    getSettings(name)
-        .then(createApp)
-        .then(buildHTML);
-        // .then(function(app) {
-        //     console.log(app);
-        // });
+    var lrEnabled;
+    var context = { settings: getSettings(name) };
+
+    loadApp(context)
+        .then(loadPartials)
+        // .then(loadModules)
+        .then(templateSiteHTML)
+        .then(function(context) {
+            console.log(context);
+        })
+        .catch(function(err) {
+            console.error(err);
+        });
 
     // var html = html(site, settings);
     // var scripts = scripts(site, settings);
