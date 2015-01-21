@@ -28,8 +28,6 @@ function recursiveLoad(partials, registerPartial, crumbs) {
             name = crumbs.length ?
                 [crumbs.join('/'), path.basename(i, '.hbs')].join('/') :
                 path.basename(i, '.hbs');
-
-            console.log(name);
             handlebars.registerPartial(name, partials[i]);
             continue;
         }

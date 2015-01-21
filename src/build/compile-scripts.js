@@ -4,19 +4,18 @@
  *  Dependencies  *
  ******************/
 
-var handlebars = require('handlebars');
 var Promise = require('promise');
+var browserify = require('browserify');
 
 /****************
  *  Algorithms  *
  ****************/
 
 /**
- * Recursively templates all index.hbs files to index.html files
- * in the destination
+ * Recursively compiles all index.js scripts in to the destination
  * @param {type} [name] [description]
  */
-function recursiveTemplate(src, dest, filter, compile) {
+function recursiveCompile(src, dest, compile) {
     var template;
     var content = src['content.json'] ? JSON.parse(src['content.json']) : {};
     var page = dest._page = dest._page || content;
@@ -43,13 +42,12 @@ function recursiveTemplate(src, dest, filter, compile) {
  *************/
 
 module.exports = function(context) {
-    var site = context.app.site;
-    var dist = context.dist = context.dist || {};
+    var site = context.dist;
 
     return new Promise(function(resolve, reject) {
         try {
-            recursiveTemplate(site, dist, 'index.hbs', handlebars.compile.bind(handlebars));
-            resolve(context)
+            recursiveCompile(site);
+            resolve(context);
         } catch (err) {
             reject(err);
         }

@@ -8,6 +8,7 @@ var getSettings = require('./get-settings');
 var loadApp = require('./load-app');
 var templateSiteHTML = require('./template-site-html');
 var loadPartials = require('./load-partials');
+var loadModules = require('./load-modules');
 // var scripts = require('./scripts');
 // var styles = require('./styles');
 // var server = require('./server');
@@ -27,10 +28,10 @@ module.exports = function build(name) {
 
     loadApp(context)
         .then(loadPartials)
-        // .then(loadModules)
+        .then(loadModules)
         .then(templateSiteHTML)
         .then(function(context) {
-            console.log(context);
+            
         })
         .catch(function(err) {
             console.error(err);
