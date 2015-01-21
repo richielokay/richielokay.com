@@ -31,7 +31,6 @@ var ncp = require('ncp');
 var log = require('./logger');
 var zlib = require('zlib');
 var postcss = require('postcss');
-var cssgrace = require('cssgrace');
 var autoprefixer = require('autoprefixer-core');
 
 /***************
@@ -504,8 +503,7 @@ function writeStyles(site, src, dest, modules, filters, options) {
     var combined, modPath, srcPath, destPath, mapPath;
     var includePaths = bourbon.includePaths.concat(neat.includePaths.concat(options.includePaths))
     var postProcess = postcss()
-                .use(autoprefixer)
-                .use(cssgrace);
+                .use(autoprefixer)`;
 
     for (var page in site) {
         
