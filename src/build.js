@@ -503,7 +503,7 @@ function writeStyles(site, src, dest, modules, filters, options) {
     var combined, modPath, srcPath, destPath, mapPath;
     var includePaths = bourbon.includePaths.concat(neat.includePaths.concat(options.includePaths))
     var postProcess = postcss()
-                .use(autoprefixer)`;
+                .use(autoprefixer);
 
     for (var page in site) {
         
