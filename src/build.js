@@ -551,7 +551,7 @@ function writeStyles(site, src, dest, modules, filters, options) {
                         });
                     }
 
-                    content = postProcess.process(content);
+                    content = postProcess.process(content).css;
 
                     // Gzip
                     if (options.gzip) {
