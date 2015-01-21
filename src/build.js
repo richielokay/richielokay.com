@@ -178,8 +178,8 @@ function processSite(files, site, sitePath) {
     // Continue recursing with remaining keys
     keys.forEach(function(key) {
         
-        // Only recurse directories
-        if (!path.extname(key)) {
+        // Only recurse directories (ignore dotfiles)
+        if (!path.extname(key) && key.indexOf('.') !== 0) {
             sitePath.push(key);
             processSite(files[key], site, sitePath);
             sitePath.pop();
