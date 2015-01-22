@@ -31,7 +31,7 @@ module.exports = function build(name) {
         .then(loadModules)
         .then(templateSiteHTML)
         .then(function(context) {
-            
+            console.log(context);
         })
         .catch(function(err) {
             console.error(err);
