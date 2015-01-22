@@ -19,6 +19,7 @@
     "url": "https://github.com/rvangundy/blanka/issues"
   },
   "homepage": "https://github.com/rvangundy/blanka",
+  "engines" : { "node" : ">=0.10.35" },
   "dependencies": {
     "browserify": "~8.1.0",
     "cheerio": "^0.18.0",
