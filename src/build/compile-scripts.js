@@ -32,7 +32,7 @@ function recursiveCompile(src, dest, compile) {
         // Continue recursion
         if (src[i] === Object(src[i])) {
             dest[i] = {};
-            recursiveTemplate(src[i], dest[i], filter, compile);
+            recursiveCompile(src[i], dest[i], filter, compile);
         }
     }
 }
