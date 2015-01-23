@@ -25,13 +25,18 @@ var loadModules = require('./load-modules');
 module.exports = function build(name) {
     var lrEnabled;
     var context = { settings: getSettings(name) };
+    var start = Date.now();
 
     loadApp(context)
         .then(loadPartials)
         .then(loadModules)
         .then(templateSiteHTML)
         .then(function(context) {
+<<<<<<< Updated upstream
             console.log(context);
+=======
+            console.log(((Date.now() - start) / 1000) + 's');
+>>>>>>> Stashed changes
         })
         .catch(function(err) {
             console.error(err);
