@@ -32,11 +32,8 @@ module.exports = function build(name) {
         .then(loadModules)
         .then(templateSiteHTML)
         .then(function(context) {
-<<<<<<< Updated upstream
             console.log(context);
-=======
             console.log(((Date.now() - start) / 1000) + 's');
->>>>>>> Stashed changes
         })
         .catch(function(err) {
             console.error(err);
