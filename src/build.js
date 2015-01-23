@@ -114,7 +114,7 @@ function processSite(files, site, sitePath) {
         // Key by the file's path
         sitePath.push('index.html');
         key = sitePath.join('/');
-        site[key] = {
+        site[key] = site[key] || {
             key: key,
             template: handlebarsCompile(files['index.hbs']),
             modules: []
@@ -158,7 +158,7 @@ function processSite(files, site, sitePath) {
             for (var page in pages) {
                 sitePath.push(page + '.html');
                 key = sitePath.join('/');
-                site[key] = {
+                site[key] = site[key] || {
                     key: key,
                     generated: true,
                     template: templateFn,
@@ -225,7 +225,11 @@ function moduleHelper(module, object) {
 
     // Add data-module attribute
     doc = cheerio.load(html);
-    doc(':root').attr('data-module', 'module/' + name);
+
+    // Attach data-module identifier for running client side module code
+    if (module.script) {
+        doc(':root').attr('data-module', 'module/' + name);
+    };
 
     // Return the generated HTML
     return new handlebars.SafeString(doc.html());
@@ -281,11 +285,17 @@ function registerModules(files, modules) {
  * @param {type} [name] [description]
  */
 function expandTemplates(site) {
-    var page, data;
+    var page, data, crumbs, modules, name, index;
+    var pageModules = {}
 
     for (var key in site) {
         page = site[key];
         data = page.data;
+
+        // Create a modules collection for each page group
+        crumbs = key.split(path.sep);
+        crumbs.pop();
+        modules = pageModules[crumbs.join(path.sep)] = [];
 
         if (data) {
             delete page.data;
@@ -293,12 +303,24 @@ function expandTemplates(site) {
         }
 
         try {
-            page.content = page.template(page);    
+            page.content = page.template(page);
+            
+            // Collect all modules together for a page group
+            page.modules.forEach(function(module) {
+                if (modules.indexOf(module) < 0) {
+                    modules.push(module);
+                }
+            });            
         } catch(err) {
             log('Handlebars', err, 'error');
             page.content = '<span></span>';
         }
-        
+    }
+
+    // Collect all modules together and associate it with index.html
+    for (var i in pageModules) {
+        index = (i.length === 0 ? ['index.html'] : [i, 'index.html']).join(path.sep);
+        site[index].modules = pageModules[i];
     }
 }
 
@@ -516,9 +538,9 @@ function writeStyles(site, src, dest, modules, filters, options) {
         mapPath = path.join(dest, path.dirname(site[page].key), 'main.css.map');
 
         // Add module @import statements
-        site[page].modules.forEach(function(module) {
-            modPath = path.join(src, 'modules', module, 'main.scss');
-            module = modules['module-' + module];
+        site[page].modules.forEach(function(name) {
+            modPath = path.join(src, 'modules', name, 'main.scss');
+            module = modules['module-' + name];
 
             combined += '\n';
 
