@@ -49,10 +49,10 @@ function recursiveWrite(src, writeFile, crumbs) {
 
                 // Create folder first
                 mkdirp(folder, function(err) {
-                    if (err) { reject(err); return; }
+                    if (err) { reject('[write-dest.js] ' + err); return; }
 
                     writeFile(dest, content, function(err) {
-                        if (err) { reject(err); }
+                        if (err) { reject('[write-dest.js] ' + err); }
                         else { resolve(); }
                     });
                 });

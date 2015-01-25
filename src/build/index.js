@@ -14,7 +14,7 @@ var cleanFolder = require('./clean-folder');
 var filterCache = require('./filter-cache');
 var writeDest = require('./write-dest');
 var templatePages = require('./template-pages-html');
-// var scripts = require('./scripts');
+var compileScripts = require('./compile-scripts');
 // var styles = require('./styles');
 // var server = require('./server');
 // var lrServer = require('./lr-server');
@@ -39,6 +39,7 @@ module.exports = function build(name) {
         .then(templatePages)
         .then(cleanFolder(context.settings.dest))
         .then(filterCache())
+        .then(compileScripts)
         .then(writeDest)
         .then(writeContext)
         .then(function(context) {

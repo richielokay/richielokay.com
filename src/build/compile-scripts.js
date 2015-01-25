@@ -6,6 +6,8 @@
 
 var Promise = require('promise');
 var browserify = require('browserify');
+var Readable = require('stream').Readable;
+var path = require('path');
 
 /****************
  *  Algorithms  *
@@ -15,26 +17,68 @@ var browserify = require('browserify');
  * Recursively compiles all index.js scripts in to the destination
  * @param {type} [name] [description]
  */
-function recursiveCompile(src, dest, compile) {
-    var template;
-    var content = src['content.json'] ? JSON.parse(src['content.json']) : {};
-    var page = dest._page = dest._page || content;
+function recursiveCompile(context, src, dest, modules, promises, crumbs) {
+    var stream, basedir;
+    var index = src['index.js'];
+    var options = {
+        debug: context.settings.scripts.debug,
+        cache: {},
+        packageCache: {},
+        fullPaths: true        
+    };
+    var b = browserify(options);
+    var modulePath = path.join(
+        process.cwd(),
+        context.settings.src,
+        'modules');
 
-    for (var i in src) {
+    function noop() {}
 
-        // Template matching files to the destination
-        if (i === filter) {
-            template = compile(src[i]);
-            dest[i] = template(page);
-            continue;
-        }
+    promises = promises || [];
+    crumbs = crumbs || [];
+    basedir = crumbs.join(path.sep);
 
-        // Continue recursion
-        if (src[i] === Object(src[i])) {
-            dest[i] = {};
-            recursiveCompile(src[i], dest[i], filter, compile);
+    console.log(index);
+
+    // Add index.js if it exists
+    if (index) {
+        stream = new Readable();
+        stream._read = noop;
+        stream.push(index);
+        stream.push(null);
+        console.log(index.toString());
+        b.add(index, {
+            basedir: basedir
+        });
+    }
+
+    // Add modular code
+    for (var i in modules) {
+        if (modules[i].script) {
+            stream = new Readable();
+            stream._read = noop;
+            stream.push(modules[i].script);
+            stream.push(null);
+            b.require(stream, {
+                expose: i,
+                basedir: path.join(modulePath, name)
+            });
         }
     }
+
+    // Add bundle process to promises
+    promises.push(new Promise(function(b, resolve, reject) {
+        b.bundle(function(err, buffer) {
+            if (err) {
+                reject('[compile-scripts.js] ' + err);
+            } else {
+                dest['index.js'] = buffer.toString();
+                resolve();
+            }
+        });
+    }.bind(null, b)));
+
+    return Promise.all(promises);
 }
 
 /*************
@@ -42,14 +86,19 @@ function recursiveCompile(src, dest, compile) {
  *************/
 
 module.exports = function(context) {
-    var site = context.dist;
+    var site = context.app.site;
+    var dist = context.dist;
+    var startPath = path.join(process.cwd(), context.settings.src, 'site');
+    var promises = [];
 
     return new Promise(function(resolve, reject) {
         try {
-            recursiveCompile(site);
-            resolve(context);
+            recursiveCompile(context, site, dist, promises, [startPath])
+                .then(function() {
+                    resolve(context);
+                });
         } catch (err) {
-            reject(err);
+            reject('[compile-scripts.js] ' + err);
         }
     });
 };

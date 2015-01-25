@@ -25,10 +25,13 @@ function recursiveTemplate(src, dest, compile) {
     var page = dest._page = dest._page || {};
 
     for (i in pages) {
+
+        // Adapt for whether extension is included
         fileName = path.extname(i) === '.hbs' ?
             i :
             i + '.hbs';
 
+        // Check if template file exists
         if (!src[fileName]) {
             console.error('No template ' + fileName);
             continue;
