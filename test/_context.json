@@ -1,0 +1,153 @@
+{
+    "settings": {
+        "name": "debug",
+        "dest": "dist/debug",
+        "src": "app",
+        "gzip": false,
+        "env": {
+            "NODE_ENV": "development",
+            "ASSETS_URL": "/assets/"
+        },
+        "scripts": {
+            "debug": true
+        },
+        "styles": {
+            "sourcemaps": true,
+            "outputStyle": "nested",
+            "includePaths": [
+                "vendor",
+                "app/style"
+            ]
+        },
+        "html": {
+            "lrSnippet": true
+        },
+        "assets": {
+            "src": "assets",
+            "dest": "dist/debug/assets"
+        },
+        "server": {
+            "port": 8080,
+            "lrPort": 35729
+        }
+    },
+    "app": {
+        "style": {
+            "common.scss": "h2 {\n    color: #490839;\n}\n"
+        },
+        "modules": {
+            "new": {
+                "defaults.json": "{}\n",
+                "index.hbs": "<div class=\"new\"></div>\n",
+                "index.js": "'use strict';\n    \n/************\n *  Module  *\n ************/\n\nmodule.exports = function(element) {\n\n};\n",
+                "main.scss": ".new {\n    \n}\n"
+            },
+            "test": {
+                "defaults.json": "{\n\t\"first\": \"Jim\",\n\t\"last\": \"Bob\"\n}\n",
+                "index.hbs": "<h2 class=\"test\">Hello, {{ first }} {{ last }}!</h2>\n",
+                "index.js": "'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = 'assets://';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n",
+                "main.scss": ".test {\n  color: #00FF00;\n}\n",
+                "template.hbs": "<h2>Hello, {{ last }} {{ first }}!!!!</h2>\n"
+            },
+            "test2": {
+                "defaults.json": "{\n\t\"first\": \"Jim\",\n\t\"last\": \"Bob\"\n}",
+                "index.hbs": "<div class=\"test2\">Hello, {{ first }} {{ last }}!!!</div>\n",
+                "index.js": "'use strict';\n\nmodule.exports = function(element) {\n    // element.innerHTML = 'Test2!';\n};\n",
+                "main.scss": ".test2 {\n\tcolor: #0000FF;\n}"
+            }
+        },
+        "partials": {
+            "meta.hbs": "<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n",
+            "vendor": {
+                "marketo.hbs": "<script type=\"text/javascript\">\n(function() {\n  var didInit = false;\n  function initMunchkin() {\n    if(didInit === false) {\n      didInit = true;\n      Munchkin.init('445-FJV-353');\n    }\n  }\n  var s = document.createElement('script');\n  s.type = 'text/javascript';\n  s.async = true;\n  s.src = '//munchkin.marketo.net/munchkin.js';\n  s.onreadystatechange = function() {\n    if (this.readyState == 'complete' || this.readyState == 'loaded') {\n      initMunchkin();\n    }\n  };\n  s.onload = initMunchkin;\n  document.getElementsByTagName('head')[0].appendChild(s);\n})();\n</script>\n"
+            }
+        },
+        "site": {
+            "index.hbs": "<html>\n<head>\n{{> meta }}\n<!-- Inject Scripts -->\n<!-- Inject Styles -->\n</head>\n<body>\n{{module-test2 first=\"Curly\"}}\n{{module-test first=\"Curly\" template=\"template\"}}\n</body>\n</html>\n",
+            "main.scss": "@import \"bourbon\";\n@import \"neat\";\n@import \"vendor\";\n@import \"common\";\n\nbody { background-color: #000000; }\n",
+            "test": {
+                "index.hbs": "<html>\n<head>\n<!-- Inline Scripts -->\n<!-- Inline Styles -->\n</head>\n<body>\nSomething!!!\n{{{module-test first=\"Moe\"}}}\n</body>\n</html>\n",
+                "index.js": "'use strict';\n\nconsole.log('Loaded this one!');\n",
+                "main.scss": "body { background-color: #FFFFFF; }\n",
+                "pages.json": "{\n    \"template.hbs\": {\n        \"siteA\": {\n            \"valA\": \"Hello\",\n            \"valB\": \"World\"\n        },\n        \"siteB\": {\n            \"valA\": \"Hello\",\n            \"valB\": \"Moon\"\n        }\n    }\n}\n",
+                "template.hbs": "<!-- Inline Scripts -->\n<div>{{ valA }}, {{ valB }}!</div>\n"
+            }
+        }
+    },
+    "modules": {
+        "new": {
+            "name": "new",
+            "defaults": {},
+            "script": "'use strict';\n    \n/************\n *  Module  *\n ************/\n\nmodule.exports = function(element) {\n\n};\n",
+            "sass": ".new {\n    \n}\n"
+        },
+        "test": {
+            "name": "test",
+            "defaults": {
+                "first": "Jim",
+                "last": "Bob"
+            },
+            "script": "'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = 'assets://';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n",
+            "sass": ".test {\n  color: #00FF00;\n}\n",
+            "templates": {}
+        },
+        "test2": {
+            "name": "test2",
+            "defaults": {
+                "first": "Jim",
+                "last": "Bob"
+            },
+            "script": "'use strict';\n\nmodule.exports = function(element) {\n    // element.innerHTML = 'Test2!';\n};\n",
+            "sass": ".test2 {\n\tcolor: #0000FF;\n}"
+        }
+    },
+    "dist": {
+        "_page": {
+            "_modules": {
+                "module-test2": {
+                    "name": "test2",
+                    "defaults": {
+                        "first": "Jim",
+                        "last": "Bob"
+                    },
+                    "script": "'use strict';\n\nmodule.exports = function(element) {\n    // element.innerHTML = 'Test2!';\n};\n",
+                    "sass": ".test2 {\n\tcolor: #0000FF;\n}"
+                },
+                "module-test": {
+                    "name": "test",
+                    "defaults": {
+                        "first": "Jim",
+                        "last": "Bob"
+                    },
+                    "script": "'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = 'assets://';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n",
+                    "sass": ".test {\n  color: #00FF00;\n}\n",
+                    "templates": {}
+                }
+            },
+            "first": "Curly"
+        },
+        "index.html": "<html>\n<head>\n<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n<!-- Inject Scripts -->\n<!-- Inject Styles -->\n</head>\n<body>\n<div class=\"test2\" data-module=\"module-test2\">Hello, Curly !!!</div>\n\n<h2 data-module=\"module-test\">Hello,  Curly!!!!</h2>\n\n</body>\n</html>\n",
+        "test": {
+            "_page": {
+                "_modules": {
+                    "module-test": {
+                        "name": "test",
+                        "defaults": {
+                            "first": "Jim",
+                            "last": "Bob"
+                        },
+                        "script": "'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = 'assets://';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n",
+                        "sass": ".test {\n  color: #00FF00;\n}\n",
+                        "templates": {}
+                    }
+                },
+                "first": "Moe",
+                "valA": "Hello",
+                "valB": "Moon"
+            },
+            "index.html": "<html>\n<head>\n<!-- Inline Scripts -->\n<!-- Inline Styles -->\n</head>\n<body>\nSomething!!!\n<h2 class=\"test\" data-module=\"module-test\">Hello, Moe !</h2>\n\n</body>\n</html>\n",
+            "siteA.html": "<!-- Inline Scripts -->\n<div>Hello, World!</div>\n",
+            "siteB.html": "<!-- Inline Scripts -->\n<div>Hello, Moon!</div>\n"
+        }
+    }
+}

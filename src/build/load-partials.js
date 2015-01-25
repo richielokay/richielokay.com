@@ -55,7 +55,7 @@ module.exports = function(context) {
             recursiveLoad(partials, handlebars.registerPartial.bind(handlebars));
             resolve(context);
         } catch (err) {
-            reject(err);
+            reject('[load-partials.js] ' + err);
         }
     });
 };

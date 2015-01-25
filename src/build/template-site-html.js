@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+ * Recursively compiles all .hbs files in the site folder to .html files in
+ * the distribution folder.
+ *
+ *     site/** /*.hbs --> dist/[build]/** /*.html
+ *
+ * 
+ */
+
 /******************
  *  Dependencies  *
  ******************/
@@ -16,7 +25,7 @@ var Promise = require('promise');
  * in the destination
  * @param {type} [name] [description]
  */
-function recursiveTemplate(src, dest, filter, compile) {
+function recursiveTemplate(src, dest, compile) {
     var template;
     var content = src['content.json'] ? JSON.parse(src['content.json']) : {};
     var page = dest._page = dest._page || content;
@@ -24,16 +33,16 @@ function recursiveTemplate(src, dest, filter, compile) {
     for (var i in src) {
 
         // Template matching files to the destination
-        if (i === filter) {
+        if (i === 'index.hbs') {
             template = compile(src[i]);
-            dest[i] = template(page);
+            dest['index.html'] = template(page);
             continue;
         }
 
         // Continue recursion
         if (src[i] === Object(src[i])) {
             dest[i] = {};
-            recursiveTemplate(src[i], dest[i], filter, compile);
+            recursiveTemplate(src[i], dest[i], compile);
         }
     }
 }
@@ -48,10 +57,10 @@ module.exports = function(context) {
 
     return new Promise(function(resolve, reject) {
         try {
-            recursiveTemplate(site, dist, 'index.hbs', handlebars.compile.bind(handlebars));
-            resolve(context)
+            recursiveTemplate(site, dist, handlebars.compile.bind(handlebars));
+            resolve(context);
         } catch (err) {
-            reject(err);
+            reject('[template-site-html.js] ' + err);
         }
     });
 };

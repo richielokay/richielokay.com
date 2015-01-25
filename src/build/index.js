@@ -9,6 +9,11 @@ var loadApp = require('./load-app');
 var templateSiteHTML = require('./template-site-html');
 var loadPartials = require('./load-partials');
 var loadModules = require('./load-modules');
+var writeContext = require('./write-context');
+var cleanFolder = require('./clean-folder');
+var filterCache = require('./filter-cache');
+var writeDest = require('./write-dest');
+var templatePages = require('./template-pages-html');
 // var scripts = require('./scripts');
 // var styles = require('./styles');
 // var server = require('./server');
@@ -31,8 +36,12 @@ module.exports = function build(name) {
         .then(loadPartials)
         .then(loadModules)
         .then(templateSiteHTML)
+        .then(templatePages)
+        .then(cleanFolder(context.settings.dest))
+        .then(filterCache())
+        .then(writeDest)
+        .then(writeContext)
         .then(function(context) {
-            console.log(context);
             console.log(((Date.now() - start) / 1000) + 's');
         })
         .catch(function(err) {

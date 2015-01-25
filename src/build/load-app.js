@@ -24,7 +24,9 @@ function loadApp(context) {
     return new Promise(function(resolve, reject) {
 
         readdir.read(src, 'utf8', function(err, files) {
-            if (err) { reject(err); }
+            if (err) {
+                reject('[load-app.js] ' + err);
+            }
 
             // Convert files to a nested object
             else {

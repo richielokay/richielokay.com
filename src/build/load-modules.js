@@ -36,13 +36,20 @@ function handlebarsCompile(content) {
  * @param {type} [name] [description]
  */
 function moduleHelper(module, object) {
-    var html, doc;
+    var template, html, doc;
     var data = object.data;
     var name = object.name;
     var hash = object.hash || {};
-    var defaults = module.defaults || {};
+    var defaults = module._defaults || {};
     var page = data.root = data.root || {};
-    var template = module.template;
+
+    // Use an alternate template file if requested
+    if (hash.template) {
+        template = module.templates[hash.template];
+        delete hash.template;
+    } else {
+        template = module.template;
+    }
 
     page._modules = page._modules || {};
 
@@ -68,7 +75,7 @@ function moduleHelper(module, object) {
  * @param {type} [name] [description]
  */
 function recursiveLoad(files, modules, registerHelper, crumbs) {
-    var name, templateName, isNode, mod;
+    var name, templateName, mod;
 
     if (crumbs) {
         name = crumbs.join('-');
@@ -103,14 +110,16 @@ function recursiveLoad(files, modules, registerHelper, crumbs) {
 
                 else if (files[i] === Object(files[i])) {
                     crumbs.push(i);
+                    name = crumbs.join('-');
+
+                    // Continue recursion
+                    recursiveLoad(files[i], modules, registerHelper, crumbs);
 
                     // Register the helper
                     if (modules[name]) {
                         registerHelper('module-' + name, moduleHelper.bind(null, modules[name]));
                     }
 
-                    // Continue recursion
-                    recursiveLoad(files[i], modules, registerHelper, crumbs);
                     crumbs.pop();
                 }
         }
@@ -133,7 +142,7 @@ module.exports = function (context) {
             recursiveLoad(files, context.modules, handlebars.registerHelper.bind(handlebars));
             resolve(context);
         } catch (err) {
-            reject(err);
+            reject('[load-modules.js] ' + err);
         }
     });
 };
