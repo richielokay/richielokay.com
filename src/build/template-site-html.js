@@ -5,7 +5,6 @@
  * the distribution folder.
  *
  *     site/** /*.hbs --> dist/[build]/** /*.html
- *
  * 
  */
 
@@ -15,6 +14,7 @@
 
 var handlebars = require('handlebars');
 var Promise = require('promise');
+var injectLrSnippet = require('./inject-lr-snippet');
 
 /****************
  *  Algorithms  *
@@ -25,24 +25,31 @@ var Promise = require('promise');
  * in the destination
  * @param {type} [name] [description]
  */
-function recursiveTemplate(src, dest, compile) {
-    var template;
+function recursiveTemplate(context, src, dest, compile) {
+    var template, html, lr;
     var content = src['content.json'] ? JSON.parse(src['content.json']) : {};
     var page = dest._page = dest._page || content;
+    var settings = context.settings;
+
+    // Check if livereload is used
+    try { lr = settings.server.lrPort; }
+    catch(err) { lr = null; }
 
     for (var i in src) {
 
         // Template matching files to the destination
         if (i === 'index.hbs') {
             template = compile(src[i]);
-            dest['index.html'] = template(page);
+            html = template(page);
+            if (lr) { html = injectLrSnippet(html); }
+            dest['index.html'] = html;
             continue;
         }
 
         // Continue recursion
         if (src[i] === Object(src[i])) {
             dest[i] = {};
-            recursiveTemplate(src[i], dest[i], compile);
+            recursiveTemplate(context, src[i], dest[i], compile);
         }
     }
 }
@@ -57,7 +64,7 @@ module.exports = function(context) {
 
     return new Promise(function(resolve, reject) {
         try {
-            recursiveTemplate(site, dist, handlebars.compile.bind(handlebars));
+            recursiveTemplate(context, site, dist, handlebars.compile.bind(handlebars));
             resolve(context);
         } catch (err) {
             reject('[template-site-html.js] ' + err);

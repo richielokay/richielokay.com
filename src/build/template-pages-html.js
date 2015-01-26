@@ -8,6 +8,7 @@ var handlebars = require('handlebars');
 var Promise = require('promise');
 var extend = require('extend');
 var path = require('path');
+var injectLrSnippet = require('./inject-lr-snippet');
 
 /****************
  *  Algorithms  *
@@ -18,11 +19,16 @@ var path = require('path');
  * in the destination
  * @param {type} [name] [description]
  */
-function recursiveTemplate(src, dest, compile) {
-    var fileName, template, i, pageName;
+function recursiveTemplate(context, src, dest, compile) {
+    var fileName, template, i, pageName, html, lr;
     var pages = src['pages.json'] ? JSON.parse(src['pages.json']) : {};
     var defaults = src['defaults.json'] ? JSON.parse(src['defaults.json']) : {};
     var page = dest._page = dest._page || {};
+    var settings = context.settings;
+
+    // Check if livereload is used
+    try { lr = settings.server.lrPort; }
+    catch(err) { lr = null; }
 
     for (i in pages) {
 
@@ -42,7 +48,9 @@ function recursiveTemplate(src, dest, compile) {
         // Template all pages
         for (pageName in pages[i]) {
             extend(page, defaults, pages[i][pageName]);
-            dest[pageName + '.html'] = template(page);
+            html = template(page);
+            if (lr) { html = injectLrSnippet(html); }
+            dest[pageName + '.html'] = html;
         }
     }
     
@@ -50,7 +58,7 @@ function recursiveTemplate(src, dest, compile) {
     for (var j in src) {
         if (src[j] === Object(src[j])) {
             dest[j] = dest[j] || {};
-            recursiveTemplate(src[j], dest[j], compile);
+            recursiveTemplate(context, src[j], dest[j], compile);
         }
     }
 }
@@ -65,7 +73,7 @@ module.exports = function(context) {
 
     return new Promise(function(resolve, reject) {
         try {
-            recursiveTemplate(site, dist, handlebars.compile.bind(handlebars));
+            recursiveTemplate(context, site, dist, handlebars.compile.bind(handlebars));
             resolve(context);
         } catch (err) {
             reject('[template-pages-html.js] ' + err);

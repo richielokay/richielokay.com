@@ -7,7 +7,7 @@
             "debug": true
         },
         "styles": {
-            "sourcemaps": true,
+            "debug": true,
             "outputStyle": "nested",
             "includePaths": ["vendor", "app/style"]
         },

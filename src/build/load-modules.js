@@ -38,7 +38,7 @@ function handlebarsCompile(content) {
 function moduleHelper(module, object) {
     var template, html, doc;
     var data = object.data;
-    var name = object.name;
+    var name = object.name.replace('module-', '');
     var hash = object.hash || {};
     var defaults = module._defaults || {};
     var page = data.root = data.root || {};
@@ -64,7 +64,7 @@ function moduleHelper(module, object) {
 
     // Add data-module attribute
     doc = cheerio.load(html);
-    doc(':root').attr('data-module', name);
+    if (module.script) { doc(':root').attr('data-module', name); }
 
     // Return the generated HTML
     return new handlebars.SafeString(doc.html());

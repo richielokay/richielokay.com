@@ -8,7 +8,6 @@ var fs = require('fs');
 var Promise = require('promise');
 var path = require('path');
 var mkdirp = require('mkdirp');
-var extend = require('extend');
 
 /****************
  *  Algorithms  *
@@ -32,7 +31,7 @@ function recursiveWrite(src, writeFile, crumbs) {
         // Ignore leading _
         if (i.indexOf('_') === 0) { continue; }
 
-        // Write the file if not already cached
+        // Write the file
         if (typeof src[i] === 'string') {
             folder = crumbs.join(path.sep);
             crumbs.push(i);
@@ -50,7 +49,6 @@ function recursiveWrite(src, writeFile, crumbs) {
                 // Create folder first
                 mkdirp(folder, function(err) {
                     if (err) { reject('[write-dest.js] ' + err); return; }
-
                     writeFile(dest, content, function(err) {
                         if (err) { reject('[write-dest.js] ' + err); }
                         else { resolve(); }
@@ -92,6 +90,8 @@ module.exports = function(context) {
         recursiveWrite.call(context, context.dist, fsWrite, [dest])
             .then(function() {
                 resolve(context);
+            }).catch(function(err) {
+                console.error(err);
             });
     });
 };

@@ -6,7 +6,6 @@
 
 var clc = require('cli-color');
 var notifier = require('node-notifier');
-var path = require('path');
 
 /***********************
  *  Color Definitions  *
@@ -19,7 +18,8 @@ var groups = {
     SASS: clc.magenta.bold,
     Handlebars: clc.xterm(208).bold,
     FileIO: clc.green.bold,
-    Browserify: clc.xterm(136).bold
+    Browserify: clc.xterm(136).bold,
+    Time: clc.xterm(11).bold
 };
 
 var warn = clc.yellowBright.bold;
