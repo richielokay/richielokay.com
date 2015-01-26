@@ -38,12 +38,12 @@ function createWatch(watchPath, callback) {
  *  Exports  *
  *************/
 
-module.exports = function(callback) {
+module.exports = function(folder, callback) {
     return function(context) {
         var settings = context.settings;
 
         if (settings.server && settings.server.lrPort) {
-            try { createWatch(settings.src, callback); }
+            try { createWatch(folder, callback); }
             catch (err) {
                 log('Watch', err, 'error');
             }

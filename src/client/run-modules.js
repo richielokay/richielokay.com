@@ -14,6 +14,6 @@ window.addEventListener('load', function runModules() {
         mod = modules[i];
         moduleName = mod.getAttribute('data-module');
         modules[i].removeAttribute('data-module');
-        require(moduleName)(mod);
+        require('modules/' + moduleName)(mod);
     }
 });

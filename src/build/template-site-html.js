@@ -15,6 +15,7 @@
 var handlebars = require('handlebars');
 var Promise = require('promise');
 var injectLrSnippet = require('./inject-lr-snippet');
+var log = require('../logger');
 
 /****************
  *  Algorithms  *
@@ -32,7 +33,7 @@ function recursiveTemplate(context, src, dest, compile) {
     var settings = context.settings;
 
     // Check if livereload is used
-    try { lr = settings.server.lrPort; }
+    try { lr = settings.html.lrSnippet; }
     catch(err) { lr = null; }
 
     for (var i in src) {
@@ -67,7 +68,8 @@ module.exports = function(context) {
             recursiveTemplate(context, site, dist, handlebars.compile.bind(handlebars));
             resolve(context);
         } catch (err) {
-            reject('[template-site-html.js] ' + err);
+            log('Handlebars', err, 'error');
+            reject();
         }
     });
 };

@@ -8,6 +8,8 @@ var Promise = require('promise');
 var sass = require('node-sass');
 var path = require('path');
 var log = require('../logger');
+var bourbon = require('node-bourbon');
+var neat = require('node-neat');
 
 /****************
  *  Algorithms  *
@@ -39,7 +41,7 @@ function appendModuleImports(style, modPath, modules) {
  * @param {type} [name] [description]
  */
 function recursiveCompileSass(context, src, dest, promises, crumbs) {
-    var srcPath, destPath;
+    var srcPath, destPath, normalizePath;
     var settings = context.settings;
     var styleSettings = settings.styles;
     var sassSheet = src['main.scss'] || '';
@@ -47,8 +49,13 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
     var modPath = path.join(process.cwd(), settings.src, 'modules');
     var cwd = process.cwd();
     var debug = styleSettings.debug;
+    var includePaths = bourbon.includePaths.concat(neat.includePaths.concat(styleSettings.includePaths || []));
 
     crumbs = crumbs || [];
+
+    // Add normalize
+    normalizePath = path.join(__dirname, '../../node_modules/normalize.scss');
+    includePaths.push(normalizePath);
 
     // Append modules
     if (modules) {
@@ -68,12 +75,12 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
         'main.css');
 
     // Asynchronously render CSS
-    promises.push(new Promise(function(resolve, reject) {
+    promises.push(new Promise(function(resolve) {
         sass.render({
             file: srcPath,
             data: sassSheet,
             outFile: destPath,
-            includePaths: styleSettings.includePaths || [],
+            includePaths: includePaths|| [],
             outputStyle: styleSettings.outputStyle || 'nested',
             omitSourceMapUrl: !debug,
             sourceComments: debug,

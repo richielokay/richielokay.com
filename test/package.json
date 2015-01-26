@@ -1,0 +1,6 @@
+{
+  "main": "",
+  "dependencies": {
+    "node-neat": "^1.4.2"
+  }
+}

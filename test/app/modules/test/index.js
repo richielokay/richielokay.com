@@ -1,7 +1,7 @@
 'use strict';
 
+require('scripts/test')();
+
 module.exports = function(element) {
-	// var assets = 'assets://';
-	
- //    element.innerHTML = 'Test!!!';
+    // element.innerHTML = 'Hah!';
 };

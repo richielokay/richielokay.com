@@ -9,6 +9,9 @@ var browserify = require('browserify');
 var Readable = require('stream').Readable;
 var path = require('path');
 var uglify = require('uglify-js');
+var hbsfy = require('hbsfy');
+var envify = require('envify');
+var log = require('../logger');
 
 /****************
  *  Algorithms  *
@@ -20,22 +23,22 @@ function noop() {}
  * Recursively adds scripts to the browserify object
  */
 function recursiveAddScripts(scriptsPath, scripts, b, crumbs) {
-    var stream, basedir;
+    var basedir, filePath, crumbsPath;
+    var cwd = process.cwd();
+
     crumbs = crumbs || [];
-    
+    crumbsPath = crumbs.join(path.sep);
+    basedir = path.join('scripts', crumbsPath);
+
     for (var i in scripts) {
 
         // Add scripts
         if (path.extname(i) === '.js') {
-            basedir = crumbs.join(path.sep);
-            stream = new Readable();
-            stream._read = noop;
-            stream.push(scripts[i]);
-            stream.push(null);
-            b.require(stream, {
+            filePath = path.join(cwd, scriptsPath, crumbsPath, i);
+            b.require(filePath, {
                 basedir: basedir,
                 file: i,
-                expose: crumbs.join('/') + path.basename(i, '.js')
+                expose: 'scripts' + path.sep + crumbs.join('/') + path.basename(i, '.js')
             });
         }
 
@@ -62,7 +65,7 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
         debug: settings.scripts.debug,
         cache: {},
         packageCache: {},
-        fullPaths: true        
+        fullPaths: true
     };
     var b = browserify(options);
     var modulePath = path.join(
@@ -70,13 +73,19 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
         context.settings.src,
         'modules');
     var scriptsPath = path.join(
-        process.cwd(),
         context.settings.src,
         'scripts');
 
     promises = promises || [];
     crumbs = crumbs || [];
     basedir = crumbs.join(path.sep);
+
+    // Add transforms
+    b.transform(hbsfy);
+    b.transform(envify);
+
+    // Add polyfills
+    b.add(path.join(__dirname, '..', 'client', 'polyfills'));
 
     // Add module bootloader
     b.add(path.join(__dirname, '..', 'client', 'run-modules.js'));
@@ -104,7 +113,7 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
             stream.push(modules[i].script);
             stream.push(null);
             b.require(stream, {
-                expose: i,
+                expose: 'modules/' + i,
                 basedir: path.join(modulePath, modules[i].name),
                 file: path.join(modulePath, modules[i].name, 'index.js')
             });
@@ -166,7 +175,8 @@ module.exports = function(context) {
                     reject(err);
                 });
         } catch (err) {
-            reject('[compile-scripts.js] ' + err);
+            log('Browserify', err, 'error');
+            reject();
         }
     });
 };

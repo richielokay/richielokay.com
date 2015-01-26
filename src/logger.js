@@ -19,7 +19,8 @@ var groups = {
     Handlebars: clc.xterm(208).bold,
     FileIO: clc.green.bold,
     Browserify: clc.xterm(136).bold,
-    Time: clc.xterm(11).bold
+    Time: clc.xterm(11).bold,
+    Assets: clc.xterm(105).bold
 };
 
 var warn = clc.yellowBright.bold;

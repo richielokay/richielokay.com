@@ -22,6 +22,7 @@ var staticServe = require('../server/static-server');
 var liveReloadServe = require('../server/livereload-server');
 var createWatcher = require('../server/create-watcher');
 var triggerLivereload = require('../server/trigger-livereload');
+var copyAssets = require('./copy-assets');
 var log = require('../logger');
 
 /***********
@@ -46,12 +47,13 @@ function init(context) {
         .then(injectScripts)
         .then(replaceAssets)
         .then(writeDest)
+        .then(copyAssets)
         .then(function(context) {
             log('Time', (Date.now() - start) / 1000 + 's');
             return context;
         })
         .catch(function(err) {
-            if (err) { console.error(err); }
+            if (err) { console.log(err); }
         });
 }
 
@@ -78,8 +80,15 @@ function update(context, file, evt) {
         })
         .then(triggerLivereload)
         .catch(function(err) {
-            if (err) { console.error(err); }
+            if (err) { console.log(err); }
         });
+}
+
+/**
+ * Updates assets, copying them to the dist folder
+ */
+function updateAssets(context) {
+    return copyAssets(context);
 }
 
 /***********
@@ -87,12 +96,16 @@ function update(context, file, evt) {
  ***********/
 
 module.exports = function build(name) {
-    var context = { settings: getSettings(name) };
+    var settings = getSettings(name);
+    var context = { settings: settings };
 
     init(context)
         .then(staticServe)
         .then(liveReloadServe)
-        .then(createWatcher(function(file, evt) {
+        .then(createWatcher(settings.src, function(file, evt) {
             update(context, file, evt);
+        }))
+        .then(createWatcher(settings.assets.src, function() {
+            updateAssets(context);
         }));
 };
