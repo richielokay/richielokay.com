@@ -10,7 +10,7 @@ var Promise = require('promise');
  *  Variables  *
  ***************/
 
-var key = 'assets://';
+var key = /assets:\/\//g;
 
 /****************
  *  Algorithms  *

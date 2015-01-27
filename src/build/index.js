@@ -4,6 +4,7 @@
  *  Modules  *
  *************/
 
+var Promise = require('promise');
 var getSettings = require('./get-settings');
 var loadApp = require('./load-app');
 var updateApp = require('./update-app');
@@ -24,6 +25,7 @@ var createWatcher = require('../server/create-watcher');
 var triggerLivereload = require('../server/trigger-livereload');
 var copyAssets = require('./copy-assets');
 var log = require('../logger');
+var listBowerComponents = require('./list-bower-components');
 
 /***********
  *  Tasks  *
@@ -42,16 +44,17 @@ function init(context) {
         .then(templateSiteHTML)
         .then(templatePages)
         .then(cleanFolder(context.settings.dest))
+        .then(listBowerComponents)
         .then(compileScripts)
+        .then(function(context) {
+            log('Time', (Date.now() - start) / 1000 + 's');
+            return context;
+        })
         .then(compileStyles)
         .then(injectScripts)
         .then(replaceAssets)
         .then(writeDest)
         .then(copyAssets)
-        .then(function(context) {
-            log('Time', (Date.now() - start) / 1000 + 's');
-            return context;
-        })
         .catch(function(err) {
             if (err) { console.log(err); }
         });
@@ -69,6 +72,7 @@ function update(context, file, evt) {
         .then(loadModules)
         .then(templateSiteHTML)
         .then(templatePages)
+        .then(listBowerComponents)
         .then(compileScripts)
         .then(compileStyles)
         .then(injectScripts)

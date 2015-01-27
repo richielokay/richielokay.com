@@ -11,7 +11,9 @@ var path = require('path');
 var uglify = require('uglify-js');
 var hbsfy = require('hbsfy');
 var envify = require('envify');
+var debowerify = require('debowerify');
 var log = require('../logger');
+var bower = require('bower');
 
 /****************
  *  Algorithms  *
@@ -24,21 +26,22 @@ function noop() {}
  */
 function recursiveAddScripts(scriptsPath, scripts, b, crumbs) {
     var basedir, filePath, crumbsPath;
-    var cwd = process.cwd();
 
     crumbs = crumbs || [];
     crumbsPath = crumbs.join(path.sep);
-    basedir = path.join('scripts', crumbsPath);
+    basedir = path.join(scriptsPath, crumbsPath);
 
     for (var i in scripts) {
 
         // Add scripts
         if (path.extname(i) === '.js') {
-            filePath = path.join(cwd, scriptsPath, crumbsPath, i);
-            b.require(filePath, {
+            filePath = path.join(scriptsPath, crumbsPath, i);
+            b.require('./' + filePath, {
                 basedir: basedir,
                 file: i,
-                expose: 'scripts' + path.sep + crumbs.join('/') + path.basename(i, '.js')
+                expose: 'scripts/' +
+                    (crumbs.length ? crumbs.join('/') + '/' : '') +
+                    path.basename(i, '.js')
             });
         }
 
@@ -65,7 +68,9 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
         debug: settings.scripts.debug,
         cache: {},
         packageCache: {},
-        fullPaths: true
+        noParse: context.bowerPackages || [],
+        fullPaths: true,
+        basedir: process.cwd()
     };
     var b = browserify(options);
     var modulePath = path.join(
@@ -83,6 +88,7 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
     // Add transforms
     b.transform(hbsfy);
     b.transform(envify);
+    b.transform(debowerify);
 
     // Add polyfills
     b.add(path.join(__dirname, '..', 'client', 'polyfills'));
@@ -122,6 +128,8 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
 
     // Add bundle process to promises
     promises.push(new Promise(function(b, resolve, reject) {
+        var now = Date.now();
+
         b.bundle(function(err, buffer) {
             var content;
 
@@ -137,6 +145,9 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
                 }
 
                 dest['index.js'] = content;
+
+                // console.log(Date.now() - now);
+
                 resolve();
             }
         });
@@ -166,17 +177,13 @@ module.exports = function(context) {
     var promises = [];
 
     return new Promise(function(resolve, reject) {
-        try {
-            recursiveCompile(context, site, dist, promises, [startPath])
-                .then(function() {
-                    resolve(context);
-                })
-                .catch(function(err) {
-                    reject(err);
-                });
-        } catch (err) {
-            log('Browserify', err, 'error');
-            reject();
-        }
+        recursiveCompile(context, site, dist, promises, [startPath])
+            .then(function() {
+                resolve(context);
+            })
+            .catch(function(err) {
+                log('Browserify', err, 'error');
+                resolve(context);
+            });
     });
 };
