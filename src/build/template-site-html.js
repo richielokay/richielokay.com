@@ -49,7 +49,7 @@ function recursiveTemplate(context, src, dest, compile) {
 
         // Continue recursion
         if (src[i] === Object(src[i])) {
-            dest[i] = {};
+            dest[i] = dest[i] || {};
             recursiveTemplate(context, src[i], dest[i], compile);
         }
     }
