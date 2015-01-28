@@ -38,7 +38,9 @@ Assuming the server and Livereload ports are available, you should see:
 
 You can navigate to the page by visiting ```http://localhost:8080``` in your browser. Begin editing files under the ```app/site``` folder. All file changes will trigger Livereload to refresh your browser.
 
-```Ctrl-C``` will exit the process. To run a production build, run ```blanka build prod```.
+```Ctrl-C``` will exit the process. To run a production build, run
+
+```$ blanka build prod```.
 
 # Project Scaffolding
 
