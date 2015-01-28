@@ -15,11 +15,10 @@ var log = require('../logger');
 /**
  * Recursively rebuilds all available watchers
  */
-function recursiveBuild(context, dest, promises, crumbs) {
+function recursiveBuild(context, dest, promises) {
     var settings = context.settings;
 
     promises = promises || [];
-    crumbs = crumbs || [];
 
     if (dest._bundle) {
         promises.push(new Promise(function(resolve, reject) {
@@ -47,6 +46,8 @@ function recursiveBuild(context, dest, promises, crumbs) {
 
     // Continue recursion
     for (var i in dest) {
+        // Skip _
+        if (i.indexOf('_') === 0) { continue; }
         if (dest[i] === Object(dest[i])) {
             recursiveBuild(context, dest[i], promises);
         }

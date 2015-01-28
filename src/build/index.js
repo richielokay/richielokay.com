@@ -53,7 +53,7 @@ function updateNoScripts(context, file, evt) {
         .then(triggerLivereload)
         .then(writeContext)
         .then(function(context) {
-            log('Time', (Date.now() - start) / 1000 + 's');
+            log('Blanka', 'Built in ' + (Date.now() - start) / 1000 + 's');
             return context;
         })
         .catch(function(err) {
@@ -82,7 +82,7 @@ function update(context, file, evt) {
         .then(triggerLivereload)
         .then(writeContext)
         .then(function(context) {
-            log('Time', (Date.now() - start) / 1000 + 's');
+            log('Blanka', 'Built in ' + (Date.now() - start) / 1000 + 's');
             return context;
         })
         .catch(function(err) {
@@ -121,6 +121,11 @@ function init(context) {
         .then(copyAssets)
         .then(gzip)
         .then(writeContext)
+        .then(function(context) {
+            var delta = Math.round((Date.now() - start) / 1000);
+            log('Blanka', 'Build Completed in ' + delta + 's', null, true);
+            return context;
+        })
         .catch(function(err) {
             if (err) { console.log(err); }
         });
@@ -133,7 +138,6 @@ function init(context) {
 module.exports = function build(name) {
     var settings = getSettings(name);
     var context = { settings: settings };
-    var start = Date.now();
 
     init(context)
         .then(staticServe)
@@ -143,9 +147,5 @@ module.exports = function build(name) {
         }))
         .then(createWatcher(settings.assets.src, function() {
             updateAssets(context);
-        }))
-        .then(function() {
-            var delta = Math.round((Date.now() - start) / 1000);
-            log('Blanka', 'Build Completed in ' + delta + 's', null, true);
-        });
+        }));
 };
