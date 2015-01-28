@@ -321,7 +321,7 @@ Here is a sample module that generates a button, located in  ```app/modules/myBu
 
 module.exports = function(element) { // <-- The top-level element, <button>
     element.addEventListener('click', function() {
-        console.log('Don't do that!');
+        console.log('Don\'t do that!');
     }, false);  
 };
 ```
