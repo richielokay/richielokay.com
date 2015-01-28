@@ -3,10 +3,10 @@
         "name": "debug",
         "dest": "dist/debug",
         "src": "app",
-        "browserify": {
+        "scripts": {
             "debug": true
         },
-        "sass": {
+        "styles": {
             "sourcemaps": true,
             "outputStyle": "nested",
             "includePaths": ["app/style"]
@@ -29,10 +29,27 @@
         "name": "prod",
         "dest": "dist/prod",
         "src": "app",
-        "browserify": {
+        "scripts": {
             "uglify": true
         },
-        "sass": {
+        "styles": {
+            "outputStyle": "compressed",
+            "includePaths": ["app/style"]
+        },
+        "env": {
+            "NODE_ENV": "production",
+            "ASSETS_URL": "/assets/"
+        }
+    },
+    {
+        "name": "prod",
+        "dest": "dist/prod",
+        "src": "app",
+        "gzip": true,
+        "scripts": {
+            "uglify": true
+        },
+        "styles": {
             "outputStyle": "compressed",
             "includePaths": ["app/style"]
         },
