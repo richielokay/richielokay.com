@@ -80,7 +80,7 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
             file: srcPath,
             data: sassSheet,
             outFile: destPath,
-            includePaths: includePaths|| [],
+            includePaths: includePaths || [],
             outputStyle: styleSettings.outputStyle || 'nested',
             omitSourceMapUrl: !debug,
             sourceComments: debug,
