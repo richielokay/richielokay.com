@@ -4,7 +4,7 @@
  *  Dependencies  *
  ******************/
 
-var Promise = require('Promise');
+var Promise = require('promise');
 var uglify = require('uglify-js');
 var log = require('../logger');
 
