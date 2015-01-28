@@ -140,11 +140,11 @@ Each build is configured using ```builds.json```. The default file is as follows
             "NODE_ENV": "development",
             "ASSETS_URL": "/assets/"
         },
-        "browserify": {
+        "scripts": {
             "debug": true,
             "uglify": false
         },
-        "sass": {
+        "styles": {
             "sourcemaps": true,
             "outputStyle": "nested",
             "includePaths": ["app/style"]
