@@ -24,19 +24,27 @@ module.exports = function(context, file, state) {
             // Load changed files
             case 'change':
             case 'add':
-                fs.readFile(filePath, function(err, data) {
-                    var pointer = context;
 
-                    if (err) { reject('[update-app.js] ' + err); }
-                    else {
-                        // Update the file's contents in the context
-                        crumbs.forEach(function(crumb) {
-                            pointer = pointer[crumb] || {};
-                        });
-                        pointer[fileName] = data.toString();
-                        resolve(context);
-                    }
-                });
+                // Temporary hack to ignore reloading javascript
+                // as it is handled by watchify
+                if (path.extname(filePath) !== '.js') {
+
+                    fs.readFile(filePath, function(err, data) {
+                        var pointer = context;
+
+                        if (err) { reject('[update-app.js] ' + err); }
+                        else {
+                            // Update the file's contents in the context
+                            crumbs.forEach(function(crumb) {
+                                pointer = pointer[crumb] || {};
+                            });
+                            pointer[fileName] = data.toString();
+                            resolve(context);
+                        }
+                    });
+                } else {
+                    resolve(context);
+                }
                 break;
 
             // Add folder to src

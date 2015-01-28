@@ -6,14 +6,13 @@
 
 var Promise = require('promise');
 var browserify = require('browserify');
-var Readable = require('stream').Readable;
+var watchify = require('watchify');
 var path = require('path');
 var uglify = require('uglify-js');
 var hbsfy = require('hbsfy');
 var envify = require('envify');
 var debowerify = require('debowerify');
 var log = require('../logger');
-var bower = require('bower');
 
 /****************
  *  Algorithms  *
@@ -38,7 +37,6 @@ function recursiveAddScripts(scriptsPath, scripts, b, crumbs) {
             filePath = path.join(scriptsPath, crumbsPath, i);
             b.require('./' + filePath, {
                 basedir: basedir,
-                file: i,
                 expose: 'scripts/' +
                     (crumbs.length ? crumbs.join('/') + '/' : '') +
                     path.basename(i, '.js')
@@ -58,8 +56,9 @@ function recursiveAddScripts(scriptsPath, scripts, b, crumbs) {
  * Recursively compiles all index.js scripts in to the destination
  * @param {type} [name] [description]
  */
-function recursiveCompile(context, src, dest, promises, crumbs) {
+function recursiveCompile(context, src, dest, promises, callback, crumbs) {
     var stream, basedir;
+    var cwd = process.cwd();
     var index = src['index.js'];
     var modules = dest._page._modules;
     var scripts = context.app.scripts;
@@ -72,9 +71,14 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
         fullPaths: true,
         basedir: process.cwd()
     };
+
+    // Browserify / watchify
     var b = browserify(options);
+    var w = callback ? watchify(b) : b;
+
+    // Paths
     var modulePath = path.join(
-        process.cwd(),
+        cwd,
         context.settings.src,
         'modules');
     var scriptsPath = path.join(
@@ -85,80 +89,83 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
     crumbs = crumbs || [];
     basedir = crumbs.join(path.sep);
 
-    // Add transforms
-    b.transform(hbsfy);
-    b.transform(envify);
-    b.transform(debowerify);
+    // Transforms
+    w.transform(hbsfy);
+    w.transform(envify);
+    w.transform(debowerify);
 
     // Add polyfills
-    b.add(path.join(__dirname, '..', 'client', 'polyfills'));
+    w.add(path.join(__dirname, '..', 'client', 'polyfills'));
 
     // Add module bootloader
-    b.add(path.join(__dirname, '..', 'client', 'run-modules.js'));
+    w.add(path.join(__dirname, '..', 'client', 'run-modules.js'));
 
     // Add index.js if it exists
     if (index) {
-        stream = new Readable();
-        stream._read = noop;
-        stream.push(index);
-        stream.push(null);
-        b.add(stream, {
-            basedir: basedir,
-            file: path.join(basedir, 'index.js')
+        w.add(path.join(basedir, 'index.js'), {
+            basedir: basedir
         });
     }
 
     // Add scripts files
-    if (scripts) { recursiveAddScripts(scriptsPath, scripts, b); }
+    // Waiting for resolution to:
+    // https://github.com/substack/node-browserify/issues/1099
+    // if (scripts) { recursiveAddScripts(scriptsPath, scripts, w); }
 
     // Add modular code
     for (var i in modules) {
         if (modules[i].script) {
-            stream = new Readable();
-            stream._read = noop;
-            stream.push(modules[i].script);
-            stream.push(null);
-            b.require(stream, {
+            w.require(path.join(modulePath, modules[i].name, 'index.js'), {
                 expose: 'modules/' + i,
-                basedir: path.join(modulePath, modules[i].name),
-                file: path.join(modulePath, modules[i].name, 'index.js')
+                basedir: path.join(modulePath, modules[i].name)
             });
         }
     }
 
     // Add bundle process to promises
-    promises.push(new Promise(function(b, resolve, reject) {
-        var now = Date.now();
+    promises.push(new Promise(function(w, resolve, reject) {
+        function bundle() {
+            w.bundle(function(err, buffer) {
+                var content;
 
-        b.bundle(function(err, buffer) {
-            var content;
+                if (err) {
+                    reject('[compile-scripts.js] ' + err);
+                } else {
+                    content = buffer.toString();
 
-            if (err) {
-                reject('[compile-scripts.js] ' + err);
-            } else {
-                content = buffer.toString();
+                    // Uglify the script
+                    if (settings.scripts.uglify) {
+                        content = uglify.minify(content, {fromString: true});
+                        content = content.code;
+                    }
 
-                // Uglify the script
-                if (settings.scripts.uglify) {
-                    content = uglify.minify(content, {fromString: true});
-                    content = content.code;
+                    dest['index.js'] = content;
+
+                    resolve();
                 }
+            });
+        }
 
-                dest['index.js'] = content;
+        bundle();
 
-                // console.log(Date.now() - now);
+        // Establish watch callback
+        if (callback) {
+            w.on('update', callback);
 
-                resolve();
-            }
-        });
-    }.bind(null, b)));
+            // Close existing bundle watchers
+            if (dest._bundle) { dest._bundle.close(); }
+
+            // Establish the bundle watcher
+            dest._bundle = w;
+        }
+    }.bind(null, w)));
 
     // Continue recursion
     for (var j in src) {
         if (src[j] === Object(src[j])) {
             crumbs.push(j);
             dest[j] = dest[j] || {};
-            recursiveCompile(context, src[j], dest[j], promises, crumbs);
+            recursiveCompile(context, src[j], dest[j], promises, callback, crumbs);
             crumbs.pop(j);
         }
     }
@@ -170,20 +177,25 @@ function recursiveCompile(context, src, dest, promises, crumbs) {
  *  Exports  *
  *************/
 
-module.exports = function(context) {
-    var site = context.app.site;
-    var dist = context.dist;
-    var startPath = path.join(process.cwd(), context.settings.src, 'site');
-    var promises = [];
+module.exports = function(callback) {
+    return function(context) {
+        var site = context.app.site;
+        var dist = context.dist;
+        var startPath = path.join(process.cwd(), context.settings.src, 'site');
+        var promises = [];
+        var start = Date.now();
 
-    return new Promise(function(resolve, reject) {
-        recursiveCompile(context, site, dist, promises, [startPath])
-            .then(function() {
-                resolve(context);
-            })
-            .catch(function(err) {
-                log('Browserify', err, 'error');
-                resolve(context);
-            });
-    });
+        return new Promise(function(resolve) {
+            recursiveCompile(context, site, dist, promises, callback, [startPath])
+                .then(function() {
+                    var delta = (Date.now() - start) / 1000;
+                    log('Browserify', 'Bundled in ' + delta + 's');
+                    resolve(context);
+                })
+                .catch(function(err) {
+                    log('Browserify', err, 'error');
+                    resolve(context);
+                });
+        });
+    };
 };

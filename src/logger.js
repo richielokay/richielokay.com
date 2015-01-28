@@ -6,6 +6,7 @@
 
 var clc = require('cli-color');
 var notifier = require('node-notifier');
+var path = require('path');
 
 /***********************
  *  Color Definitions  *
@@ -20,7 +21,8 @@ var groups = {
     FileIO: clc.green.bold,
     Browserify: clc.xterm(136).bold,
     Time: clc.xterm(11).bold,
-    Assets: clc.xterm(105).bold
+    Assets: clc.xterm(105).bold,
+    Blanka: clc.green.bold
 };
 
 var warn = clc.yellowBright.bold;
@@ -30,17 +32,12 @@ var error = clc.redBright.bold;
  *  Exports  *
  *************/
 
-module.exports = function log(group, message, severity) {
+module.exports = function log(group, message, severity, notify) {
     var notice = ' ';
 
     if (severity) {
         switch (severity.toLowerCase()) {
             case 'warn':
-                notifier.notify({
-                    type: 'info',
-                    title: group + ' Warning',
-                    message: message
-                });
                 notice = warn('(Warning) ');
                 break;
             case 'error':
@@ -51,5 +48,22 @@ module.exports = function log(group, message, severity) {
         }
     }
 
-    console.log('[' + groups[group](group) + '] ' + notice + message);
+    if (notify) {
+        notifier.notify({
+            type: 'info',
+            title: group,
+            message: message,
+            icon: path.join(__dirname, '../bin/sfa3_blanka-1.gif')
+        });
+    }
+
+    group = group || 'Blanka';
+
+    // Conditionally apply colors
+    if (process.env.COLORS === false) {
+    } else {
+        group = groups[group](group);
+    }
+
+    console.log('[' + (group) + '] ' + notice + message);
 };

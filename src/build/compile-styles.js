@@ -123,6 +123,7 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
  *************/
 
 module.exports = function(context) {
+    var start = Date.now();
     var site = context.app.site;
     var dist = context.dist;
     var promises = [];
@@ -131,6 +132,8 @@ module.exports = function(context) {
         try {
             recursiveCompileSass(context, site, dist, promises)
                 .then(function() {
+                    var delta = (Date.now() - start) / 1000;
+                    log('SASS', 'Compiled in ' + delta + 's');
                     resolve(context);
                 })
                 .catch(function(err) {

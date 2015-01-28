@@ -17,13 +17,15 @@ var log = require('../logger');
  */
 function createWatch(watchPath, callback) {
     var shortPath, ready;
-    var watcher = chokidar.watch(watchPath, { persistent: true, ignore: /\.js$/ });
+    var watcher = chokidar.watch(watchPath, {
+        persistent: true,
+        ignored: /\.js$/i
+    });
 
     // Set up watch on source files
     watcher.on('all', function(evt, filePath) {
         if (ready) {
             shortPath = filePath.replace(process.cwd() + '/', '');
-            log('Watch', evt.toUpperCase() + ': ' + shortPath);
             callback(filePath, evt);
         }
     });
