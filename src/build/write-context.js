@@ -6,7 +6,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var Promise = require('Promise');
+var Promise = require('promise');
 
 /*************
  *  Exports  *
