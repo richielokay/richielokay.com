@@ -7,6 +7,7 @@ Additional features:
 * Configurable build targets (development, production, etc.)
 * Code minification
 * Descriptive debug logger with notifications
+* Includes common HTML5 polyfills
 * Global asset resolution using ```assets://```
 * Module injection using Handlebars and ```{{ module-* }}``` helpers
 * Templated content-driven generation of pages for blogs, articles, etc.
@@ -18,7 +19,7 @@ Additional features:
 
 # Quick Start
 
-From an empty project folder, run ```blanka init```. Then run ```blanka build debug```. Assuming the server and Livereload ports are available, you should see:
+From an empty project folder, run ```blanka init```. Then run ```blanka debug```. Assuming the server and Livereload ports are available, you should see:
 
 ```
 [Server]  Listening on 8080
@@ -82,8 +83,6 @@ It's possible to render several pages at once using a ```pages.json``` file and 
 All *.scss files in the ```style/``` folder are made available to SASS and are accessible using ```@import "name";```.
 
 #### app/scripts
-
-All *.js files in the ```scripts/``` folder are made available to browserify and are accessible using ```require('scripts/<name>');```.
 
 #### app/partials
 
@@ -253,7 +252,7 @@ A static debug server may be started for a build. It servers up all assets in th
 
 ## Gzip
 
-All destination files including HTML, JS, and CSS may be optionally gzipped. Set ```gzip: true``` for a build.
+All destination files including HTML, JS, and CSS may be gzipped. Set ```gzip: true``` for a build.
 
 # Modules
 
@@ -332,4 +331,36 @@ If you would like to use a template other than ```index.hbs```, for example ```b
 {{ module-myButton template="button2" }}
 ```
 
+## Module Execution
 
+It's helpful to understand how modules are loaded and executed on the client. Unlike many frameworks, Blanka renders the DOM at build time. All modular HTML and partials are already in the document prior to being sent to the client. If no dynamic client-side template rendering is necessary, the Handlebars run-time is absent from the front-end build.
+
+Modules are made available to the application build and are exposed as ```modules/<name>```. Modular code may be imported using:
+
+```javascript
+var moduleScript = require('modules/<name>');
+```
+
+When a module's HTML is injected during build time, it is given a ```data-module``` attribute. Once the client document has loaded, the following code is run:
+
+```javascript
+'use strict';
+
+window.addEventListener('load', function runModules() {
+    var mod;
+    var moduleName;
+    var modules = window.document.querySelectorAll('[data-module]');
+    var docElement = document.documentElement;
+
+    // Remove no-js class
+    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2');
+
+    // Run module scripts against each module element
+    for (var i=0, len=modules.length; i<len; i+=1) {
+        mod = modules[i];
+        moduleName = mod.getAttribute('data-module');
+        modules[i].removeAttribute('data-module');
+        require('modules/' + moduleName)(mod);
+    }
+});
+```
