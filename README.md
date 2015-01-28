@@ -93,7 +93,7 @@ These files are compiled directly to the corresponding ```dist/``` folder.
 
 ##### pages.json
 
-It's possible to render several pages at once using a ```pages.json``` file and additional template files. The ```pages.json``` file may be placed in any folder under ```sites```.
+It's possible to render several pages at once using a ```pages.json``` file and additional template files. The ```pages.json``` file may be placed in any folder under ```site```.
 
 #### app/style
 
@@ -197,9 +197,9 @@ In all source files, assets may be referred to using the ```assets://``` convent
 
 ## Building HTML
 
-```sites/**/*.hbs --> dist/[build_name]/**/*.html```
+```site/**/*.hbs --> dist/[build_name]/**/*.html```
 
-All html source files are written as Handlebars templates. In the ```sites/``` folder, an index.hbs file will compile to an index.html file in the ```dist/[build_name]``` folder. This process is recursive, so all sub-folders and their corresponding index.hbs files will also be compiled to index.html files.
+All html source files are written as Handlebars templates. In the ```site/``` folder, an index.hbs file will compile to an index.html file in the ```dist/[build_name]``` folder. This process is recursive, so all sub-folders and their corresponding index.hbs files will also be compiled to index.html files.
 
 This phase of building is called "template expansion". Partials ```{{> partial }}``` from the ```app/partials``` folder are injected along with modules ```{{ module-* }}``` from ```app/modules```. As these templates are expanded, page-by-page dependencies (style and scripts) are collected and used in the following build steps.
 
@@ -232,11 +232,11 @@ The above data would output two files, ```pageA.html``` and ```pageB.html```. Ea
 
 ## Building CSS
 
-```sites/**/main.scss --> dist/[build_name]/**/main.css```
+```site/**/main.scss --> dist/[build_name]/**/main.css```
 
 SASS compilation recursively compiles scss to css. All .scss files located in ```app/styles``` may be imported using the ```@import "name";``` directive in main.scss files. For now, Bourbon and Neat are automatically included and may be imported using ```@import "bourbon";``` and ```@import "neat";```.
 
-In addition to styles described in the ```sites/``` folder, dependencies on modular scss files from the ```modules/``` folder are automatically imported.
+In addition to styles described in the ```site/``` folder, dependencies on modular scss files from the ```modules/``` folder are automatically imported.
 
 #### Settings
 
@@ -246,13 +246,13 @@ In addition to styles described in the ```sites/``` folder, dependencies on modu
 
 ## Building JavaScript
 
-```sites/**/index.js --> dist/[build_name]/**/index.js```
+```site/**/index.js --> dist/[build_name]/**/index.js```
 
 All source JavaScript files are written in the Node.JS style and are compiled for the browser using Browserify. This allows for dependency management using npm and bower, whose modules may be require'd using ```var package = require('package_name');```.
 
 Additionally, it's not necessary to encapsulate scripts in ```(function() {})();``` closures. This is automatically handled using Browserify.
 
-In addition to scripts located under the ```sites/``` and ```scripts/``` folders, dependencies on modular script files from the ```modules/``` folder are automatically imported.
+In addition to scripts located under the ```site/``` folder, dependencies on modular script files from the ```modules/``` folder are automatically imported.
 
 #### Settings
 
