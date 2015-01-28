@@ -252,8 +252,6 @@ All source JavaScript files are written in the Node.JS style and are compiled fo
 
 Additionally, it's not necessary to encapsulate scripts in ```(function() {})();``` closures. This is automatically handled using Browserify.
 
-All scripts located in ```app/scripts``` may be imported using ```var obj = require('scripts/[name]');```.
-
 In addition to scripts located under the ```sites/``` and ```scripts/``` folders, dependencies on modular script files from the ```modules/``` folder are automatically imported.
 
 #### Settings
