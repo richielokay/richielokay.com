@@ -22,7 +22,8 @@ var groups = {
     Browserify: clc.xterm(136).bold,
     Time: clc.xterm(11).bold,
     Assets: clc.xterm(105).bold,
-    Blanka: clc.green.bold
+    Blanka: clc.green.bold,
+    Gzip: clc.xterm(7).bold
 };
 
 var warn = clc.yellowBright.bold;

@@ -71,10 +71,11 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
         fullPaths: true,
         basedir: process.cwd()
     };
+    var useServer = context.settings.server;
 
     // Browserify / watchify
     var b = browserify(options);
-    var w = callback ? watchify(b) : b;
+    var w = (callback && useServer) ? watchify(b) : b;
 
     // Paths
     var modulePath = path.join(

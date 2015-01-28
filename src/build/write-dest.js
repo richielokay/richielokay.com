@@ -31,8 +31,8 @@ function recursiveWrite(src, writeFile, crumbs) {
         // Ignore leading _
         if (i.indexOf('_') === 0) { continue; }
 
-        // Write the file
-        if (typeof src[i] === 'string') {
+        // Write strings and buffers
+        if (typeof src[i] === 'string' || src[i] instanceof Buffer) {
             folder = crumbs.join(path.sep);
             crumbs.push(i);
             dest = crumbs.join(path.sep);

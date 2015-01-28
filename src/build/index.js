@@ -26,37 +26,12 @@ var createWatcher = require('../server/create-watcher');
 var triggerLivereload = require('../server/trigger-livereload');
 var copyAssets = require('./copy-assets');
 var log = require('../logger');
+var gzip = require('./gzip-compress');
 var listBowerComponents = require('./list-bower-components');
-var path = require('path');
-
-/***************
- *  Variables  *
- ***************/
-
-var cwd = process.cwd();
 
 /***********
  *  Tasks  *
  ***********/
-
-/**
- * 
- * @param {type} [name] [description]
- */
-function updateScripts(context) {
-    var start = Date.now();
-    
-    console.log('Updating Scripts');
-
-    return rebuildScripts(context)
-        .then(injectScripts)
-        .then(replaceAssets)
-        .then(writeDest)
-        .then(triggerLivereload)
-        .catch(function(err) {
-            if (err) { console.log(err); }
-        });
-}
 
 /**
  * Runs updates
@@ -73,6 +48,7 @@ function updateNoScripts(context, file, evt) {
         .then(compileStyles)
         .then(injectScripts)
         .then(replaceAssets)
+        .then(gzip)
         .then(writeDest)
         .then(triggerLivereload)
         .then(writeContext)
@@ -101,6 +77,7 @@ function update(context, file, evt) {
         .then(compileStyles)
         .then(injectScripts)
         .then(replaceAssets)
+        .then(gzip)
         .then(writeDest)
         .then(triggerLivereload)
         .then(writeContext)
@@ -139,8 +116,10 @@ function init(context) {
         .then(compileStyles)
         .then(injectScripts)
         .then(replaceAssets)
+        .then(gzip)
         .then(writeDest)
         .then(copyAssets)
+        .then(gzip)
         .then(writeContext)
         .catch(function(err) {
             if (err) { console.log(err); }
