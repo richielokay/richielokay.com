@@ -5,6 +5,8 @@
  ******************/
 
 var clc = require('cli-color');
+var notifier = require('node-notifier');
+var path = require('path');
 
 /***********************
  *  Color Definitions  *
