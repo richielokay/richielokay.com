@@ -140,14 +140,12 @@ Each build is configured using ```builds.json```. The default file is as follows
         },
         "browserify": {
             "debug": true,
-            "uglify": false,
-            "gzip": false
+            "uglify": false
         },
         "sass": {
             "sourcemaps": true,
             "outputStyle": "nested",
-            "includePaths": ["app/style"],
-            "gzip": false
+            "includePaths": ["app/style"]
         },
         "html": {
             "lrSnippet": true,
