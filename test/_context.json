@@ -1,0 +1,171 @@
+{
+    "settings": {
+        "name": "debug",
+        "dest": "dist/debug",
+        "src": "app",
+        "gzip": false,
+        "env": {
+            "NODE_ENV": "development",
+            "ASSETS_URL": "/assets/"
+        },
+        "scripts": {
+            "debug": true
+        },
+        "styles": {
+            "debug": true,
+            "outputStyle": "nested",
+            "includePaths": [
+                "vendor",
+                "app/style"
+            ]
+        },
+        "html": {
+            "lrSnippet": true
+        },
+        "assets": {
+            "src": "assets",
+            "dest": "dist/debug/assets"
+        },
+        "server": {
+            "port": 8080,
+            "lrPort": 35729
+        }
+    },
+    "app": {
+        "style": {
+            "common.scss": "h2 {\n    color: #490839;\n}\n"
+        },
+        "modules": {
+            "new": {
+                "defaults.json": "{}\n",
+                "index.hbs": "<div class=\"new\"></div>\n",
+                "index.js": "'use strict';\n    \n/************\n *  Module  *\n ************/\n\nmodule.exports = function(element) {\n\n};\n",
+                "main.scss": ".new {\n    \n}\n"
+            },
+            "new3": {
+                "defaults.json": "{}\n",
+                "index.hbs": "<div class=\"new3\"></div>\n",
+                "index.js": "'use strict';\n    \n/************\n *  Module  *\n ************/\n\nmodule.exports = function(element) {\n\n};\n",
+                "main.scss": ".new3 {\n    \n}\n"
+            },
+            "test": {
+                "defaults.json": "{\n\t\"first\": \"Jim\",\n\t\"last\": \"Bob\"\n}\n",
+                "index.hbs": "<h2 class=\"test\">Hello!!!!!!, {{ first }} {{ last }}!!!!</h2>\n",
+                "index.js": "'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = 'assets://';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n",
+                "main.scss": ".test {\n  color: #00FF00;\n}\n",
+                "template.hbs": "<h2>Hello, {{ last }} {{ first }}!!!!</h2>\n"
+            },
+            "test2": {
+                "defaults.json": "{\n\t\"first\": \"Jim\",\n\t\"last\": \"Bob\"\n}",
+                "index.hbs": "<div class=\"test2\">Hello, {{ first }} {{ last }}!!!</div>\n",
+                "index.js": "'use strict';\n\nmodule.exports = function(element) {\n    // element.innerHTML = 'Test2!';\n};\n",
+                "main.scss": ".test2 {\n\tcolor: #0000FF;\n}"
+            }
+        },
+        "partials": {
+            "meta.hbs": "<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n",
+            "vendor": {
+                "marketo.hbs": "<script type=\"text/javascript\">\n(function() {\n  var didInit = false;\n  function initMunchkin() {\n    if(didInit === false) {\n      didInit = true;\n      Munchkin.init('445-FJV-353');\n    }\n  }\n  var s = document.createElement('script');\n  s.type = 'text/javascript';\n  s.async = true;\n  s.src = '//munchkin.marketo.net/munchkin.js';\n  s.onreadystatechange = function() {\n    if (this.readyState == 'complete' || this.readyState == 'loaded') {\n      initMunchkin();\n    }\n  };\n  s.onload = initMunchkin;\n  document.getElementsByTagName('head')[0].appendChild(s);\n})();\n</script>\n"
+            }
+        },
+        "site": {
+            "index.hbs": "<html>\n<head>\n{{> meta }}\n<!-- Inject Scripts -->\n<!-- Inject Styles -->\n</head>\n<body>\n{{module-test2 first=\"Curly\"}}\n{{module-test first=\"Curly\" template=\"template\"}}\n</body>\n</html>\n",
+            "main.scss": "body { background-color: #000000; }\n",
+            "test": {
+                "index.hbs": "<html>\n<head>\n<!-- Inject Scripts -->\n<!-- Inject Styles -->\n</head>\n<body>\nTest!!!!!!!!!!!!\n{{{module-test first=\"Bo\"}}}\n</body>\n</html>\n",
+                "index.js": "'use strict';\n\nconsole.log('Loaded this one!');\n",
+                "main.scss": "body { background-color: #FF0000; }\n",
+                "pages.json": "{\n    \"template.hbs\": {\n        \"siteA\": {\n            \"valA\": \"Hello\",\n            \"valB\": \"World\"\n        },\n        \"siteB\": {\n            \"valA\": \"Hello\",\n            \"valB\": \"Moon\"\n        }\n    }\n}\n",
+                "template.hbs": "<html>\n<head>\n{{> meta }}\n<!-- Inject Scripts -->\n<!-- Inject Styles -->\n</head>\n<body>\n{{ valA }}, {{ valB }}!\n</body>\n</html>\n"
+            }
+        }
+    },
+    "modules": {
+        "new": {
+            "name": "new",
+            "defaults": {},
+            "script": "'use strict';\n    \n/************\n *  Module  *\n ************/\n\nmodule.exports = function(element) {\n\n};\n",
+            "sass": ".new {\n    \n}\n"
+        },
+        "new3": {
+            "name": "new3",
+            "defaults": {},
+            "script": "'use strict';\n    \n/************\n *  Module  *\n ************/\n\nmodule.exports = function(element) {\n\n};\n",
+            "sass": ".new3 {\n    \n}\n"
+        },
+        "test": {
+            "name": "test",
+            "defaults": {
+                "first": "Jim",
+                "last": "Bob"
+            },
+            "script": "'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = 'assets://';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n",
+            "sass": ".test {\n  color: #00FF00;\n}\n",
+            "templates": {}
+        },
+        "test2": {
+            "name": "test2",
+            "defaults": {
+                "first": "Jim",
+                "last": "Bob"
+            },
+            "script": "'use strict';\n\nmodule.exports = function(element) {\n    // element.innerHTML = 'Test2!';\n};\n",
+            "sass": ".test2 {\n\tcolor: #0000FF;\n}"
+        }
+    },
+    "dist": {
+        "_page": {
+            "_modules": {
+                "test2": {
+                    "name": "test2",
+                    "defaults": {
+                        "first": "Jim",
+                        "last": "Bob"
+                    },
+                    "script": "'use strict';\n\nmodule.exports = function(element) {\n    // element.innerHTML = 'Test2!';\n};\n",
+                    "sass": ".test2 {\n\tcolor: #0000FF;\n}"
+                },
+                "test": {
+                    "name": "test",
+                    "defaults": {
+                        "first": "Jim",
+                        "last": "Bob"
+                    },
+                    "script": "'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = 'assets://';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n",
+                    "sass": ".test {\n  color: #00FF00;\n}\n",
+                    "templates": {}
+                }
+            },
+            "first": "Curly"
+        },
+        "index.html": "<html>\n<head>\n<meta charset=\"utf-8\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\">\n<meta name=\"robots\" content=\"NOODP\">\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors&#x2019; digital body language. BounceX invented exit intent technology.\">\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\">\n<meta name=\"author\" content=\"web-author@bounceexchange.com\">\n\n<link rel=\"apple-touch-icon\" href=\"apple-touch-icon-precomposed.png\">\n<link rel=\"apple-touch-icon\" href=\"apple-touch-icon-144x144-precomposed.png\">\n<script src=\"index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"main.css\">\n</head>\n<body>\n<div class=\"test2\" data-module=\"test2\">Hello, Curly !!!</div>\n\n<h2 data-module=\"test\">Hello,  Curly!!!!</h2>\n\n<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script></body>\n</html>\n",
+        "test": {
+            "_page": {
+                "_modules": {
+                    "test": {
+                        "name": "test",
+                        "defaults": {
+                            "first": "Jim",
+                            "last": "Bob"
+                        },
+                        "script": "'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = 'assets://';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n",
+                        "sass": ".test {\n  color: #00FF00;\n}\n",
+                        "templates": {}
+                    }
+                },
+                "first": "Bo",
+                "valA": "Hello",
+                "valB": "Moon"
+            },
+            "index.html": "<html>\n<head>\n<script src=\"index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"main.css\">\n</head>\n<body>\nTest!!!!!!!!!!!!\n<h2 class=\"test\" data-module=\"test\">Hello!!!!!!, Bo !!!!</h2>\n\n<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script></body>\n</html>\n",
+            "siteA.html": "<html>\n<head>\n<meta charset=\"utf-8\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\">\n<meta name=\"robots\" content=\"NOODP\">\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors&#x2019; digital body language. BounceX invented exit intent technology.\">\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\">\n<meta name=\"author\" content=\"web-author@bounceexchange.com\">\n\n<link rel=\"apple-touch-icon\" href=\"apple-touch-icon-precomposed.png\">\n<link rel=\"apple-touch-icon\" href=\"apple-touch-icon-144x144-precomposed.png\">\n<script src=\"index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"main.css\">\n</head>\n<body>\nHello, World!\n<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script></body>\n</html>\n",
+            "siteB.html": "<html>\n<head>\n<meta charset=\"utf-8\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\">\n<meta name=\"robots\" content=\"NOODP\">\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors&#x2019; digital body language. BounceX invented exit intent technology.\">\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\">\n<meta name=\"author\" content=\"web-author@bounceexchange.com\">\n\n<link rel=\"apple-touch-icon\" href=\"apple-touch-icon-precomposed.png\">\n<link rel=\"apple-touch-icon\" href=\"apple-touch-icon-144x144-precomposed.png\">\n<script src=\"index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"main.css\">\n</head>\n<body>\nHello, Moon!\n<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script></body>\n</html>\n",
+            "index.js": "require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\"function\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\"Cannot find module '\"+o+\"'\");throw f.code=\"MODULE_NOT_FOUND\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\"function\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({\"/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js\":[function(require,module,exports){\n'use strict';\n\nwindow.addEventListener('load', function runModules() {\n    var mod;\n    var moduleName;\n    var modules = window.document.querySelectorAll('[data-module]');\n    var docElement = document.documentElement;\n\n    // Remove no-js class\n    docElement.className = docElement.className.replace(/(^|\\s)no-js(\\s|$)/, '$1$2');\n\n    // Run module scripts against each module element\n    for (var i=0, len=modules.length; i<len; i+=1) {\n        mod = modules[i];\n        moduleName = mod.getAttribute('data-module');\n        modules[i].removeAttribute('data-module');\n        require(moduleName)(mod);\n    }\n});\n\n},{}],\"/Users/ryanvangundy/Documents/blanka/test/app/site/test/index.js\":[function(require,module,exports){\n'use strict';\n\nconsole.log('Loaded this one!');\n\n},{}],\"test\":[function(require,module,exports){\n'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = '/assets/';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n\n},{}]},{},[\"/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js\",\"/Users/ryanvangundy/Documents/blanka/test/app/site/test/index.js\"])\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL25vZGVfbW9kdWxlcy9icm93c2VyaWZ5L25vZGVfbW9kdWxlcy9icm93c2VyLXBhY2svX3ByZWx1ZGUuanMiLCIuLi9zcmMvY2xpZW50L3J1bi1tb2R1bGVzLmpzIiwiYXBwL3NpdGUvdGVzdC9pbmRleC5qcyIsImFwcC9tb2R1bGVzL3Rlc3QvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUNBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQ25CQTtBQUNBO0FBQ0E7QUFDQTs7QUNIQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwiZmlsZSI6ImdlbmVyYXRlZC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzQ29udGVudCI6WyIoZnVuY3Rpb24gZSh0LG4scil7ZnVuY3Rpb24gcyhvLHUpe2lmKCFuW29dKXtpZighdFtvXSl7dmFyIGE9dHlwZW9mIHJlcXVpcmU9PVwiZnVuY3Rpb25cIiYmcmVxdWlyZTtpZighdSYmYSlyZXR1cm4gYShvLCEwKTtpZihpKXJldHVybiBpKG8sITApO3ZhciBmPW5ldyBFcnJvcihcIkNhbm5vdCBmaW5kIG1vZHVsZSAnXCIrbytcIidcIik7dGhyb3cgZi5jb2RlPVwiTU9EVUxFX05PVF9GT1VORFwiLGZ9dmFyIGw9bltvXT17ZXhwb3J0czp7fX07dFtvXVswXS5jYWxsKGwuZXhwb3J0cyxmdW5jdGlvbihlKXt2YXIgbj10W29dWzFdW2VdO3JldHVybiBzKG4/bjplKX0sbCxsLmV4cG9ydHMsZSx0LG4scil9cmV0dXJuIG5bb10uZXhwb3J0c312YXIgaT10eXBlb2YgcmVxdWlyZT09XCJmdW5jdGlvblwiJiZyZXF1aXJlO2Zvcih2YXIgbz0wO288ci5sZW5ndGg7bysrKXMocltvXSk7cmV0dXJuIHN9KSIsIid1c2Ugc3RyaWN0Jztcblxud2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ2xvYWQnLCBmdW5jdGlvbiBydW5Nb2R1bGVzKCkge1xuICAgIHZhciBtb2Q7XG4gICAgdmFyIG1vZHVsZU5hbWU7XG4gICAgdmFyIG1vZHVsZXMgPSB3aW5kb3cuZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnW2RhdGEtbW9kdWxlXScpO1xuICAgIHZhciBkb2NFbGVtZW50ID0gZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50O1xuXG4gICAgLy8gUmVtb3ZlIG5vLWpzIGNsYXNzXG4gICAgZG9jRWxlbWVudC5jbGFzc05hbWUgPSBkb2NFbGVtZW50LmNsYXNzTmFtZS5yZXBsYWNlKC8oXnxcXHMpbm8tanMoXFxzfCQpLywgJyQxJDInKTtcblxuICAgIC8vIFJ1biBtb2R1bGUgc2NyaXB0cyBhZ2FpbnN0IGVhY2ggbW9kdWxlIGVsZW1lbnRcbiAgICBmb3IgKHZhciBpPTAsIGxlbj1tb2R1bGVzLmxlbmd0aDsgaTxsZW47IGkrPTEpIHtcbiAgICAgICAgbW9kID0gbW9kdWxlc1tpXTtcbiAgICAgICAgbW9kdWxlTmFtZSA9IG1vZC5nZXRBdHRyaWJ1dGUoJ2RhdGEtbW9kdWxlJyk7XG4gICAgICAgIG1vZHVsZXNbaV0ucmVtb3ZlQXR0cmlidXRlKCdkYXRhLW1vZHVsZScpO1xuICAgICAgICByZXF1aXJlKG1vZHVsZU5hbWUpKG1vZCk7XG4gICAgfVxufSk7XG4iLCIndXNlIHN0cmljdCc7XG5cbmNvbnNvbGUubG9nKCdMb2FkZWQgdGhpcyBvbmUhJyk7XG4iLCIndXNlIHN0cmljdCc7XG5cbm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24oZWxlbWVudCkge1xuXHQvLyB2YXIgYXNzZXRzID0gJ2Fzc2V0czovLyc7XG5cdFxuIC8vICAgIGVsZW1lbnQuaW5uZXJIVE1MID0gJ1Rlc3QhISEnO1xufTtcbiJdfQ==\n",
+            "main.css": "/* line 1, /Users/ryanvangundy/Documents/blanka/test/app/site/test/main.scss */\nbody {\n  background-color: #000000; }\n\n/* line 1, /Users/ryanvangundy/Documents/blanka/test/app/modules/test/main.scss */\n.test {\n  color: #00FF00; }\n\n/*# sourceMappingURL=main.css.map */",
+            "main.css.map": "{\"version\":3,\"file\":\"main.css\",\"sources\":[\"../../../site/test/main.scss\",\"../../../modules/test/main.scss\"],\"sourcesContent\":[],\"mappings\":\";AAAA;EAAO,AAAkB;;;ACAzB;EACE,AAAO\",\"names\":[]}"
+        },
+        "index.js": "require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\"function\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\"Cannot find module '\"+o+\"'\");throw f.code=\"MODULE_NOT_FOUND\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\"function\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({\"/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js\":[function(require,module,exports){\n'use strict';\n\nwindow.addEventListener('load', function runModules() {\n    var mod;\n    var moduleName;\n    var modules = window.document.querySelectorAll('[data-module]');\n    var docElement = document.documentElement;\n\n    // Remove no-js class\n    docElement.className = docElement.className.replace(/(^|\\s)no-js(\\s|$)/, '$1$2');\n\n    // Run module scripts against each module element\n    for (var i=0, len=modules.length; i<len; i+=1) {\n        mod = modules[i];\n        moduleName = mod.getAttribute('data-module');\n        modules[i].removeAttribute('data-module');\n        require(moduleName)(mod);\n    }\n});\n\n},{}],\"test2\":[function(require,module,exports){\n'use strict';\n\nmodule.exports = function(element) {\n    // element.innerHTML = 'Test2!';\n};\n\n},{}],\"test\":[function(require,module,exports){\n'use strict';\n\nmodule.exports = function(element) {\n\t// var assets = '/assets/';\n\t\n //    element.innerHTML = 'Test!!!';\n};\n\n},{}]},{},[\"/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js\"])\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL25vZGVfbW9kdWxlcy9icm93c2VyaWZ5L25vZGVfbW9kdWxlcy9icm93c2VyLXBhY2svX3ByZWx1ZGUuanMiLCIuLi9zcmMvY2xpZW50L3J1bi1tb2R1bGVzLmpzIiwiYXBwL21vZHVsZXMvdGVzdDIvaW5kZXguanMiLCJhcHAvbW9kdWxlcy90ZXN0L2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FDQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUNuQkE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQ0xBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJmaWxlIjoiZ2VuZXJhdGVkLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXNDb250ZW50IjpbIihmdW5jdGlvbiBlKHQsbixyKXtmdW5jdGlvbiBzKG8sdSl7aWYoIW5bb10pe2lmKCF0W29dKXt2YXIgYT10eXBlb2YgcmVxdWlyZT09XCJmdW5jdGlvblwiJiZyZXF1aXJlO2lmKCF1JiZhKXJldHVybiBhKG8sITApO2lmKGkpcmV0dXJuIGkobywhMCk7dmFyIGY9bmV3IEVycm9yKFwiQ2Fubm90IGZpbmQgbW9kdWxlICdcIitvK1wiJ1wiKTt0aHJvdyBmLmNvZGU9XCJNT0RVTEVfTk9UX0ZPVU5EXCIsZn12YXIgbD1uW29dPXtleHBvcnRzOnt9fTt0W29dWzBdLmNhbGwobC5leHBvcnRzLGZ1bmN0aW9uKGUpe3ZhciBuPXRbb11bMV1bZV07cmV0dXJuIHMobj9uOmUpfSxsLGwuZXhwb3J0cyxlLHQsbixyKX1yZXR1cm4gbltvXS5leHBvcnRzfXZhciBpPXR5cGVvZiByZXF1aXJlPT1cImZ1bmN0aW9uXCImJnJlcXVpcmU7Zm9yKHZhciBvPTA7bzxyLmxlbmd0aDtvKyspcyhyW29dKTtyZXR1cm4gc30pIiwiJ3VzZSBzdHJpY3QnO1xuXG53aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcignbG9hZCcsIGZ1bmN0aW9uIHJ1bk1vZHVsZXMoKSB7XG4gICAgdmFyIG1vZDtcbiAgICB2YXIgbW9kdWxlTmFtZTtcbiAgICB2YXIgbW9kdWxlcyA9IHdpbmRvdy5kb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCdbZGF0YS1tb2R1bGVdJyk7XG4gICAgdmFyIGRvY0VsZW1lbnQgPSBkb2N1bWVudC5kb2N1bWVudEVsZW1lbnQ7XG5cbiAgICAvLyBSZW1vdmUgbm8tanMgY2xhc3NcbiAgICBkb2NFbGVtZW50LmNsYXNzTmFtZSA9IGRvY0VsZW1lbnQuY2xhc3NOYW1lLnJlcGxhY2UoLyhefFxccyluby1qcyhcXHN8JCkvLCAnJDEkMicpO1xuXG4gICAgLy8gUnVuIG1vZHVsZSBzY3JpcHRzIGFnYWluc3QgZWFjaCBtb2R1bGUgZWxlbWVudFxuICAgIGZvciAodmFyIGk9MCwgbGVuPW1vZHVsZXMubGVuZ3RoOyBpPGxlbjsgaSs9MSkge1xuICAgICAgICBtb2QgPSBtb2R1bGVzW2ldO1xuICAgICAgICBtb2R1bGVOYW1lID0gbW9kLmdldEF0dHJpYnV0ZSgnZGF0YS1tb2R1bGUnKTtcbiAgICAgICAgbW9kdWxlc1tpXS5yZW1vdmVBdHRyaWJ1dGUoJ2RhdGEtbW9kdWxlJyk7XG4gICAgICAgIHJlcXVpcmUobW9kdWxlTmFtZSkobW9kKTtcbiAgICB9XG59KTtcbiIsIid1c2Ugc3RyaWN0JztcblxubW9kdWxlLmV4cG9ydHMgPSBmdW5jdGlvbihlbGVtZW50KSB7XG4gICAgLy8gZWxlbWVudC5pbm5lckhUTUwgPSAnVGVzdDIhJztcbn07XG4iLCIndXNlIHN0cmljdCc7XG5cbm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24oZWxlbWVudCkge1xuXHQvLyB2YXIgYXNzZXRzID0gJ2Fzc2V0czovLyc7XG5cdFxuIC8vICAgIGVsZW1lbnQuaW5uZXJIVE1MID0gJ1Rlc3QhISEnO1xufTtcbiJdfQ==\n",
+        "main.css": "/* line 1, /Users/ryanvangundy/Documents/blanka/test/app/site/main.scss */\nbody {\n  background-color: #000000; }\n\n/* line 1, /Users/ryanvangundy/Documents/blanka/test/app/modules/test2/main.scss */\n.test2 {\n  color: #0000FF; }\n\n/* line 1, /Users/ryanvangundy/Documents/blanka/test/app/modules/test/main.scss */\n.test {\n  color: #00FF00; }\n\n/*# sourceMappingURL=main.css.map */",
+        "main.css.map": "{\"version\":3,\"file\":\"main.css\",\"sources\":[\"../../site/main.scss\",\"../../modules/test2/main.scss\",\"../../modules/test/main.scss\"],\"sourcesContent\":[],\"mappings\":\";AAAA;EAAO,AAAkB;;;ACAzB;EACC,AAAO;;;ACDR;EACE,AAAO\",\"names\":[]}"
+    }
+}

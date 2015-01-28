@@ -1,7 +1,9 @@
 'use strict';
-
-require('scripts/test')();
+    
+/************
+ *  Module  *
+ ************/
 
 module.exports = function(element) {
-    console.log('Heeey');
+
 };

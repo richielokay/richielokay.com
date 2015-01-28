@@ -1,7 +1,5 @@
 'use strict';
 
-require('scripts/test')();
-
 module.exports = function(element) {
-    console.log('Heeey');
+    // element.innerHTML = 'Test2!';
 };
