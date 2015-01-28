@@ -40,7 +40,7 @@ You can navigate to the page by visiting ```http://localhost:8080``` in your bro
 
 ```Ctrl-C``` will exit the process. To run a production build, run
 
-```$ blanka build prod```.
+```$ blanka build prod```
 
 # Project Scaffolding
 
