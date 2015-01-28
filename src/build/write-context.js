@@ -14,13 +14,16 @@ var Promise = require('promise');
 
 module.exports = function(context) {
     var dest = path.join(process.cwd(), '_context.json');
-
-    return new Promise(function(resolve, reject) {
-        fs.writeFile(dest, JSON.stringify(context, null, 4), function(err) {
-            if (err) {
-                reject('[write-context.js] ' + err);
-            }
-            else { resolve(context); }
+    if (context.settings.logOutput) {
+        return new Promise(function(resolve, reject) {
+            fs.writeFile(dest, JSON.stringify(context, null, 4), function(err) {
+                if (err) {
+                    reject('[write-context.js] ' + err);
+                }
+                else { resolve(context); }
+            });
         });
-    });
+    } else {
+        return context;
+    }
 };

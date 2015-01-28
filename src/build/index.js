@@ -66,7 +66,6 @@ function updateNoScripts(context, file, evt) {
     var start = Date.now();
 
     return updateApp(context, file, evt)
-        .then(writeContext)
         .then(loadPartials)
         .then(loadModules)
         .then(templateSiteHTML)
@@ -76,6 +75,7 @@ function updateNoScripts(context, file, evt) {
         .then(replaceAssets)
         .then(writeDest)
         .then(triggerLivereload)
+        .then(writeContext)
         .then(function(context) {
             log('Time', (Date.now() - start) / 1000 + 's');
             return context;
@@ -93,7 +93,6 @@ function update(context, file, evt) {
     var start = Date.now();
 
     return updateApp(context, file, evt)
-        .then(writeContext)
         .then(loadPartials)
         .then(loadModules)
         .then(templateSiteHTML)
@@ -104,6 +103,7 @@ function update(context, file, evt) {
         .then(replaceAssets)
         .then(writeDest)
         .then(triggerLivereload)
+        .then(writeContext)
         .then(function(context) {
             log('Time', (Date.now() - start) / 1000 + 's');
             return context;
@@ -141,6 +141,7 @@ function init(context) {
         .then(replaceAssets)
         .then(writeDest)
         .then(copyAssets)
+        .then(writeContext)
         .catch(function(err) {
             if (err) { console.log(err); }
         });
