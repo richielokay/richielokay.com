@@ -40,7 +40,7 @@ function moduleHelper(module, object) {
     var data = object.data;
     var name = object.name.replace('module-', '');
     var hash = object.hash || {};
-    var defaults = module._defaults || {};
+    var defaults = module.defaults || {};
     var page = data.root = data.root || {};
 
     // Use an alternate template file if requested
