@@ -15,11 +15,20 @@ Additional features:
 
 # Install
 
-```npm install blanka -g```
+```$ npm install blanka -g```
 
 # Quick Start
 
-From an empty project folder, run ```blanka init```. Then run ```blanka debug```. Assuming the server and Livereload ports are available, you should see:
+From an empty project folder, run 
+
+```$ blanka init```
+
+Then run
+
+```$ blanka debug```
+
+
+Assuming the server and Livereload ports are available, you should see:
 
 ```
 [Server]  Listening on 8080
@@ -33,9 +42,15 @@ You can navigate to the page by visiting ```http://localhost:8080``` in your bro
 
 # Project Scaffolding
 
-## blanka init [name]
+## $ blanka init [name]
 
-To create a new project, run ```blanka init``` in an empty folder. By default, Blanka will use the name of the folder as the name of the project. If you would like to override this, run ```blanka init [name]```.
+To create a new project, create a new project folder, and from this folder run:
+
+```$ blanka init```
+
+By default, Blanka will use the name of the folder as the name of the project. If you would like to override this, run
+
+```$ blanka init [name]```
 
 A new project is scaffolded containing several files and a folder structure for a basic website.
 
@@ -107,7 +122,7 @@ In production environments, any number of means could be used to serve up assets
 
 # Running Builds
 
-## blanka build [name]
+## $ blanka build [name]
 
 Blanka is capable of running several builds. Each build can be configured, allowing for unique debug and production build targets.
 
@@ -166,7 +181,15 @@ Each build is configured using ```builds.json```. The default file is as follows
 ]
 ```
 
-This file describes two builds, "debug" and "prod". These can each be run using ```blanka build debug``` and ```blanka build prod```, respectively. Each aspect of the build can be configured including SASS compilation, HTML generation, and browserified javascript. Environment variables are set and are accessible within the app code using ```process.env.ENV_VAR```. Optional static debug servers may also be configured, enabling file watching and LiveReload.
+This file describes two builds, "debug" and "prod". These can each be run using
+
+```$ blanka build debug```
+
+and
+
+```$ blanka build prod```
+
+Each aspect of the build can be configured including SASS compilation, HTML generation, and browserified javascript. Environment variables are set and are accessible within the app code using ```process.env.ENV_VAR```. Optional static debug servers may also be configured, enabling file watching and LiveReload.
 
 ## Asset Resolution
 
@@ -264,7 +287,11 @@ All destination files including HTML, JS, and CSS may be gzipped. Set ```gzip: t
 
 Blanka facilitates a "just enough framework" architecture based on modules. Browserify allows for the inclusion of dependencies from both the npm and bower package management ecosystems. Additionally, web modules from within the project's ```app/modules``` folder are automatically made available.
 
-To create a new module, run ```blanka module [name]``` from the project folder. A new module will be scaffolded, including the following files:
+To create a new module, run
+
+```$ blanka module [name]```
+
+from the project folder. A new module will be scaffolded, including the following files:
 
 * **index.hbs** Contains the module's markup as a single-parent DOM tree
 * **defaults.json** The default data to pass in to the module's template
