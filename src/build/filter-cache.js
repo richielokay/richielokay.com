@@ -52,7 +52,7 @@ module.exports = function() {
     return function(context) {
         return new Promise(function(resolve, reject) {
             try {
-
+                
                 // Create the cache for the first time
                 if (!cache) {
                     cache = extend(true, {}, context.dist);
