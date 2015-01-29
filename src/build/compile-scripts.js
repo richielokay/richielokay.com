@@ -57,11 +57,11 @@ function recursiveAddScripts(scriptsPath, scripts, b, crumbs) {
  * @param {type} [name] [description]
  */
 function recursiveCompile(context, src, dest, promises, callback, crumbs) {
-    var stream, basedir;
+    var basedir;
     var cwd = process.cwd();
     var index = src['index.js'];
     var modules = dest._page._modules;
-    var scripts = context.app.scripts;
+    // var scripts = context.app.scripts; // See below
     var settings = context.settings;
     var options = {
         debug: settings.scripts.debug,
@@ -82,9 +82,11 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
         cwd,
         context.settings.src,
         'modules');
-    var scriptsPath = path.join(
-        context.settings.src,
-        'scripts');
+
+    // See note below
+    // var scriptsPath = path.join(
+    //     context.settings.src,
+    //     'scripts');
 
     promises = promises || [];
     crumbs = crumbs || [];
