@@ -69,7 +69,6 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
         crumbs.join(path.sep),
         'main.scss');
     destPath = path.join(cwd,
-        settings.src,
         settings.dest,
         crumbs.join(path.sep),
         'main.css');
