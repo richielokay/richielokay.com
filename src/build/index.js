@@ -104,6 +104,8 @@ function updateAssets(context) {
 function init(context) {
     var start = Date.now();
 
+    log('Blanka', 'Running initial build...');
+
     return loadApp(context)
         .then(loadPartials)
         .then(loadModules)
@@ -119,7 +121,6 @@ function init(context) {
         .then(gzip)
         .then(writeDest)
         .then(copyAssets)
-        .then(gzip)
         .then(writeContext)
         .then(function(context) {
             var delta = Math.round((Date.now() - start) / 1000);
