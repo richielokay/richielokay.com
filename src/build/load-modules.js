@@ -9,10 +9,11 @@ var Promise = require('promise');
 var path = require('path');
 var cheerio = require('cheerio');
 var extend = require('extend');
+var log = require('../logger');
 
-/*************
- *  Methods  *
- *************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Tries to compile the given handlebars hbs
@@ -34,13 +35,13 @@ function handlebarsCompile(content) {
  * 
  * @param {type} [name] [description]
  */
-function moduleHelper(module, object) {
-    var template, html, doc;
-    var data = object.data;
+function moduleHelper(context, module, object) {
+    var template, html, doc, data;
+    var handlebarsData = object.data;
     var name = object.name.replace('module-', '');
     var hash = object.hash || {};
     var defaults = module.defaults || {};
-    var page = data.root = data.root || {};
+    var page = handlebarsData.root = handlebarsData.root || {};
 
     // Use an alternate template file if requested
     if (hash.template) {
@@ -50,13 +51,18 @@ function moduleHelper(module, object) {
         template = module.template;
     }
 
+    // Include resource data
+    if (hash.data && context.resources[hash.data]) {
+        data = context.resources[hash.data];
+    } else { data = {}; }
+
     page._modules = page._modules || {};
 
     // Add module to list of modules
     page._modules[name] = module;
 
     // Combine data
-    page = extend(page, defaults, hash);
+    page = extend(page, defaults, data, hash);
 
     // Generate the HTML
     html = template ? template(page) : '<span></span>';
@@ -73,9 +79,10 @@ function moduleHelper(module, object) {
  * 
  * @param {type} [name] [description]
  */
-function recursiveLoad(files, modules, registerHelper, crumbs) {
+function recursiveLoad(context, files, modules, registerHelper, crumbs) {
     var name, templateName, mod;
 
+    // Determine the module name or instantiate crumbs
     if (crumbs) {
         name = crumbs.join('-');
         mod = modules[name] = { name: name };
@@ -107,16 +114,17 @@ function recursiveLoad(files, modules, registerHelper, crumbs) {
                     mod.templates[templateName] = handlebarsCompile(files[i]);
                 }
 
+                // Process folders
                 else if (files[i] === Object(files[i])) {
                     crumbs.push(i);
                     name = crumbs.join('-');
 
                     // Continue recursion
-                    recursiveLoad(files[i], modules, registerHelper, crumbs);
+                    recursiveLoad(context, files[i], modules, registerHelper, crumbs);
 
                     // Register the helper
                     if (modules[name]) {
-                        registerHelper('module-' + name, moduleHelper.bind(null, modules[name]));
+                        registerHelper('module-' + name, moduleHelper.bind(null, context, modules[name]));
                     }
 
                     crumbs.pop();
@@ -136,12 +144,14 @@ module.exports = function (context) {
 
     context.modules = context.modules || {};
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
         try {
-            recursiveLoad(files, context.modules, handlebars.registerHelper.bind(handlebars));
+            recursiveLoad(context, files, context.modules, handlebars.registerHelper.bind(handlebars));
             resolve(context);
         } catch (err) {
-            reject('[load-modules.js] ' + err);
+            log('Handlebars', err, 'error');
         }
+
+        resolve(context);
     });
 };
