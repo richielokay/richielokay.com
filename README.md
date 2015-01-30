@@ -408,13 +408,66 @@ It's often useful to pull down content from an external resource on the web prio
 ```json
 {
     "weather": {
-        "src": "http://api.wunderground.org/?city=new_york&state=new_york"
+        "loader": "./resources/weather-loader.js"
     },
     "blogs": {
         "src": "https://api.bubs-blog.info"
     }
 }
 ```
+
+### Automatic loading using "src"
+
+You may load data using both http and https using the "src" property. Blanka uses node's native http modules to populate the build context.
+
+### Custom loading using "loader"
+
+There may be more complex needs when loading data. For example, data may be collected from several resources, collated, and formatted according to the needs of the application.
+
+A custom loader is node module that returns a promise that resolves to a parsed JavaScript object. A simple example is as follows:
+
+```javascript
+'use strict';
+
+/******************
+ *  Dependencies  *
+ ******************/
+
+var https = require('https');
+var Promise = require('promise');
+
+/***************
+ *  Variables  *
+ ***************/
+
+var src = 'https://path/to/api';
+
+/*************
+ *  Exports  *
+ *************/
+
+module.exports = new Promise(function(resolve, reject) {
+    var json = '';
+
+    https.get(src, function(res) {
+        res.on('data', function(data) {
+            json += data.toString();
+        });
+
+        res.on('end', function() {
+            var data = JSON.parse(json);
+            resolve(data);
+        });
+
+        res.on('error', function(err) {
+            reject(err);
+        });
+    });
+});
+
+```
+
+### Using external resources
 
 You can use this data as the context for your module templates as follows:
 
