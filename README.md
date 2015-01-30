@@ -429,23 +429,14 @@ A custom loader is a node module that returns a promise that resolves to a parse
 ```javascript
 'use strict';
 
-/******************
- *  Dependencies  *
- ******************/
-
+// Dependencies
 var https = require('https');
 var Promise = require('promise');
 
-/***************
- *  Variables  *
- ***************/
-
+// Vars
 var src = 'https://path/to/api';
 
-/*************
- *  Exports  *
- *************/
-
+// Exports
 module.exports = new Promise(function(resolve, reject) {
     var json = '';
 
