@@ -71,10 +71,13 @@ function recursiveTemplate(context, src, dest, compile) {
 module.exports = function(context) {
     var site = context.app.site;
     var dist = context.dist = context.dist || {};
+    var start = Date.now();
 
     return new Promise(function(resolve, reject) {
         try {
             recursiveTemplate(context, site, dist, handlebars.compile.bind(handlebars));
+            var delta = (Date.now() - start) / 1000;
+            log('Handlebars', 'Built additional pages in ' + delta + 's');
             resolve(context);
         } catch (err) {
             log('Handlebars', err, 'error');
