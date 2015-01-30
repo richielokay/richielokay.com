@@ -424,7 +424,7 @@ You may load data using both http and https using the "src" property. Blanka use
 
 There may be more complex needs when loading data. For example, data may be collected from several resources, collated, and formatted according to the needs of the application.
 
-A custom loader is node module that returns a promise that resolves to a parsed JavaScript object. A simple example is as follows:
+A custom loader is a node module that returns a promise that resolves to a parsed JavaScript object. A simple example is as follows:
 
 ```javascript
 'use strict';
