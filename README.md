@@ -7,7 +7,7 @@ Additional features:
 * Configurable build targets (development, production, etc.)
 * Code minification
 * Descriptive debug logger with notifications
-* Includes common HTML5 polyfills
+* Includes common HTML5 polyfills (HTML5-shiv, EventListener, classList, querySelector, bind)
 * Global asset resolution using ```assets://```
 * Module injection using Handlebars and ```{{ module-* }}``` helpers
 * Templated content-driven generation of pages for blogs, articles, etc.
@@ -403,7 +403,7 @@ window.addEventListener('load', function runModules() {
 
 ## Resource Loading
 
-It's often useful to pull down content from an external resource on the web. For example, the content of blog posts and news articles that do not change frequently may be stored and served statically. External resources may be described in a ```resources.json``` file in the root of your project. The format is as follows:
+It's often useful to pull down content from an external resource on the web prior to building your page. For example, the content of blog posts and news articles that do not change frequently may be stored and served statically. Or, initial data may be pre-populated and updated as-needed on the client. External resources may be described in a ```resources.json``` file in the root of your project. The format is as follows:
 
 ```json
 {
