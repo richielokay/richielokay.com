@@ -44,6 +44,7 @@ module.exports = function log(group, message, severity, notify) {
                 break;
             case 'error':
                 notice = error('(Error) ');
+                notify = true;
                 break;
             default:
                 break;
