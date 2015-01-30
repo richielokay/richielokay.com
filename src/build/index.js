@@ -28,6 +28,7 @@ var copyAssets = require('./copy-assets');
 var log = require('../logger');
 var gzip = require('./gzip-compress');
 var listBowerComponents = require('./list-bower-components');
+var loadResources = require('./load-resources');
 
 /***********
  *  Tasks  *
@@ -107,6 +108,7 @@ function init(context) {
     log('Blanka', 'Running initial build...');
 
     return loadApp(context)
+        .then(loadResources)
         .then(loadPartials)
         .then(loadModules)
         .then(templateSiteHTML)

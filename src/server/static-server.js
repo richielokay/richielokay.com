@@ -17,12 +17,15 @@ module.exports = function(context) {
     var appServer, port;
     var settings = context.settings;
     var servePath = path.join(process.cwd(), settings.dest);
+    var gzipFilters = /(^text)|(javascript$)/;
 
     // Do nothing if no server is configured
     if (!settings.server) { return context; }
 
     port = settings.server.port;
-    appServer = new staticServer.Server(servePath);
+    appServer = new staticServer.Server(servePath, {
+        gzip: settings.gzip ? gzipFilters : null
+    });
 
     // Set up the http server
     http.createServer(function(request, response) {

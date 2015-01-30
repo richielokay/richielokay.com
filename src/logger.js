@@ -23,7 +23,8 @@ var groups = {
     Time: clc.xterm(11).bold,
     Assets: clc.xterm(105).bold,
     Blanka: clc.green.bold,
-    Gzip: clc.xterm(7).bold
+    Gzip: clc.xterm(7).bold,
+    Resources: clc.xterm(157).bold
 };
 
 var warn = clc.yellowBright.bold;
