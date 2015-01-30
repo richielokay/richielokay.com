@@ -1,5 +1,8 @@
 {
     "greenhouse": {
         "src": "https://api.greenhouse.io/v1/boards/bounceexchange/embed/departments"
+    },
+    "greenhouse2": {
+        "loader": "./resources/greenhouse.js"
     }
 }
