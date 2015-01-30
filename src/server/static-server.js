@@ -34,7 +34,7 @@ module.exports = function(context) {
         }).resume();
     }).listen(port);
 
-    log('Server', 'Listening on ' + port);
+    log('Server', 'Serving at http://localhost:' + port);
 
     return context;
 };
