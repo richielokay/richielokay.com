@@ -8,9 +8,9 @@ var handlebars = require('handlebars');
 var Promise = require('promise');
 var path = require('path');
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Recursively loads all partials in to handlebars with the

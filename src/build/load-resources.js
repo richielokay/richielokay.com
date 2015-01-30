@@ -17,9 +17,9 @@ var https = require('https');
 
 var cwd = process.cwd();
 
-/*************
- *  Methods  *
- *************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Loads a resource in to the context

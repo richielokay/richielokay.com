@@ -9,9 +9,9 @@ var Promise = require('promise');
 var path = require('path');
 var mkdirp = require('mkdirp');
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Recursively writes an object to a destination folder. If

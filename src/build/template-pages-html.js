@@ -11,9 +11,9 @@ var path = require('path');
 var injectLrSnippet = require('./inject-lr-snippet');
 var log = require('../logger');
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Recursively templates all index.hbs files to index.html files

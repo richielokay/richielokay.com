@@ -11,9 +11,9 @@ var log = require('../logger');
 var bourbon = require('node-bourbon');
 var neat = require('node-neat');
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * 

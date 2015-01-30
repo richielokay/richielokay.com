@@ -7,10 +7,11 @@
 var readdir = require('read-dir-files');
 var path = require('path');
 var Promise = require('promise');
+var log = require('../logger');
 
-/*************
- *  Methods  *
- *************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Creates the application object, which is a tree structure of
@@ -24,9 +25,7 @@ function loadApp(context) {
     return new Promise(function(resolve, reject) {
 
         readdir.read(src, 'utf8', function(err, files) {
-            if (err) {
-                reject('[load-app.js] ' + err);
-            }
+            if (err) { log('Blanka', '[load-app.js] ' + err, 'error'); }
 
             // Convert files to a nested object
             else {

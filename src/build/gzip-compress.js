@@ -8,6 +8,10 @@ var Promise = require('promise');
 var zlib = require('zlib');
 var log = require('../logger');
 
+/***************
+ *  Functions  *
+ ***************/
+
 /**
  * Recursively gzips all strings in the destination tree,
  * turning them in to buffers.

@@ -7,9 +7,9 @@
 var Promise = require('promise');
 var extend = require('extend');
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Returns the difference between two objects, selecting for keys

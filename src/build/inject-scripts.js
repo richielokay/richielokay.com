@@ -21,9 +21,9 @@ var scriptEndTag = '</script>';
 var styleStartTag = '<style>';
 var styleEndTag = '</style>';
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Recursively injects script tags to all pages

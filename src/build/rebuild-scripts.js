@@ -8,9 +8,9 @@ var Promise = require('promise');
 var uglify = require('uglify-js');
 var log = require('../logger');
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Recursively rebuilds all available watchers

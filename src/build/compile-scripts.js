@@ -14,13 +14,15 @@ var envify = require('envify');
 var debowerify = require('debowerify');
 var log = require('../logger');
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 function noop() {}
 
 /**
+ * Waiting for resolution to:
+ * https://github.com/substack/node-browserify/issues/1099
  * Recursively adds scripts to the browserify object
  */
 function recursiveAddScripts(scriptsPath, scripts, b, crumbs) {
@@ -61,7 +63,7 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
     var cwd = process.cwd();
     var index = src['index.js'];
     var modules = dest._page._modules;
-    // var scripts = context.app.scripts; // See below
+    // var scripts = context.app.scripts; // #1099
     var settings = context.settings;
     var options = {
         debug: settings.scripts.debug,
@@ -83,7 +85,7 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
         context.settings.src,
         'modules');
 
-    // See note below
+    // #1099
     // var scriptsPath = path.join(
     //     context.settings.src,
     //     'scripts');
@@ -110,9 +112,8 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
         });
     }
 
+    // #1099
     // Add scripts files
-    // Waiting for resolution to:
-    // https://github.com/substack/node-browserify/issues/1099
     // if (scripts) { recursiveAddScripts(scriptsPath, scripts, w); }
 
     // Add modular code

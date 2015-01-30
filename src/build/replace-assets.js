@@ -12,9 +12,9 @@ var Promise = require('promise');
 
 var key = /assets:\/\//g;
 
-/****************
- *  Algorithms  *
- ****************/
+/***************
+ *  Functions  *
+ ***************/
 
 /**
  * Replaces all instances of assets:// with the
