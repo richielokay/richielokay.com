@@ -12,6 +12,7 @@ Additional features:
 * Module injection using Handlebars and ```{{ module-* }}``` helpers
 * Templated content-driven generation of pages for blogs, articles, etc.
 * Static web server with Livereload
+* Pre-fetches data from external resources over HTTP
 
 # Install
 
@@ -74,6 +75,10 @@ Both npm and bower package management systems are used. The following files are 
 ### builds.json
 
 The ```builds.json``` file is the primary configuration file for blanka. It describes the various build outputs and their respective settings. For example, it's possible to describe unique debug and production builds.
+
+### resources.json
+
+The ```resources.json``` file contains settings for pre-fetching external resources.
 
 ### app/
 
@@ -394,4 +399,25 @@ window.addEventListener('load', function runModules() {
         require('modules/' + moduleName)(mod);
     }
 });
+```
+
+## Resource Loading
+
+It's often useful to pull down content from an external resource on the web. For example, the content of blog posts and news articles that do not change frequently may be stored and served statically. External resources may be described in a ```resources.json``` file in the root of your project. The format is as follows:
+
+```json
+{
+    "weather": {
+        "src": "http://api.wunderground.org/?city=new_york&state=new_york"
+    },
+    "blogs": {
+        "src": "https://api.bubs-blog.info"
+    }
+}
+```
+
+You can use this data as the context for your module templates as follows:
+
+```html
+{{ module-articles data="blogs" }}
 ```
