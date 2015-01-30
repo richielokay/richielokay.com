@@ -28,6 +28,11 @@ program.command('debug')
         blanka.build('debug');
     });
 
+program.command('test [name]')
+    .action(function(name) {
+        blanka.test(name);
+    });
+
 program.command('module [name]')
     .action(function(name) {
         if (!name) {

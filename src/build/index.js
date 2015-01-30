@@ -5,7 +5,7 @@
  *************/
 
 var Promise = require('promise');
-var getSettings = require('./get-settings');
+var getSettings = require('../get-settings');
 var loadApp = require('./load-app');
 var updateApp = require('./update-app');
 var templateSiteHTML = require('./template-site-html');
@@ -142,7 +142,7 @@ module.exports = function build(name) {
     var settings = getSettings(name);
     var context = { settings: settings };
 
-    init(context)
+    return init(context)
         .then(staticServe)
         .then(liveReloadServe)
         .then(createWatcher(settings.src, function(file, evt) {

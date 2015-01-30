@@ -28,7 +28,7 @@ module.exports = function(context) {
     });
 
     // Set up the http server
-    http.createServer(function(request, response) {
+    context.server = http.createServer(function(request, response) {
         request.addListener('end', function() {
             appServer.serve(request, response);
         }).resume();
