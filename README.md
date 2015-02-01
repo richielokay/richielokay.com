@@ -1,3 +1,23 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [blanka](#blanka)
+- [Install](#install)
+- [Running Builds](#running-builds)
+  - [$ blanka build [name]](#$-blanka-build-name)
+  - [Asset Resolution](#asset-resolution)
+  - [Building HTML](#building-html)
+      - [Settings](#settings)
+  - [Building JavaScript](#building-javascript)
+  - [Module Execution](#module-execution)
+  - [Resource Loading](#resource-loading)
+    - [Automatic loading using "src"](#automatic-loading-using-src)
+    - [Custom loading using "loader"](#custom-loading-using-loader)
+    - [Using external resources](#using-external-resources)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # blanka
 
 Blanka builds your static web sites. You write Handlebars, SASS, and Browserified JavaScript. Blanka builds compliant front-end code ready for distribution on a static host such as AWS S3+CloudFront.
