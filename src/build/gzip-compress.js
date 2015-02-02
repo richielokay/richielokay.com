@@ -63,6 +63,6 @@ module.exports = function(context) {
             });
         });
     } else {
-        return context;
+        return Promise.resolve(context);
     }
 };

@@ -29,7 +29,6 @@
         "name": "prod",
         "dest": "dist/prod",
         "src": "app",
-        "gzip": true,
         "scripts": {
             "uglify": true
         },

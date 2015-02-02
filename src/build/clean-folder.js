@@ -18,9 +18,7 @@ module.exports = function(target) {
     return function(context) {
         return new Promise(function(resolve, reject) {
             del(folder, function(err) {
-                if (err) { 
-                    reject('[clean-folder.js] ' + err);
-                }
+                if (err) { reject('[clean-folder.js] ' + err); }
                 else { resolve(context); }
             });
         });

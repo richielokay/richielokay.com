@@ -20,7 +20,5 @@
   "smarttabs": true,
   "white": true,
   "validthis": true,
-  "globals": {
-    "casper": true
-  }
+  "globals": {}
 }

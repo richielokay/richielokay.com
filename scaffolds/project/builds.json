@@ -42,8 +42,8 @@
         }
     },
     {
-        "name": "prod",
-        "dest": "dist/prod",
+        "name": "prod_gzip",
+        "dest": "dist/prod_gzip",
         "src": "app",
         "gzip": true,
         "scripts": {

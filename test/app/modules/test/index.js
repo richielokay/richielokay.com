@@ -3,5 +3,5 @@
 require('../../scripts/test')();
 
 module.exports = function(element) {
-    console.log('Heeey');
+    console.log('Hey!');
 };

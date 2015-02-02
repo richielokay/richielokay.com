@@ -22,7 +22,7 @@ function loadApp(context) {
     var cwd = process.cwd();
     var src = path.join(cwd, context.settings.src);
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
 
         readdir.read(src, 'utf8', function(err, files) {
             if (err) { log('Blanka', '[load-app.js] ' + err, 'error'); }

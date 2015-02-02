@@ -25,6 +25,7 @@ function handlebarsCompile(content) {
     try {
         result = handlebars.compile(content);
     } catch (err) {
+        log('Handlebars', err, 'error');
         result = handlebars.compile('<span></span>');
     }
 

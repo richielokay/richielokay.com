@@ -24,7 +24,8 @@ var groups = {
     Assets: clc.xterm(105).bold,
     Blanka: clc.green.bold,
     Gzip: clc.xterm(7).bold,
-    Resources: clc.xterm(157).bold
+    Resources: clc.xterm(157).bold,
+    Test: clc.greenBright.bold
 };
 
 var warn = clc.yellowBright.bold;
@@ -44,7 +45,12 @@ module.exports = function log(group, message, severity, notify) {
                 break;
             case 'error':
                 notice = error('(Error) ');
-                notify = true;
+                notifier.notify({
+                    type: 'error',
+                    title: group,
+                    message: 'Error - See the terminal for more info...',
+                    icon: path.join(__dirname, '../bin/sfa3_blanka-1.gif')
+                });
                 break;
             default:
                 break;

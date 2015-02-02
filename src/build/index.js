@@ -55,7 +55,7 @@ function updateNoScripts(context, file, evt) {
         .then(writeContext)
         .then(function(context) {
             log('Blanka', 'Built in ' + (Date.now() - start) / 1000 + 's');
-            return context;
+            return Promise.resolve(context);
         })
         .catch(function(err) {
             if (err) { console.log(err); }
@@ -84,7 +84,7 @@ function update(context, file, evt) {
         .then(writeContext)
         .then(function(context) {
             log('Blanka', 'Built in ' + (Date.now() - start) / 1000 + 's');
-            return context;
+            return Promise.resolve(context);
         })
         .catch(function(err) {
             if (err) { console.log(err); }
@@ -115,7 +115,7 @@ function init(context) {
         .then(templatePages)
         .then(cleanFolder(context.settings.dest))
         .then(compileScripts(function(file) {
-            update(context, file[0], 'change');
+            return update(context, file[0], 'change');
         }))
         .then(compileStyles)
         .then(injectScripts)
@@ -127,10 +127,10 @@ function init(context) {
         .then(function(context) {
             var delta = Math.round((Date.now() - start) / 1000);
             log('Blanka', 'Build Completed in ' + delta + 's', null, true);
-            return context;
+            return Promise.resolve(context);
         })
         .catch(function(err) {
-            if (err) { console.log(err); }
+            if (err) { console.error(err); }
         });
 }
 
@@ -146,9 +146,9 @@ module.exports = function build(name) {
         .then(staticServe)
         .then(liveReloadServe)
         .then(createWatcher(settings.src, function(file, evt) {
-            updateNoScripts(context, file, evt);
+            return updateNoScripts(context, file, evt);
         }))
         .then(createWatcher(settings.assets.src, function() {
-            updateAssets(context);
+            return updateAssets(context);
         }));
 };
