@@ -14,5 +14,5 @@ var assert = require('assert');
 module.exports = function(window) {
     var testElement = window.document.querySelector('.test2');
 
-    assert.equal(testElement.innerHTML, 'Test2!');
+    assert.equal(testElement.innerHTML, 'Test!');
 };

@@ -16,25 +16,6 @@ Additional features:
 
 # Table of Contents
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Install](#install)
-- [Running Builds](#running-builds)
-  - [$ blanka build [name]](#$-blanka-build-name)
-  - [Asset Resolution](#asset-resolution)
-  - [Building HTML](#building-html)
-      - [Settings](#settings)
-  - [Building JavaScript](#building-javascript)
-  - [Module Execution](#module-execution)
-  - [Resource Loading](#resource-loading)
-    - [Automatic loading using "src"](#automatic-loading-using-src)
-    - [Custom loading using "loader"](#custom-loading-using-loader)
-    - [Using external resources](#using-external-resources)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Install
 
 ```$ npm install blanka -g```
@@ -486,3 +467,57 @@ You can use this data as the context for your module templates as follows:
 ```html
 {{ module-articles data="blogs" }}
 ```
+
+## Testing
+
+### blanka test [name] [filename]
+
+Blanka comes with basic support for running tests. When running
+
+```$ blanka test [name]```
+
+a static server is created pointing to the specified build output in the ```dist/``` folder. A top-level test runner, typically ```tests/index.js``` is run unless a filename is specified. For example, to run only ```tests/functional.js``` on the production build:
+
+```$ blanka test prod functional```
+
+### How Tests Work
+
+#### Test Runner
+
+Tests should be run from a top-level runner. This runner calls additional step files that may perform any number of test steps. The runner instantiates the test environment prior to running steps. The following is a sample runner that runs a single validation step:
+
+```javascript
+var apron = require('apron');
+var Promise = require('promise');
+var validate = require('./validate');
+
+module.exports = function() {
+    return apron(process.env.BASE_URL)
+        .then(validate);
+};
+```
+
+This runner uses apron, which sets up an environment for functional front-end testing. Apron is a very small wrapper around a [jsdom](https://github.com/tmpvar/jsdom) instance. The target DOM is rendered and scripts are processed. If runtime errors are thrown, the test automatically fails. Otherwise, the window object is passed to consecutive test steps.
+
+Test step files export a function that accepts a window object as a parameter and returns a promise. Within this function, other test frameworks may be used for unit testing, as long as they are ```require()```-able in node.js. It's easiest to use node's [assertion framework](http://nodejs.org/api/assert.html). The following is the ```validate.js``` step from above:
+
+```javascript
+var Promise = require('promise');
+var assert = require('assert');
+
+module.exports = function(window) {
+
+    // Setup
+    var testElement = window.document.querySelector('.test');
+
+    // Tests
+    assert.equal(testElement.innerHTML, 'Test!');
+    // more tests...
+
+    return Promise.resolve(window);
+};
+```
+
+
+
+
