@@ -1,6 +1,6 @@
 {
   "name": "blanka",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Blanka builds your static websites",
   "main": "index.js",
   "bin": {

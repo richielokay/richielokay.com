@@ -12,7 +12,7 @@ var assert = require('assert');
  *************/
 
 module.exports = function(window) {
-    var testElement = window.document.querySelector('.test');
+    assert.ok(true);
 
-    assert.equal(testElement.innerHTML, 'Test!');
+    return Promise.resolve(window);
 };

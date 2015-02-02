@@ -9,9 +9,13 @@
   },
   "scripts": {},
   "author": "",
-  "devDependencies": {},
-  "dependencies": {},
+  "devDependencies": {
+    "apron": "~0.0.2"
+  },
+  "dependencies": {
+    "promise": "^6.1.0"
+  },
   "peerDependencies": {
-    "blanka": "~0.0.12"
+    "blanka": "~0.1.12"
   }
 }

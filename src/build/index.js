@@ -38,6 +38,28 @@ var loadResources = require('./load-resources');
  * Runs updates
  * @param {Object} context The context to update
  */
+function updateScripts(context) {
+    var start = Date.now();
+
+    return rebuildScripts(context)
+        .then(replaceAssets)
+        .then(gzip)
+        .then(writeDest)
+        .then(triggerLivereload)
+        .then(writeContext)
+        .then(function(context) {
+            log('Blanka', 'Built in ' + (Date.now() - start) / 1000 + 's');
+            return Promise.resolve(context);
+        })
+        .catch(function(err) {
+            if (err) { console.log(err); }
+        });
+}
+
+/**
+ * Runs updates
+ * @param {Object} context The context to update
+ */
 function updateNoScripts(context, file, evt) {
     var start = Date.now();
 
@@ -114,8 +136,8 @@ function init(context) {
         .then(templateSiteHTML)
         .then(templatePages)
         .then(cleanFolder(context.settings.dest))
-        .then(compileScripts(function(file) {
-            return update(context, file[0], 'change');
+        .then(compileScripts(function() {
+            return updateScripts(context);
         }))
         .then(compileStyles)
         .then(injectScripts)

@@ -12,7 +12,7 @@ var blanka = require('../src/blanka-cli');
  *  Program  *
  *************/
 
-program.version('0.1.12');
+program.version('0.1.13');
 
 /***********
  *  Build  *
