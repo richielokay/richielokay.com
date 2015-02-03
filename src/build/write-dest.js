@@ -21,6 +21,7 @@ var mkdirp = require('mkdirp');
 function recursiveWrite(src, writeFile, crumbs) {
     var dest, folder, crumbsCopy;
     var promises = [];
+    var settings = this.settings;
 
     // Begin dropping crumbs
     crumbs = crumbs || [];
@@ -49,6 +50,7 @@ function recursiveWrite(src, writeFile, crumbs) {
                 // Create folder first
                 mkdirp(folder, function(err) {
                     if (err) { reject('[write-dest.js] ' + err); return; }
+
                     writeFile(dest, content, function(err) {
                         if (err) { reject('[write-dest.js] ' + err); }
                         else { resolve(); }
@@ -66,8 +68,8 @@ function recursiveWrite(src, writeFile, crumbs) {
             crumbsCopy = Array.prototype.slice.call(crumbs, 0);
 
             promises.push(new Promise(function(folder, crumbs, resolve) {
-                resolve(recursiveWrite(folder, writeFile, crumbs));
-            }.bind(null, src[i], crumbsCopy)));
+                resolve(recursiveWrite.call(this, folder, writeFile, crumbs));
+            }.bind(this, src[i], crumbsCopy)));
 
             crumbs.pop();
         }

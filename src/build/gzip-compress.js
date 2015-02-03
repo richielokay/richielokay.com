@@ -31,7 +31,7 @@ function recursiveGzip(dest, promises) {
                     dest[key] = result;
                     if (err) { reject(err); }
                     else { resolve(); }
-                }.bind(null, i));
+                }.bind(null, i + '.gz')); // Add .gz to end
             }));
         }
 

@@ -29,6 +29,7 @@
         "name": "prod",
         "dest": "dist/prod",
         "src": "app",
+        "gzip" : true,
         "scripts": {
             "uglify": true
         },
@@ -40,6 +41,10 @@
         "env": {
             "NODE_ENV": "production",
             "ASSETS_URL": "/assets/"
+        },
+        "server": {
+            "port": 8080,
+            "lrPort": 35729
         }
     }
 ]
