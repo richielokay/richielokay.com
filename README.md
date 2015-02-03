@@ -499,7 +499,7 @@ module.exports = function() {
 
 This runner uses apron, which sets up an environment for functional front-end testing. Apron is a very small wrapper around a [jsdom](https://github.com/tmpvar/jsdom) instance. The target DOM is rendered and scripts are processed. If runtime errors are thrown, the test automatically fails. Otherwise, the window object is passed to consecutive test steps.
 
-Test step files export a function that accepts a window object as a parameter and returns a promise. Within this function, other test frameworks may be used for unit testing, as long as they are ```require()```-able in node.js. It's easiest to use node's [assertion framework](http://nodejs.org/api/assert.html). The following is the ```validate.js``` step from above:
+Test step files export a function that accepts a window object as a parameter and returns a promise. Within this function, other test frameworks may be used for unit testing, as long as they are ```require()```-able in node.js. It's easiest to use node's [assert module](http://nodejs.org/api/assert.html). The following is the ```validate.js``` step from above:
 
 ```javascript
 var Promise = require('promise');
