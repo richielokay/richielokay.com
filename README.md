@@ -286,7 +286,16 @@ A static debug server may be started for a build. It servers up all assets in th
 
 ## Gzip
 
-All destination files including HTML, JS, and CSS may be gzipped. Set ```gzip: true``` for a build.
+All destination files including HTML, JS, and CSS may be gzipped. Depending on the nature of the host, different gzip outputs may be required. By default, settings ```"gzip": true``` will result in gzipped files that retain their extensions (.css, .js, etc.) It's also possible to configure gzip as follows:
+
+```
+"gzip": {
+    "extension": true,
+    "both": true
+}
+```
+
+Setting ```"extension": true``` results in the addition of a .gz extension to all generated gzip files. Setting ```"both": true``` results in both the compressed (.gz) and uncompressed files in the output.
 
 # Modules
 

@@ -16,9 +16,17 @@ var log = require('../logger');
  * Recursively gzips all strings in the destination tree,
  * turning them in to buffers.
  */
-function recursiveGzip(dest, promises) {
+function recursiveGzip(settings, dest, promises) {
+    var both, extension;
     promises = promises || [];
 
+    // Adjust for expanded gzip options
+    if (settings === Object(settings)) {
+        both = settings.both || false;
+        extension = settings.extension || false;
+    }
+
+    // Begin gzipping all files in dest
     for (var i in dest) {
 
         // Skip keys starting with _
@@ -28,16 +36,26 @@ function recursiveGzip(dest, promises) {
         if (typeof dest[i] === 'string') {
             promises.push(new Promise(function(resolve, reject) {
                 zlib.gzip(dest[i], function(key, err, result) {
+                    
+                    // Remove original to replace with gzipped version
+                    if (extension && !both) {
+                        delete dest[key];
+                        key += '.gz';
+                    }
+
+                    // Always add extension if including compressed & uncompressed
+                    else if (both) { key += '.gz'; }
+
                     dest[key] = result;
                     if (err) { reject(err); }
                     else { resolve(); }
-                }.bind(null, i + '.gz')); // Add .gz to end
+                }.bind(null, i));
             }));
         }
 
         // Continue recursion
         else if (dest[i] === Object(dest[i]) && !(dest[i] instanceof Buffer)) {
-            recursiveGzip(dest[i], promises);
+            recursiveGzip(settings, dest[i], promises);
         }
     }
 
@@ -50,10 +68,11 @@ function recursiveGzip(dest, promises) {
 
 module.exports = function(context) {
     var start = Date.now();
+    var settings = context.settings.gzip;
 
     if (context.settings.gzip) {
         return new Promise(function(resolve) {
-            recursiveGzip(context.dist).then(function() {
+            recursiveGzip(settings, context.dist).then(function() {
                 var delta = (Date.now() - start) / 1000;
                 log('Gzip', 'Compressed in ' + delta + 's');
                 resolve(context);
