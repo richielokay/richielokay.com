@@ -13,6 +13,7 @@
     "apron": "~0.0.2"
   },
   "dependencies": {
-    "promise": "^6.1.0"
+    "promise": "^6.1.0",
+    "hbsfy": "^2.2.1"
   }
 }
