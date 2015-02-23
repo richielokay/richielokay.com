@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/rvangundy/blanka",
   "engines": {
-    "node": ">=0.10.35"
+    "node": "~0.10.35"
   },
   "dependencies": {
     "bower": "^1.3.12",
