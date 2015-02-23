@@ -12,9 +12,9 @@ var path = require('path');
  ***************/
 
 var scriptComment = '<!-- Inject Scripts -->';
-var scriptTag = '<script src="index.js" type="text/javascript"></script>';
+var scriptTag = '<script src="%s" type="text/javascript"></script>';
 var styleComment = '<!-- Inject Styles -->';
-var styleTag = '<link rel="stylesheet" type="text/css" href="main.css">';
+var styleTag = '<link rel="stylesheet" type="text/css" href="%s">';
 
 var scriptStartTag = '<script type="text/javascript">';
 var scriptEndTag = '</script>';
@@ -29,21 +29,30 @@ var styleEndTag = '</style>';
  * Recursively injects script tags to all pages
  * in a site
  */
-function recursiveInject(dest, doInjectScripts, doInjectStyles) {
-    var scriptText = dest['index.js'] ?
+function recursiveInject(context, dest, doInjectScripts, doInjectStyles, crumbs) {
+    var fullPath, version, jsFilename, cssFilename, scriptText, styleText;
+    
+    crumbs = crumbs || [];
+
+    // Determine script injection string
+    fullPath = crumbs.length ? crumbs.join('/') : null;
+    version = context.version;
+    jsFilename = (version ? '/scripts/' + version + '/' + (fullPath ? fullPath + '/' : '' ) : '') + 'index.js';
+    cssFilename = (version ? '/styles/' + version + '/' + (fullPath ? fullPath + '/' : '' ) : '') + 'main.css';
+    scriptText = dest['index.js'] ?
         doInjectScripts ?
             scriptStartTag + dest['index.js'] + scriptEndTag :
-            scriptTag :
+            scriptTag.replace('%s', jsFilename) :
         '';
-    var styleText = dest['main.css'] ?
+    styleText = dest['main.css'] ?
         doInjectStyles ?
             styleStartTag + dest['main.css'] + styleEndTag :
-            styleTag :
+            styleTag.replace('%s', cssFilename) :
         '';
 
     // Remove script & style files
-    if (doInjectScripts) { delete dest['index.js']; }
-    if (doInjectStyles) { delete dest['main.css']; }
+    if (doInjectScripts) { delete dest[jsFilename]; }
+    if (doInjectStyles) { delete dest[cssFilename]; }
 
     // Cycle through all folders/files in dest
     for (var i in dest) {
@@ -56,9 +65,11 @@ function recursiveInject(dest, doInjectScripts, doInjectStyles) {
 
         // Continue recursion
         else if (dest[i] === Object(dest[i]) &&
-            i.indexOf('_') !== 0) 
+            i.indexOf('_') !== 0)
         {
-            recursiveInject(dest[i], doInjectScripts, doInjectStyles);
+            crumbs.push(i);
+            recursiveInject(context, dest[i], doInjectScripts, doInjectStyles, crumbs);
+            crumbs.pop();
         }
     }
 }
@@ -87,7 +98,7 @@ module.exports = function(context) {
 
     return new Promise(function(resolve, reject) {
         try {
-            recursiveInject(context.dist, doInjectScripts, doInjectStyles);
+            recursiveInject(context, context.dist, doInjectScripts, doInjectStyles);
             resolve(context);
         } catch(err) {
             reject('[inject-tags.js] ' + err);

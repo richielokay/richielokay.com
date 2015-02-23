@@ -9,7 +9,7 @@
         "styles": {
             "debug": true,
             "outputStyle": "nested",
-            "includePaths": ["vendor", "app/style"]
+            "includePaths": ["vendor", "app/styles"]
         },
         "env": {
             "NODE_ENV": "development",
@@ -29,16 +29,15 @@
         "name": "prod",
         "dest": "dist/prod",
         "src": "app",
-        "gzip" : {
-            "extension": false,
-            "both": true
-        },
+        "versioning": true,
+        "gzip" : false,
+        "logOutput": true,
         "scripts": {
             "uglify": true
         },
         "styles": {
             "outputStyle": "compressed",
-            "includePaths": ["vendor", "app/style"]
+            "includePaths": ["vendor", "app/styles"]
         },
         "html": {},
         "env": {

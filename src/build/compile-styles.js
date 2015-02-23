@@ -41,7 +41,7 @@ function appendModuleImports(style, modPath, modules) {
  * @param {type} [name] [description]
  */
 function recursiveCompileSass(context, src, dest, promises, crumbs) {
-    var srcPath, destPath, normalizePath;
+    var srcPath, destPath, normalizePath, filename;
     var settings = context.settings;
     var styleSettings = settings.styles;
     var sassSheet = src['main.scss'] || '';
@@ -52,6 +52,9 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
     var includePaths = bourbon.includePaths.concat(neat.includePaths.concat(styleSettings.includePaths || []));
 
     crumbs = crumbs || [];
+
+    // Determine filename
+    filename = 'main.css';
 
     // Add normalize
     normalizePath = path.join(__dirname, '../../node_modules/normalize.scss');
@@ -71,7 +74,7 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
     destPath = path.join(cwd,
         settings.dest,
         crumbs.join(path.sep),
-        'main.css');
+        filename);
 
     // Asynchronously render CSS
     promises.push(new Promise(function(resolve) {
@@ -87,11 +90,11 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
             success: function(result) {
                 resolve();
 
-                dest['main.css'] = result.css;
+                dest[filename] = result.css;
 
                 // Optionally write map
                 if (styleSettings.debug) {
-                    dest['main.css.map'] = JSON.stringify(result.map);
+                    dest[filename + '.map'] = JSON.stringify(result.map);
                 }
             },
             error: function(error) {

@@ -29,6 +29,8 @@ var log = require('../logger');
 var gzip = require('./gzip-compress');
 var listBowerComponents = require('./list-bower-components');
 var loadResources = require('./load-resources');
+var includeVersion = require('./include-version');
+var versionPrefix = require('./version-prefix');
 
 /***********
  *  Tasks  *
@@ -42,7 +44,9 @@ function updateScripts(context) {
     var start = Date.now();
 
     return rebuildScripts(context)
+        .then(includeVersion)
         .then(replaceAssets)
+        .then(versionPrefix)
         .then(gzip)
         .then(writeDest)
         .then(triggerLivereload)
@@ -64,6 +68,7 @@ function updateNoScripts(context, file, evt) {
     var start = Date.now();
 
     return updateApp(context, file, evt)
+        .then(includeVersion)
         .then(loadPartials)
         .then(loadModules)
         .then(templateSiteHTML)
@@ -71,6 +76,7 @@ function updateNoScripts(context, file, evt) {
         .then(compileStyles)
         .then(injectScripts)
         .then(replaceAssets)
+        .then(versionPrefix)
         .then(gzip)
         .then(writeDest)
         .then(triggerLivereload)
@@ -92,6 +98,7 @@ function update(context, file, evt) {
     var start = Date.now();
 
     return updateApp(context, file, evt)
+        .then(includeVersion)
         .then(loadPartials)
         .then(loadModules)
         .then(templateSiteHTML)
@@ -100,6 +107,7 @@ function update(context, file, evt) {
         .then(compileStyles)
         .then(injectScripts)
         .then(replaceAssets)
+        .then(versionPrefix)
         .then(gzip)
         .then(writeDest)
         .then(triggerLivereload)
@@ -130,6 +138,7 @@ function init(context) {
     log('Blanka', 'Running initial build...');
 
     return loadApp(context)
+        .then(includeVersion)
         .then(loadResources)
         .then(loadPartials)
         .then(loadModules)
@@ -142,6 +151,7 @@ function init(context) {
         .then(compileStyles)
         .then(injectScripts)
         .then(replaceAssets)
+        .then(versionPrefix)
         .then(gzip)
         .then(writeDest)
         .then(copyAssets)

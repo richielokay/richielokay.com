@@ -9,7 +9,7 @@
         "styles": {
             "sourcemaps": true,
             "outputStyle": "nested",
-            "includePaths": ["app/style"]
+            "includePaths": ["app/styles"]
         },
         "env": {
             "NODE_ENV": "development",
@@ -34,12 +34,13 @@
         },
         "styles": {
             "outputStyle": "compressed",
-            "includePaths": ["app/style"]
+            "includePaths": ["app/styles"]
         },
         "env": {
             "NODE_ENV": "production",
             "ASSETS_URL": "/assets/"
-        }
+        },
+        "versioning": true
     },
     {
         "name": "prod_gzip",
@@ -51,7 +52,7 @@
         },
         "styles": {
             "outputStyle": "compressed",
-            "includePaths": ["app/style"]
+            "includePaths": ["app/styles"]
         },
         "env": {
             "NODE_ENV": "production",

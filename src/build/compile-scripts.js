@@ -130,7 +130,10 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
     promises.push(new Promise(function(w, resolve, reject) {
         function bundle() {
             w.bundle(function(err, buffer) {
-                var content;
+                var content, filename;
+
+                // Version filename
+                filename = 'index.js';
 
                 if (err) {
                     reject('[compile-scripts.js] ' + err);
@@ -143,7 +146,7 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
                         content = content.code;
                     }
 
-                    dest['index.js'] = content;
+                    dest[filename] = content;
 
                     resolve();
                 }
@@ -197,6 +200,7 @@ module.exports = function(callback) {
                     resolve(context);
                 })
                 .catch(function(err) {
+                    console.log
                     log('Browserify', err, 'error');
                     resolve(context);
                 });

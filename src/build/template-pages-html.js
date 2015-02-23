@@ -50,6 +50,7 @@ function recursiveTemplate(context, src, dest, compile) {
         for (pageName in pages[i]) {
             extend(page, defaults, pages[i][pageName]);
             html = template(page);
+
             if (lr) { html = injectLrSnippet(html); }
             dest[pageName + '.html'] = html;
         }

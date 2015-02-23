@@ -27,10 +27,13 @@ var log = require('../logger');
  * @param {type} [name] [description]
  */
 function recursiveTemplate(context, src, dest, compile) {
-    var template, html, lr;
+    var template, html, lr, filename;
     var content = src['content.json'] ? JSON.parse(src['content.json']) : {};
     var page = dest._page = dest._page || content;
     var settings = context.settings;
+
+    // Determine filename
+    filename = 'index.html';
 
     // Check if livereload is used
     try { lr = settings.html.lrSnippet; }
@@ -43,7 +46,7 @@ function recursiveTemplate(context, src, dest, compile) {
             template = compile(src[i]);
             html = template(page);
             if (lr) { html = injectLrSnippet(html); }
-            dest['index.html'] = html;
+            dest[filename] = html;
             continue;
         }
 

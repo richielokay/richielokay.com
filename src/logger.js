@@ -25,7 +25,8 @@ var groups = {
     Blanka: clc.green.bold,
     Gzip: clc.xterm(7).bold,
     Resources: clc.xterm(157).bold,
-    Test: clc.greenBright.bold
+    Test: clc.greenBright.bold,
+    Git: clc.xterm(203).bold
 };
 
 var warn = clc.yellowBright.bold;

@@ -64,7 +64,6 @@ module.exports = function createProject(name) {
         });
     }));
 
-
     // Manually create empty folders
     mkdirp(path.join(process.cwd(), 'assets', 'images'));
     mkdirp(path.join(process.cwd(), 'app', 'styles'));
@@ -89,6 +88,11 @@ module.exports = function createProject(name) {
 
     // Perform all init tasks
     Promise.all(promises)
+        .then(function() {
+            exec('git init', function() {
+                
+            });
+        })
         .then(function() {
             log('Blanka', 'Project initialized. Run "blanka debug" to begin.');
             process.exit(0);
