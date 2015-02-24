@@ -251,6 +251,33 @@ In addition to styles described in the ```site/``` folder, dependencies on modul
 * **outputStyle** *[string] nested, compressed* Whether to generated verbose, nested CSS or compressed / minified CSS.
 * **includePaths** *[array]* A list of all include paths to make available to SASS using ```@import```.
 
+## Versioning
+
+Versioning is handled by Blanka to facilitate version consistency and cache busting. This is useful for deploying to a global edge cache network such as AWS CloudFront.
+
+Versions are handled using the first 8 characters of the git hash. Currently, only a versioned prefix is supported. In the builds.json file, set ```versioning: true```. When building js or css files, they will be placed inside a versioned parent folder. Additionally, all index.html files will refer to the versioned path. The distribution output may look like this:
+
+```
+scripts
+  |- fj439cfj
+     |- page2
+        |- index.js
+     |- index.js
+styles
+  |- fj439cfj
+     |- page2
+        |- main.css
+     |- main.css
+page2
+  |- index.html
+index.html
+
+```
+
+If using an edge cache network, it's recommended to set the TTL of the js and css resources to be very high. For example, ```Cache-Control: max-age=31536000``` will cache the versioned resources for as long as a year.
+
+Alternatively, all index.html files should have a very short TTL or not be cached at all. For example, ```Cache-Control: max-age=no-cache``` or ```Cache-Control: max-age=60``` to specify a 1 minute TTL.
+
 ## Building JavaScript
 
 ```site/**/index.js --> dist/[build_name]/**/index.js```
