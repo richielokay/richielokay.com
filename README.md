@@ -14,8 +14,6 @@ Additional features:
 * Static web server with Livereload
 * Pre-fetches data from external resources over HTTP
 
-# Table of Contents
-
 # Install
 
 ```$ npm install blanka -g```
