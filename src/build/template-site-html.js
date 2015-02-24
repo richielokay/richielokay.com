@@ -30,7 +30,11 @@ function recursiveTemplate(context, src, dest, compile) {
     var template, html, lr, filename;
     var content = src['content.json'] ? JSON.parse(src['content.json']) : {};
     var page = dest._page = dest._page || content;
+    var pages = src['pages.json'] ? JSON.parse(src['pages.json']) : {};
     var settings = context.settings;
+
+    // Append pages
+    if (pages) { page._pages = pages; }
 
     // Determine filename
     filename = 'index.html';

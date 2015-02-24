@@ -260,6 +260,8 @@ Using a pages.json file and additional templates, you can generate more than an 
 
 The above data would output two files, ```pageA.html``` and ```pageB.html```. Each of these are templated using their respective data. Note that the ```title``` and ```date``` fields are only examples. You may incorporate any data you choose.
 
+Additionally, the ```pages.json``` file is loaded in to the context for the index page. You can access the ```pages.json``` object in the template using ```this._pages```.
+
 #### Settings
 
 * **lrSnippet** *[boolean]* Whether to inject the livereload snippet in to each HTML file.
