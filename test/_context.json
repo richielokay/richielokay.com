@@ -70,9 +70,9 @@
             }
         }
     },
-    "version": "22e2088",
+    "version": "029ac71",
     "resources": {
-        "greenhouse2": {
+        "greenhouse": {
             "departments": [
                 {
                     "id": 4569,
@@ -93,28 +93,7 @@
                 {
                     "id": 1508,
                     "name": "Analytics",
-                    "jobs": [
-                        {
-                            "id": 41312,
-                            "title": "Marketing Data Scientist  ",
-                            "updated_at": "2015-01-06T20:24:56Z",
-                            "location": {
-                                "name": "New York"
-                            },
-                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=41312",
-                            "metadata": []
-                        },
-                        {
-                            "id": 44004,
-                            "title": "Technical Data Analyst",
-                            "updated_at": "2015-01-23T01:25:46Z",
-                            "location": {
-                                "name": "New York"
-                            },
-                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=44004",
-                            "metadata": []
-                        }
-                    ]
+                    "jobs": []
                 },
                 {
                     "id": 1507,
@@ -353,6 +332,16 @@
                                 "name": "New York"
                             },
                             "absolute_url": "http://bounceexchange.com/careers?gh_jid=46801",
+                            "metadata": []
+                        },
+                        {
+                            "id": 49583,
+                            "title": "Lead Engineer- Platform Team",
+                            "updated_at": "2015-02-24T17:57:00Z",
+                            "location": {
+                                "name": "New York"
+                            },
+                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=49583",
                             "metadata": []
                         },
                         {
@@ -384,7 +373,7 @@
                 }
             ]
         },
-        "greenhouse": {
+        "greenhouse2": {
             "departments": [
                 {
                     "id": 4569,
@@ -405,28 +394,7 @@
                 {
                     "id": 1508,
                     "name": "Analytics",
-                    "jobs": [
-                        {
-                            "id": 41312,
-                            "title": "Marketing Data Scientist  ",
-                            "updated_at": "2015-01-06T20:24:56Z",
-                            "location": {
-                                "name": "New York"
-                            },
-                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=41312",
-                            "metadata": []
-                        },
-                        {
-                            "id": 44004,
-                            "title": "Technical Data Analyst",
-                            "updated_at": "2015-01-23T01:25:46Z",
-                            "location": {
-                                "name": "New York"
-                            },
-                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=44004",
-                            "metadata": []
-                        }
-                    ]
+                    "jobs": []
                 },
                 {
                     "id": 1507,
@@ -665,6 +633,16 @@
                                 "name": "New York"
                             },
                             "absolute_url": "http://bounceexchange.com/careers?gh_jid=46801",
+                            "metadata": []
+                        },
+                        {
+                            "id": 49583,
+                            "title": "Lead Engineer- Platform Team",
+                            "updated_at": "2015-02-24T17:57:00Z",
+                            "location": {
+                                "name": "New York"
+                            },
+                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=49583",
                             "metadata": []
                         },
                         {
@@ -769,28 +747,7 @@
                 {
                     "id": 1508,
                     "name": "Analytics",
-                    "jobs": [
-                        {
-                            "id": 41312,
-                            "title": "Marketing Data Scientist  ",
-                            "updated_at": "2015-01-06T20:24:56Z",
-                            "location": {
-                                "name": "New York"
-                            },
-                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=41312",
-                            "metadata": []
-                        },
-                        {
-                            "id": 44004,
-                            "title": "Technical Data Analyst",
-                            "updated_at": "2015-01-23T01:25:46Z",
-                            "location": {
-                                "name": "New York"
-                            },
-                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=44004",
-                            "metadata": []
-                        }
-                    ]
+                    "jobs": []
                 },
                 {
                     "id": 1507,
@@ -1032,6 +989,16 @@
                             "metadata": []
                         },
                         {
+                            "id": 49583,
+                            "title": "Lead Engineer- Platform Team",
+                            "updated_at": "2015-02-24T17:57:00Z",
+                            "location": {
+                                "name": "New York"
+                            },
+                            "absolute_url": "http://bounceexchange.com/careers?gh_jid=49583",
+                            "metadata": []
+                        },
+                        {
                             "id": 13565,
                             "title": "QA Engineer",
                             "updated_at": "2015-01-06T20:24:56Z",
@@ -1061,7 +1028,7 @@
             ],
             "data": "greenhouse"
         },
-        "index.html": "<html>\n<head>\n<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n<script src=\"/scripts/22e2088/index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/22e2088/main.css\">\n</head>\n<body>\n<div class=\"test2\" data-module=\"test2\">Hello, Curly Cliff!!!</div>\n\n<h2 data-module=\"test\">Hello, Leghorn Curly!!!!</h2>\n\n</body>\n</html>\n",
+        "index.html": "<html>\n<head>\n<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n<script src=\"/scripts/029ac71/index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/029ac71/main.css\">\n</head>\n<body>\n<div class=\"test2\" data-module=\"test2\">Hello, Curly Cliff!!!</div>\n\n<h2 data-module=\"test\">Hello, Leghorn Curly!!!!</h2>\n\n</body>\n</html>\n",
         "test": {
             "_page": {
                 "_modules": {
@@ -1081,9 +1048,9 @@
                 "valA": "Hello",
                 "valB": "Moon"
             },
-            "index.html": "<html>\n<head>\n<script src=\"/scripts/22e2088/test/index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/22e2088/test/main.css\">\n</head>\n<body>\nTest!\n<h2 class=\"test\" data-module=\"test\">Hello, Bo Leghorn!</h2>\n\n</body>\n</html>\n",
-            "siteA.html": "<html>\n<head>\n<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n<script src=\"/scripts/22e2088/test/index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/22e2088/test/main.css\">\n</head>\n<body>\nHello, World!\n</body>\n</html>\n",
-            "siteB.html": "<html>\n<head>\n<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n<script src=\"/scripts/22e2088/test/index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/22e2088/test/main.css\">\n</head>\n<body>\nHello, Moon!\n</body>\n</html>\n",
+            "index.html": "<html>\n<head>\n<script src=\"/scripts/029ac71/test/index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/029ac71/test/main.css\">\n</head>\n<body>\nTest!\n<h2 class=\"test\" data-module=\"test\">Hello, Bo Leghorn!</h2>\n\n</body>\n</html>\n",
+            "siteA.html": "<html>\n<head>\n<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n<script src=\"/scripts/029ac71/test/index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/029ac71/test/main.css\">\n</head>\n<body>\nHello, World!\n</body>\n</html>\n",
+            "siteB.html": "<html>\n<head>\n<meta charset='utf-8'>\n<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n<title>Goodbye Intent</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale = 1.0, user-scalable = no\"/>\n<meta name=\"robots\" content=\"NOODP\"/>\n<meta name=\"description\" content=\"Bounce Exchange is a full-service behavioral automation platform that reacts to your visitors’ digital body language. BounceX invented exit intent technology.\"/>\n<meta name=\"keywords\" content=\"Exit Intent Cart Abandonment Email Capture Instant Cart Recovery Traffic Shaping Data Brain Customer Referral Promo echo Social Followers\"/>\n<meta name=\"author\" content=\"web-author@bounceexchange.com\"/>\n\n<link rel='apple-touch-icon' href='apple-touch-icon-precomposed.png'>\n<link rel='apple-touch-icon' href='apple-touch-icon-144x144-precomposed.png'>\n<script src=\"/scripts/029ac71/test/index.js\" type=\"text/javascript\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/029ac71/test/main.css\">\n</head>\n<body>\nHello, Moon!\n</body>\n</html>\n",
             "_bundle": {
                 "_options": {
                     "cache": {},
@@ -1092,7 +1059,7 @@
                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -1111,7 +1078,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -1155,7 +1122,7 @@
                         },
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -1174,7 +1141,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -1237,7 +1204,7 @@
                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -1256,7 +1223,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -1308,7 +1275,7 @@
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -1327,7 +1294,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -1483,7 +1450,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -1502,7 +1469,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -1546,7 +1513,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -1565,7 +1532,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -1628,7 +1595,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -1647,7 +1614,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -1699,7 +1666,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -1718,7 +1685,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -1865,7 +1832,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -1884,7 +1851,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -1928,7 +1895,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -1947,7 +1914,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -2010,7 +1977,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -2029,7 +1996,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -2081,7 +2048,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -2100,7 +2067,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -2247,7 +2214,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -2266,7 +2233,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -2310,7 +2277,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -2329,7 +2296,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -2392,7 +2359,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -2411,7 +2378,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -2463,7 +2430,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -2482,7 +2449,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -2690,7 +2657,7 @@
                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -2709,7 +2676,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -2753,7 +2720,7 @@
                         },
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -2772,7 +2739,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -2835,7 +2802,7 @@
                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -2854,7 +2821,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -2906,7 +2873,7 @@
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -2925,7 +2892,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -3090,7 +3057,7 @@
                             },
                             "pkg": {
                                 "name": "blanka",
-                                "version": "0.1.15",
+                                "version": "0.2.0",
                                 "description": "Blanka builds your static websites",
                                 "main": "index.js",
                                 "bin": {
@@ -3109,7 +3076,7 @@
                                 },
                                 "homepage": "https://github.com/rvangundy/blanka",
                                 "engines": {
-                                    "node": ">=0.10.35"
+                                    "node": "~0.10.35"
                                 },
                                 "dependencies": {
                                     "bower": "^1.3.12",
@@ -3162,7 +3129,7 @@
                             },
                             "pkg": {
                                 "name": "blanka",
-                                "version": "0.1.15",
+                                "version": "0.2.0",
                                 "description": "Blanka builds your static websites",
                                 "main": "index.js",
                                 "bin": {
@@ -3181,7 +3148,7 @@
                                 },
                                 "homepage": "https://github.com/rvangundy/blanka",
                                 "engines": {
-                                    "node": ">=0.10.35"
+                                    "node": "~0.10.35"
                                 },
                                 "dependencies": {
                                     "bower": "^1.3.12",
@@ -3272,7 +3239,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -3291,7 +3258,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -3335,7 +3302,7 @@
                                         },
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -3354,7 +3321,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -3417,7 +3384,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -3436,7 +3403,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -3488,7 +3455,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -3507,7 +3474,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -3655,7 +3622,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -3674,7 +3641,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -3718,7 +3685,7 @@
                                         },
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -3737,7 +3704,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -3800,7 +3767,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -3819,7 +3786,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -3871,7 +3838,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -3890,7 +3857,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -4038,7 +4005,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -4057,7 +4024,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -4101,7 +4068,7 @@
                                         },
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -4120,7 +4087,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -4183,7 +4150,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -4202,7 +4169,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -4254,7 +4221,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -4273,7 +4240,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -4425,7 +4392,7 @@
                             "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                             "/Users/ryanvangundy/Documents/blanka/package.json": {
                                 "name": "blanka",
-                                "version": "0.1.15",
+                                "version": "0.2.0",
                                 "description": "Blanka builds your static websites",
                                 "main": "index.js",
                                 "bin": {
@@ -4444,7 +4411,7 @@
                                 },
                                 "homepage": "https://github.com/rvangundy/blanka",
                                 "engines": {
-                                    "node": ">=0.10.35"
+                                    "node": "~0.10.35"
                                 },
                                 "dependencies": {
                                     "bower": "^1.3.12",
@@ -4488,7 +4455,7 @@
                             },
                             "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                 "name": "blanka",
-                                "version": "0.1.15",
+                                "version": "0.2.0",
                                 "description": "Blanka builds your static websites",
                                 "main": "index.js",
                                 "bin": {
@@ -4507,7 +4474,7 @@
                                 },
                                 "homepage": "https://github.com/rvangundy/blanka",
                                 "engines": {
-                                    "node": ">=0.10.35"
+                                    "node": "~0.10.35"
                                 },
                                 "dependencies": {
                                     "bower": "^1.3.12",
@@ -4570,7 +4537,7 @@
                             "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                             "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                 "name": "blanka",
-                                "version": "0.1.15",
+                                "version": "0.2.0",
                                 "description": "Blanka builds your static websites",
                                 "main": "index.js",
                                 "bin": {
@@ -4589,7 +4556,7 @@
                                 },
                                 "homepage": "https://github.com/rvangundy/blanka",
                                 "engines": {
-                                    "node": ">=0.10.35"
+                                    "node": "~0.10.35"
                                 },
                                 "dependencies": {
                                     "bower": "^1.3.12",
@@ -4641,7 +4608,7 @@
                             "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                             "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                 "name": "blanka",
-                                "version": "0.1.15",
+                                "version": "0.2.0",
                                 "description": "Blanka builds your static websites",
                                 "main": "index.js",
                                 "bin": {
@@ -4660,7 +4627,7 @@
                                 },
                                 "homepage": "https://github.com/rvangundy/blanka",
                                 "engines": {
-                                    "node": ">=0.10.35"
+                                    "node": "~0.10.35"
                                 },
                                 "dependencies": {
                                     "bower": "^1.3.12",
@@ -5002,7 +4969,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5021,7 +4988,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5065,7 +5032,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5084,7 +5051,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5147,7 +5114,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5166,7 +5133,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5218,7 +5185,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5237,7 +5204,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5384,7 +5351,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5403,7 +5370,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5447,7 +5414,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5466,7 +5433,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5529,7 +5496,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5548,7 +5515,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5600,7 +5567,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5619,7 +5586,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5766,7 +5733,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5785,7 +5752,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5829,7 +5796,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5848,7 +5815,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5911,7 +5878,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -5930,7 +5897,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -5982,7 +5949,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -6001,7 +5968,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -6447,7 +6414,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -6466,7 +6433,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -6510,7 +6477,7 @@
                                         },
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -6529,7 +6496,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -6592,7 +6559,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -6611,7 +6578,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -6663,7 +6630,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -6682,7 +6649,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -6847,7 +6814,7 @@
                                             },
                                             "pkg": {
                                                 "name": "blanka",
-                                                "version": "0.1.15",
+                                                "version": "0.2.0",
                                                 "description": "Blanka builds your static websites",
                                                 "main": "index.js",
                                                 "bin": {
@@ -6866,7 +6833,7 @@
                                                 },
                                                 "homepage": "https://github.com/rvangundy/blanka",
                                                 "engines": {
-                                                    "node": ">=0.10.35"
+                                                    "node": "~0.10.35"
                                                 },
                                                 "dependencies": {
                                                     "bower": "^1.3.12",
@@ -6919,7 +6886,7 @@
                                             },
                                             "pkg": {
                                                 "name": "blanka",
-                                                "version": "0.1.15",
+                                                "version": "0.2.0",
                                                 "description": "Blanka builds your static websites",
                                                 "main": "index.js",
                                                 "bin": {
@@ -6938,7 +6905,7 @@
                                                 },
                                                 "homepage": "https://github.com/rvangundy/blanka",
                                                 "engines": {
-                                                    "node": ">=0.10.35"
+                                                    "node": "~0.10.35"
                                                 },
                                                 "dependencies": {
                                                     "bower": "^1.3.12",
@@ -7029,7 +6996,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7048,7 +7015,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7092,7 +7059,7 @@
                                                         },
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7111,7 +7078,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7174,7 +7141,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7193,7 +7160,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7245,7 +7212,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7264,7 +7231,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7412,7 +7379,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7431,7 +7398,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7475,7 +7442,7 @@
                                                         },
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7494,7 +7461,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7557,7 +7524,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7576,7 +7543,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7628,7 +7595,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7647,7 +7614,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7795,7 +7762,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7814,7 +7781,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7858,7 +7825,7 @@
                                                         },
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7877,7 +7844,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -7940,7 +7907,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -7959,7 +7926,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -8011,7 +7978,7 @@
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                                             "name": "blanka",
-                                                            "version": "0.1.15",
+                                                            "version": "0.2.0",
                                                             "description": "Blanka builds your static websites",
                                                             "main": "index.js",
                                                             "bin": {
@@ -8030,7 +7997,7 @@
                                                             },
                                                             "homepage": "https://github.com/rvangundy/blanka",
                                                             "engines": {
-                                                                "node": ">=0.10.35"
+                                                                "node": "~0.10.35"
                                                             },
                                                             "dependencies": {
                                                                 "bower": "^1.3.12",
@@ -8182,7 +8149,7 @@
                                             "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                             "/Users/ryanvangundy/Documents/blanka/package.json": {
                                                 "name": "blanka",
-                                                "version": "0.1.15",
+                                                "version": "0.2.0",
                                                 "description": "Blanka builds your static websites",
                                                 "main": "index.js",
                                                 "bin": {
@@ -8201,7 +8168,7 @@
                                                 },
                                                 "homepage": "https://github.com/rvangundy/blanka",
                                                 "engines": {
-                                                    "node": ">=0.10.35"
+                                                    "node": "~0.10.35"
                                                 },
                                                 "dependencies": {
                                                     "bower": "^1.3.12",
@@ -8245,7 +8212,7 @@
                                             },
                                             "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                                 "name": "blanka",
-                                                "version": "0.1.15",
+                                                "version": "0.2.0",
                                                 "description": "Blanka builds your static websites",
                                                 "main": "index.js",
                                                 "bin": {
@@ -8264,7 +8231,7 @@
                                                 },
                                                 "homepage": "https://github.com/rvangundy/blanka",
                                                 "engines": {
-                                                    "node": ">=0.10.35"
+                                                    "node": "~0.10.35"
                                                 },
                                                 "dependencies": {
                                                     "bower": "^1.3.12",
@@ -8327,7 +8294,7 @@
                                             "/Users/ryanvangundy/Documents/blanka/test/app/modules/package.json": false,
                                             "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                                 "name": "blanka",
-                                                "version": "0.1.15",
+                                                "version": "0.2.0",
                                                 "description": "Blanka builds your static websites",
                                                 "main": "index.js",
                                                 "bin": {
@@ -8346,7 +8313,7 @@
                                                 },
                                                 "homepage": "https://github.com/rvangundy/blanka",
                                                 "engines": {
-                                                    "node": ">=0.10.35"
+                                                    "node": "~0.10.35"
                                                 },
                                                 "dependencies": {
                                                     "bower": "^1.3.12",
@@ -8398,7 +8365,7 @@
                                             "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                             "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                                 "name": "blanka",
-                                                "version": "0.1.15",
+                                                "version": "0.2.0",
                                                 "description": "Blanka builds your static websites",
                                                 "main": "index.js",
                                                 "bin": {
@@ -8417,7 +8384,7 @@
                                                 },
                                                 "homepage": "https://github.com/rvangundy/blanka",
                                                 "engines": {
-                                                    "node": ">=0.10.35"
+                                                    "node": "~0.10.35"
                                                 },
                                                 "dependencies": {
                                                     "bower": "^1.3.12",
@@ -10049,7 +10016,7 @@
                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                         "name": "blanka",
-                        "version": "0.1.15",
+                        "version": "0.2.0",
                         "description": "Blanka builds your static websites",
                         "main": "index.js",
                         "bin": {
@@ -10068,7 +10035,7 @@
                         },
                         "homepage": "https://github.com/rvangundy/blanka",
                         "engines": {
-                            "node": ">=0.10.35"
+                            "node": "~0.10.35"
                         },
                         "dependencies": {
                             "bower": "^1.3.12",
@@ -10112,7 +10079,7 @@
                     },
                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                         "name": "blanka",
-                        "version": "0.1.15",
+                        "version": "0.2.0",
                         "description": "Blanka builds your static websites",
                         "main": "index.js",
                         "bin": {
@@ -10131,7 +10098,7 @@
                         },
                         "homepage": "https://github.com/rvangundy/blanka",
                         "engines": {
-                            "node": ">=0.10.35"
+                            "node": "~0.10.35"
                         },
                         "dependencies": {
                             "bower": "^1.3.12",
@@ -10194,7 +10161,7 @@
                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                         "name": "blanka",
-                        "version": "0.1.15",
+                        "version": "0.2.0",
                         "description": "Blanka builds your static websites",
                         "main": "index.js",
                         "bin": {
@@ -10213,7 +10180,7 @@
                         },
                         "homepage": "https://github.com/rvangundy/blanka",
                         "engines": {
-                            "node": ">=0.10.35"
+                            "node": "~0.10.35"
                         },
                         "dependencies": {
                             "bower": "^1.3.12",
@@ -10272,7 +10239,7 @@
                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                         "name": "blanka",
-                        "version": "0.1.15",
+                        "version": "0.2.0",
                         "description": "Blanka builds your static websites",
                         "main": "index.js",
                         "bin": {
@@ -10291,7 +10258,7 @@
                         },
                         "homepage": "https://github.com/rvangundy/blanka",
                         "engines": {
-                            "node": ">=0.10.35"
+                            "node": "~0.10.35"
                         },
                         "dependencies": {
                             "bower": "^1.3.12",
@@ -10448,7 +10415,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/package.json": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -10467,7 +10434,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -10511,7 +10478,7 @@
                                 },
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -10530,7 +10497,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -10593,7 +10560,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -10612,7 +10579,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -10671,7 +10638,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -10690,7 +10657,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -10837,7 +10804,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/package.json": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -10856,7 +10823,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -10900,7 +10867,7 @@
                                 },
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -10919,7 +10886,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -10982,7 +10949,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -11001,7 +10968,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -11060,7 +11027,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -11079,7 +11046,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -11226,7 +11193,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/package.json": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -11245,7 +11212,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -11289,7 +11256,7 @@
                                 },
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -11308,7 +11275,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -11371,7 +11338,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -11390,7 +11357,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -11449,7 +11416,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -11468,7 +11435,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -11676,7 +11643,7 @@
                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                         "name": "blanka",
-                        "version": "0.1.15",
+                        "version": "0.2.0",
                         "description": "Blanka builds your static websites",
                         "main": "index.js",
                         "bin": {
@@ -11695,7 +11662,7 @@
                         },
                         "homepage": "https://github.com/rvangundy/blanka",
                         "engines": {
-                            "node": ">=0.10.35"
+                            "node": "~0.10.35"
                         },
                         "dependencies": {
                             "bower": "^1.3.12",
@@ -11739,7 +11706,7 @@
                     },
                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                         "name": "blanka",
-                        "version": "0.1.15",
+                        "version": "0.2.0",
                         "description": "Blanka builds your static websites",
                         "main": "index.js",
                         "bin": {
@@ -11758,7 +11725,7 @@
                         },
                         "homepage": "https://github.com/rvangundy/blanka",
                         "engines": {
-                            "node": ">=0.10.35"
+                            "node": "~0.10.35"
                         },
                         "dependencies": {
                             "bower": "^1.3.12",
@@ -11821,7 +11788,7 @@
                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                         "name": "blanka",
-                        "version": "0.1.15",
+                        "version": "0.2.0",
                         "description": "Blanka builds your static websites",
                         "main": "index.js",
                         "bin": {
@@ -11840,7 +11807,7 @@
                         },
                         "homepage": "https://github.com/rvangundy/blanka",
                         "engines": {
-                            "node": ">=0.10.35"
+                            "node": "~0.10.35"
                         },
                         "dependencies": {
                             "bower": "^1.3.12",
@@ -11899,7 +11866,7 @@
                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                         "name": "blanka",
-                        "version": "0.1.15",
+                        "version": "0.2.0",
                         "description": "Blanka builds your static websites",
                         "main": "index.js",
                         "bin": {
@@ -11918,7 +11885,7 @@
                         },
                         "homepage": "https://github.com/rvangundy/blanka",
                         "engines": {
-                            "node": ">=0.10.35"
+                            "node": "~0.10.35"
                         },
                         "dependencies": {
                             "bower": "^1.3.12",
@@ -12084,7 +12051,7 @@
                         },
                         "pkg": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -12103,7 +12070,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -12156,7 +12123,7 @@
                         },
                         "pkg": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -12175,7 +12142,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -12282,7 +12249,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -12301,7 +12268,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -12345,7 +12312,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -12364,7 +12331,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -12427,7 +12394,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -12446,7 +12413,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -12505,7 +12472,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -12524,7 +12491,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -12672,7 +12639,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -12691,7 +12658,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -12735,7 +12702,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -12754,7 +12721,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -12817,7 +12784,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -12836,7 +12803,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -12895,7 +12862,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -12914,7 +12881,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -13062,7 +13029,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -13081,7 +13048,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -13125,7 +13092,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -13144,7 +13111,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -13207,7 +13174,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -13226,7 +13193,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -13285,7 +13252,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -13304,7 +13271,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -13456,7 +13423,7 @@
                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -13475,7 +13442,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -13519,7 +13486,7 @@
                         },
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -13538,7 +13505,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -13601,7 +13568,7 @@
                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -13620,7 +13587,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -13679,7 +13646,7 @@
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                             "name": "blanka",
-                            "version": "0.1.15",
+                            "version": "0.2.0",
                             "description": "Blanka builds your static websites",
                             "main": "index.js",
                             "bin": {
@@ -13698,7 +13665,7 @@
                             },
                             "homepage": "https://github.com/rvangundy/blanka",
                             "engines": {
-                                "node": ">=0.10.35"
+                                "node": "~0.10.35"
                             },
                             "dependencies": {
                                 "bower": "^1.3.12",
@@ -14047,7 +14014,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/package.json": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14066,7 +14033,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14110,7 +14077,7 @@
                                 },
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14129,7 +14096,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14192,7 +14159,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14211,7 +14178,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14270,7 +14237,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14289,7 +14256,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14436,7 +14403,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/package.json": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14455,7 +14422,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14499,7 +14466,7 @@
                                 },
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14518,7 +14485,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14581,7 +14548,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14600,7 +14567,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14659,7 +14626,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14678,7 +14645,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14825,7 +14792,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/package.json": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14844,7 +14811,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14888,7 +14855,7 @@
                                 },
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14907,7 +14874,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -14970,7 +14937,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -14989,7 +14956,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -15048,7 +15015,7 @@
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                 "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                     "name": "blanka",
-                                    "version": "0.1.15",
+                                    "version": "0.2.0",
                                     "description": "Blanka builds your static websites",
                                     "main": "index.js",
                                     "bin": {
@@ -15067,7 +15034,7 @@
                                     },
                                     "homepage": "https://github.com/rvangundy/blanka",
                                     "engines": {
-                                        "node": ">=0.10.35"
+                                        "node": "~0.10.35"
                                     },
                                     "dependencies": {
                                         "bower": "^1.3.12",
@@ -15513,7 +15480,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -15532,7 +15499,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -15576,7 +15543,7 @@
                                     },
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -15595,7 +15562,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -15658,7 +15625,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -15677,7 +15644,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -15736,7 +15703,7 @@
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                         "name": "blanka",
-                                        "version": "0.1.15",
+                                        "version": "0.2.0",
                                         "description": "Blanka builds your static websites",
                                         "main": "index.js",
                                         "bin": {
@@ -15755,7 +15722,7 @@
                                         },
                                         "homepage": "https://github.com/rvangundy/blanka",
                                         "engines": {
-                                            "node": ">=0.10.35"
+                                            "node": "~0.10.35"
                                         },
                                         "dependencies": {
                                             "bower": "^1.3.12",
@@ -15921,7 +15888,7 @@
                                         },
                                         "pkg": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -15940,7 +15907,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -15993,7 +15960,7 @@
                                         },
                                         "pkg": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -16012,7 +15979,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -16119,7 +16086,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16138,7 +16105,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16182,7 +16149,7 @@
                                                     },
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16201,7 +16168,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16264,7 +16231,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16283,7 +16250,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16342,7 +16309,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16361,7 +16328,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16509,7 +16476,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16528,7 +16495,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16572,7 +16539,7 @@
                                                     },
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16591,7 +16558,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16654,7 +16621,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16673,7 +16640,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16732,7 +16699,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16751,7 +16718,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16899,7 +16866,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/package.json": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16918,7 +16885,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -16962,7 +16929,7 @@
                                                     },
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -16981,7 +16948,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -17044,7 +17011,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -17063,7 +17030,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -17122,7 +17089,7 @@
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                                     "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                                         "name": "blanka",
-                                                        "version": "0.1.15",
+                                                        "version": "0.2.0",
                                                         "description": "Blanka builds your static websites",
                                                         "main": "index.js",
                                                         "bin": {
@@ -17141,7 +17108,7 @@
                                                         },
                                                         "homepage": "https://github.com/rvangundy/blanka",
                                                         "engines": {
-                                                            "node": ">=0.10.35"
+                                                            "node": "~0.10.35"
                                                         },
                                                         "dependencies": {
                                                             "bower": "^1.3.12",
@@ -17293,7 +17260,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/package.json": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -17312,7 +17279,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -17356,7 +17323,7 @@
                                         },
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -17375,7 +17342,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -17438,7 +17405,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/test/app/modules/test/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -17457,7 +17424,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -17516,7 +17483,7 @@
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/package.json": false,
                                         "/Users/ryanvangundy/Documents/blanka/src/client/polyfills/index.js": {
                                             "name": "blanka",
-                                            "version": "0.1.15",
+                                            "version": "0.2.0",
                                             "description": "Blanka builds your static websites",
                                             "main": "index.js",
                                             "bin": {
@@ -17535,7 +17502,7 @@
                                             },
                                             "homepage": "https://github.com/rvangundy/blanka",
                                             "engines": {
-                                                "node": ">=0.10.35"
+                                                "node": "~0.10.35"
                                             },
                                             "dependencies": {
                                                 "bower": "^1.3.12",
@@ -19159,7 +19126,7 @@
             "_bundled": true
         },
         "scripts": {
-            "22e2088": {
+            "029ac71": {
                 "test": {
                     "index.js": "require=function e(t,n,r){function s(o,a){if(!n[o]){if(!t[o]){var c=\"function\"==typeof require&&require;if(!a&&c)return c(o,!0);if(i)return i(o,!0);var l=new Error(\"Cannot find module '\"+o+\"'\");throw l.code=\"MODULE_NOT_FOUND\",l}var u=n[o]={exports:{}};t[o][0].call(u.exports,function(e){var n=t[o][1][e];return s(n?n:e)},u,u.exports,e,t,n,r)}return n[o].exports}for(var i=\"function\"==typeof require&&require,o=0;o<r.length;o++)s(r[o]);return s}({\"/Users/ryanvangundy/Documents/blanka/node_modules/html5shiv/dist/html5shiv-printshiv.js\":[function(){!function(e,t){function n(e,t){var n=e.createElement(\"p\"),r=e.getElementsByTagName(\"head\")[0]||e.documentElement;return n.innerHTML=\"x<style>\"+t+\"</style>\",r.insertBefore(n.lastChild,r.firstChild)}function r(){var e=S.elements;return\"string\"==typeof e?e.split(\" \"):e}function s(e,t){var n=S.elements;\"string\"!=typeof n&&(n=n.join(\" \")),\"string\"!=typeof e&&(e=e.join(\" \")),S.elements=n+\" \"+e,l(t)}function i(e){var t=w[e[D]];return t||(t={},k++,e[D]=k,w[k]=t),t}function o(e,n,r){if(n||(n=t),y)return n.createElement(e);r||(r=i(n));var s;return s=r.cache[e]?r.cache[e].cloneNode():b.test(e)?(r.cache[e]=r.createElem(e)).cloneNode():r.createElem(e),!s.canHaveChildren||E.test(e)||s.tagUrn?s:r.frag.appendChild(s)}function a(e,n){if(e||(e=t),y)return e.createDocumentFragment();n=n||i(e);for(var s=n.frag.cloneNode(),o=0,a=r(),c=a.length;c>o;o++)s.createElement(a[o]);return s}function c(e,t){t.cache||(t.cache={},t.createElem=e.createElement,t.createFrag=e.createDocumentFragment,t.frag=t.createFrag()),e.createElement=function(n){return S.shivMethods?o(n,e,t):t.createElem(n)},e.createDocumentFragment=Function(\"h,f\",\"return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(\"+r().join().replace(/[\\w\\-:]+/g,function(e){return t.createElem(e),t.frag.createElement(e),'c(\"'+e+'\")'})+\");return n}\")(S,t.frag)}function l(e){e||(e=t);var r=i(e);return!S.shivCSS||h||r.hasCSS||(r.hasCSS=!!n(e,\"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}\")),y||c(e,r),e}function u(e){for(var t,n=e.getElementsByTagName(\"*\"),s=n.length,i=RegExp(\"^(?:\"+r().join(\"|\")+\")$\",\"i\"),o=[];s--;)t=n[s],i.test(t.nodeName)&&o.push(t.applyElement(d(t)));return o}function d(e){for(var t,n=e.attributes,r=n.length,s=e.ownerDocument.createElement(L+\":\"+e.nodeName);r--;)t=n[r],t.specified&&s.setAttribute(t.nodeName,t.nodeValue);return s.style.cssText=e.style.cssText,s}function f(e){for(var t,n=e.split(\"{\"),s=n.length,i=RegExp(\"(^|[\\\\s,>+~])(\"+r().join(\"|\")+\")(?=[[\\\\s,>+~#.:]|$)\",\"gi\"),o=\"$1\"+L+\"\\\\:$2\";s--;)t=n[s]=n[s].split(\"}\"),t[t.length-1]=t[t.length-1].replace(i,o),n[s]=t.join(\"}\");return n.join(\"{\")}function m(e){for(var t=e.length;t--;)e[t].removeNode()}function p(e){function t(){clearTimeout(o._removeSheetTimer),r&&r.removeNode(!0),r=null}var r,s,o=i(e),a=e.namespaces,c=e.parentWindow;return!_||e.printShived?e:(\"undefined\"==typeof a[L]&&a.add(L),c.attachEvent(\"onbeforeprint\",function(){t();for(var i,o,a,c=e.styleSheets,l=[],d=c.length,m=Array(d);d--;)m[d]=c[d];for(;a=m.pop();)if(!a.disabled&&j.test(a.media)){try{i=a.imports,o=i.length}catch(p){o=0}for(d=0;o>d;d++)m.push(i[d]);try{l.push(a.cssText)}catch(p){}}l=f(l.reverse().join(\"\")),s=u(e),r=n(e,l)}),c.attachEvent(\"onafterprint\",function(){m(s),clearTimeout(o._removeSheetTimer),o._removeSheetTimer=setTimeout(t,500)}),e.printShived=!0,e)}var h,y,v=\"3.7.2\",g=e.html5||{},E=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,b=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,D=\"_html5shiv\",k=0,w={};!function(){try{var e=t.createElement(\"a\");e.innerHTML=\"<xyz></xyz>\",h=\"hidden\"in e,y=1==e.childNodes.length||function(){t.createElement(\"a\");var e=t.createDocumentFragment();return\"undefined\"==typeof e.cloneNode||\"undefined\"==typeof e.createDocumentFragment||\"undefined\"==typeof e.createElement}()}catch(n){h=!0,y=!0}}();var S={elements:g.elements||\"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video\",version:v,shivCSS:g.shivCSS!==!1,supportsUnknownElements:y,shivMethods:g.shivMethods!==!1,type:\"default\",shivDocument:l,createElement:o,createDocumentFragment:a,addElements:s};e.html5=S,l(t);var j=/^$|\\b(?:all|print)\\b/,L=\"html5shiv\",_=!y&&function(){var n=t.documentElement;return!(\"undefined\"==typeof t.namespaces||\"undefined\"==typeof t.parentWindow||\"undefined\"==typeof n.applyElement||\"undefined\"==typeof n.removeNode||\"undefined\"==typeof e.attachEvent)}();S.type+=\" print\",S.shivPrint=p,p(t)}(this,document)},{}],\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/EventListener.js\":[function(){\"use strict\";function e(e){e||(e=window.event);for(var n=0,r=0,s=t[e.type];r<s.aEls.length;r++)if(s.aEls[r]===this){for(n;n<s.aEvts[r].length;n++)s.aEvts[r][n].call(this,e);break}}var t={};Element.prototype.addEventListener||(Element.prototype.addEventListener=document.addEventListener=window.addEventListener=function(n,r){if(t.hasOwnProperty(n)){for(var s=t[n],i=-1,o=0;o<s.aEls.length;o++)if(s.aEls[o]===this){i=o;break}if(-1===i)s.aEls.push(this),s.aEvts.push([r]),this[\"on\"+n]=e;else{var a=s.aEvts[i];this[\"on\"+n]!==e&&(a.splice(0),this[\"on\"+n]=e);for(var c=0;c<a.length;c++)if(a[c]===r)return;a.push(r)}}else t[n]={aEls:[this],aEvts:[[r]]},this[\"on\"+n]=e},Element.prototype.removeEventListener=document.removeEventListener=window.removeEventListener=function(e,n){if(t.hasOwnProperty(e)){for(var r=t[e],s=-1,i=0;i<r.aEls.length;i++)if(r.aEls[i]===this){s=i;break}if(-1!==s)for(var o=0,a=r.aEvts[s];o<a.length;o++)a[o]===n&&a.splice(o,1)}})},{}],\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/bind.js\":[function(){\"use strict\";Function.prototype.bind||(Function.prototype.bind=function(e){if(\"function\"!=typeof this)throw new TypeError(\"Function.prototype.bind - what is trying to be bound is not callable\");var t=Array.prototype.slice.call(arguments,1),n=this,r=function(){},s=function(){return n.apply(this instanceof r&&e?this:e,t.concat(Array.prototype.slice.call(arguments)))};return r.prototype=this.prototype,s.prototype=new r,s})},{}],\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/classList.js\":[function(){\"document\"in self&&(\"classList\"in document.createElement(\"_\")?!function(){\"use strict\";var e=document.createElement(\"_\");if(e.classList.add(\"c1\",\"c2\"),!e.classList.contains(\"c2\")){var t=function(e){var t=DOMTokenList.prototype[e];DOMTokenList.prototype[e]=function(e){var n,r=arguments.length;for(n=0;r>n;n++)e=arguments[n],t.call(this,e)}};t(\"add\"),t(\"remove\")}if(e.classList.toggle(\"c3\",!1),e.classList.contains(\"c3\")){var n=DOMTokenList.prototype.toggle;DOMTokenList.prototype.toggle=function(e,t){return 1 in arguments&&!this.contains(e)==!t?t:n.call(this,e)}}e=null}():!function(e){\"use strict\";if(\"Element\"in e){var t=\"classList\",n=\"prototype\",r=e.Element[n],s=Object,i=String[n].trim||function(){return this.replace(/^\\s+|\\s+$/g,\"\")},o=Array[n].indexOf||function(e){for(var t=0,n=this.length;n>t;t++)if(t in this&&this[t]===e)return t;return-1},a=function(e,t){this.name=e,this.code=DOMException[e],this.message=t},c=function(e,t){if(\"\"===t)throw new a(\"SYNTAX_ERR\",\"An invalid or illegal string was specified\");if(/\\s/.test(t))throw new a(\"INVALID_CHARACTER_ERR\",\"String contains an invalid character\");return o.call(e,t)},l=function(e){for(var t=i.call(e.getAttribute(\"class\")||\"\"),n=t?t.split(/\\s+/):[],r=0,s=n.length;s>r;r++)this.push(n[r]);this._updateClassName=function(){e.setAttribute(\"class\",this.toString())}},u=l[n]=[],d=function(){return new l(this)};if(a[n]=Error[n],u.item=function(e){return this[e]||null},u.contains=function(e){return e+=\"\",-1!==c(this,e)},u.add=function(){var e,t=arguments,n=0,r=t.length,s=!1;do e=t[n]+\"\",-1===c(this,e)&&(this.push(e),s=!0);while(++n<r);s&&this._updateClassName()},u.remove=function(){var e,t,n=arguments,r=0,s=n.length,i=!1;do for(e=n[r]+\"\",t=c(this,e);-1!==t;)this.splice(t,1),i=!0,t=c(this,e);while(++r<s);i&&this._updateClassName()},u.toggle=function(e,t){e+=\"\";var n=this.contains(e),r=n?t!==!0&&\"remove\":t!==!1&&\"add\";return r&&this[r](e),t===!0||t===!1?t:!n},u.toString=function(){return this.join(\" \")},s.defineProperty){var f={get:d,enumerable:!0,configurable:!0};try{s.defineProperty(r,t,f)}catch(m){-2146823252===m.number&&(f.enumerable=!1,s.defineProperty(r,t,f))}}else s[n].__defineGetter__&&r.__defineGetter__(t,d)}}(self))},{}],\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/indexOf.js\":[function(){\"use strict\";Array.prototype.indexOf||(Array.prototype.indexOf=function(e){for(var t=0;t<this.length;t++)if(this[t]===e)return t;return-1})},{}],\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/node.contains.js\":[function(){\"use strict\";!Node.prototype.contains&&Node.prototype.compareDocumentPosition&&(Node.prototype.contains=function(e){return!!(16&this.compareDocumentPosition(e))})},{}],\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/querySelector.js\":[function(){\"use strict\";document.querySelectorAll||(document.querySelectorAll=function(e){var t,n=document.createElement(\"style\"),r=[];for(document.documentElement.firstChild.appendChild(n),document._qsa=[],n.styleSheet.cssText=e+\"{x-qsa:expression(document._qsa && document._qsa.push(this))}\",window.scrollBy(0,0),n.parentNode.removeChild(n);document._qsa.length;)t=document._qsa.shift(),t.style.removeAttribute(\"x-qsa\"),r.push(t);return document._qsa=null,r}),document.querySelector||(document.querySelector=function(e){var t=document.querySelectorAll(e);return t.length?t[0]:null})},{}],\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills\":[function(e){\"use strict\";e(\"./bind\"),e(\"./EventListener\"),e(\"./indexOf\"),e(\"./node.contains\"),e(\"./classList\"),e(\"./querySelector\"),e(\"html5shiv/dist/html5shiv-printshiv\")},{\"./EventListener\":\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/EventListener.js\",\"./bind\":\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/bind.js\",\"./classList\":\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/classList.js\",\"./indexOf\":\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/indexOf.js\",\"./node.contains\":\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/node.contains.js\",\"./querySelector\":\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills/querySelector.js\",\"html5shiv/dist/html5shiv-printshiv\":\"/Users/ryanvangundy/Documents/blanka/node_modules/html5shiv/dist/html5shiv-printshiv.js\"}],\"/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js\":[function(e){\"use strict\";window.addEventListener(\"load\",function(){var t,n,r=window.document.querySelectorAll(\"[data-module]\"),s=document.documentElement;s.className=s.className.replace(/(^|\\s)no-js(\\s|$)/,\"$1$2\");for(var i=0,o=r.length;o>i;i+=1)t=r[i],n=t.getAttribute(\"data-module\"),r[i].removeAttribute(\"data-module\"),e(\"modules/\"+n)(t)})},{}],\"/Users/ryanvangundy/Documents/blanka/test/app/scripts/test.js\":[function(e,t){\"use strict\";t.exports=function(){console.log(\"Test Script Run\")}},{}],\"/Users/ryanvangundy/Documents/blanka/test/app/site/test/index.js\":[function(){\"use strict\";console.log(\"Loaded this one!\")},{}],\"modules/test\":[function(e,t){\"use strict\";e(\"../../scripts/test\")(),t.exports=function(){console.log(\"Hey!\")}},{\"../../scripts/test\":\"/Users/ryanvangundy/Documents/blanka/test/app/scripts/test.js\"}]},{},[\"/Users/ryanvangundy/Documents/blanka/src/client/polyfills\",\"/Users/ryanvangundy/Documents/blanka/src/client/run-modules.js\",\"/Users/ryanvangundy/Documents/blanka/test/app/site/test/index.js\"]);"
                 },
@@ -19167,7 +19134,7 @@
             }
         },
         "styles": {
-            "22e2088": {
+            "029ac71": {
                 "test": {
                     "main.css": "body{background-color:#00FF00}.test{color:#000000}"
                 },

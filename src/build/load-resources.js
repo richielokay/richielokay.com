@@ -66,7 +66,7 @@ function callLoader(resources, name, filePath) {
     // Generate path compliant with require()
     requirePath = filePath.split('.');
     requirePath.pop();
-    requirePath = requirePath.join(path.sep);
+    requirePath = requirePath.join('.');
 
     return new Promise(function(resolve) {
         fs.exists(filePath, function(exists) {
