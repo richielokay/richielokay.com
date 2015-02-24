@@ -104,7 +104,7 @@ function loadResources(context, resourceList) {
         // Use an external loader
         if (resourceList[i].loader) {
             filePath = path.join(cwd, resourceList[i].loader);
-            promises.push(callLoader(context.resources, i, filePath));  
+            promises.push(callLoader(context.resources, i, filePath));
         }
 
         // Perform an http get request
@@ -120,7 +120,7 @@ function loadResources(context, resourceList) {
  *  Exports  *
  *************/
 
- module.exports = function(context) {
+module.exports = function(context) {
     var resourceFile = path.join(cwd, 'resources.json');
 
     return new Promise(function(resolve) {
@@ -147,4 +147,4 @@ function loadResources(context, resourceList) {
             else { resolve(context); }
         });
     });
- };
+};
