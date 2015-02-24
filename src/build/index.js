@@ -137,9 +137,9 @@ function init(context) {
 
     log('Blanka', 'Running initial build...');
 
-    return loadApp(context)
+    return loadResources(context)
+        .then(loadApp)
         .then(includeVersion)
-        .then(loadResources)
         .then(loadPartials)
         .then(loadModules)
         .then(templateSiteHTML)
