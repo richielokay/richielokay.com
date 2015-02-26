@@ -5,12 +5,9 @@
 end_of_line = lf
 insert_final_newline = true
 
-# Tab indentation (no size specified)
-[{*.js,*.json}]
+# Settings for common text files
+[{*.css,*.hbs,*.html,*.md,*.js,*.json,*.php,*.scss}]
+charset = utf-8
 indent_style = space
 indent_size = 4
-
-# Indentation override for all JS under lib directory
-[{*.scss,*.css}]
-indent_style = space
-indent_size = 4
+trim_trailing_whitespace = true
