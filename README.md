@@ -110,6 +110,10 @@ All *.scss files in the ```style/``` folder are made available to SASS and are a
 
 All *.hbs files in the ```partials/``` folder are made available to Handlebars and are accessible using ```{{> name }}```.
 
+#### app/scripts/helpers
+
+All *.js files in the ```scripts/helpers/``` folder are made available to Handlebars as helpers. The helper name matches the filename, and will be available to all pre-compiled templates.
+
 #### app/modules
 
 Modules are smaller components that may be included and re-used throughout the site. Examples include sub-sections, controls, forms and form fields. Modules may contain:

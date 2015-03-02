@@ -1,8 +1,8 @@
 'use strict';
 
-/*******************
+/******************
  *  Dependencies  *
- *******************/
+ ******************/
 
 var fs = require('fs');
 var Promise = require('promise');

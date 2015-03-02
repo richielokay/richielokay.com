@@ -7,5 +7,8 @@
 <body>
 {{ module-test2 first="Curly" }}
 {{ module-test first="Curly" template="template" }}
+{{#equal first "Curly" }}
+<p>Helper loaded.</p>
+{{/equal}}
 </body>
 </html>

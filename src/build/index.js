@@ -10,6 +10,7 @@ var loadApp = require('./load-app');
 var updateApp = require('./update-app');
 var templateSiteHTML = require('./template-site-html');
 var loadPartials = require('./load-partials');
+var loadHelpers = require('./load-helpers');
 var loadModules = require('./load-modules');
 var writeContext = require('./write-context');
 var cleanFolder = require('./clean-folder');
@@ -70,6 +71,7 @@ function updateNoScripts(context, file, evt) {
     return updateApp(context, file, evt)
         .then(includeVersion)
         .then(loadPartials)
+        .then(loadHelpers)
         .then(loadModules)
         .then(templateSiteHTML)
         .then(templatePages)
@@ -100,6 +102,7 @@ function update(context, file, evt) {
     return updateApp(context, file, evt)
         .then(includeVersion)
         .then(loadPartials)
+        .then(loadHelpers)
         .then(loadModules)
         .then(templateSiteHTML)
         .then(templatePages)
@@ -141,6 +144,7 @@ function init(context) {
         .then(loadApp)
         .then(includeVersion)
         .then(loadPartials)
+        .then(loadHelpers)
         .then(loadModules)
         .then(templateSiteHTML)
         .then(templatePages)
