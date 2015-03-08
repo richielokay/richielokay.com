@@ -67,7 +67,7 @@ module.exports = function(context) {
         try {
             recursivePrefix(dist, scripts, styles);
         } catch(err) {
-            log('Blanka', err, 'error');
+            log('Blanca', err, 'error');
         }
 
         resolve(context);

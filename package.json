@@ -1,23 +1,23 @@
 {
-  "name": "blanka",
+  "name": "blanca",
   "version": "0.3.0",
-  "description": "Blanka builds your static websites",
+  "description": "Blanca builds your static websites",
   "main": "index.js",
   "bin": {
-    "blanka": "./bin/blanka"
+    "blanka": "./bin/blanca"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rvangundy/blanka.git"
+    "url": "https://github.com/rvangundy/blanca.git"
   },
   "author": "Ryan VanGundy",
   "bugs": {
-    "url": "https://github.com/rvangundy/blanka/issues"
+    "url": "https://github.com/rvangundy/blanca/issues"
   },
-  "homepage": "https://github.com/rvangundy/blanka",
+  "homepage": "https://github.com/rvangundy/blanca",
   "engines": {
     "node": "~0.10.35"
   },

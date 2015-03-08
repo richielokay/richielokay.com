@@ -25,7 +25,7 @@ function loadApp(context) {
     return new Promise(function(resolve) {
 
         readdir.read(src, 'utf8', function(err, files) {
-            if (err) { log('Blanka', '[load-app.js] ' + err, 'error'); }
+            if (err) { log('Blanca', '[load-app.js] ' + err, 'error'); }
 
             // Convert files to a nested object
             else {

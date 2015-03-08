@@ -53,7 +53,7 @@ function updateScripts(context) {
         .then(triggerLivereload)
         .then(writeContext)
         .then(function(context) {
-            log('Blanka', 'Built in ' + (Date.now() - start) / 1000 + 's');
+            log('Blanca', 'Built in ' + (Date.now() - start) / 1000 + 's');
             return Promise.resolve(context);
         })
         .catch(function(err) {
@@ -84,7 +84,7 @@ function updateNoScripts(context, file, evt) {
         .then(triggerLivereload)
         .then(writeContext)
         .then(function(context) {
-            log('Blanka', 'Built in ' + (Date.now() - start) / 1000 + 's');
+            log('Blanca', 'Built in ' + (Date.now() - start) / 1000 + 's');
             return Promise.resolve(context);
         })
         .catch(function(err) {
@@ -116,7 +116,7 @@ function update(context, file, evt) {
         .then(triggerLivereload)
         .then(writeContext)
         .then(function(context) {
-            log('Blanka', 'Built in ' + (Date.now() - start) / 1000 + 's');
+            log('Blanca', 'Built in ' + (Date.now() - start) / 1000 + 's');
             return Promise.resolve(context);
         })
         .catch(function(err) {
@@ -138,7 +138,7 @@ function updateAssets(context) {
 function init(context) {
     var start = Date.now();
 
-    log('Blanka', 'Running initial build...');
+    log('Blanca', 'Running initial build...');
 
     return loadResources(context)
         .then(loadApp)
@@ -162,7 +162,7 @@ function init(context) {
         .then(writeContext)
         .then(function(context) {
             var delta = Math.round((Date.now() - start) / 1000);
-            log('Blanka', 'Build Completed in ' + delta + 's', null, true);
+            log('Blanca', 'Build Completed in ' + delta + 's', null, true);
             return Promise.resolve(context);
         })
         .catch(function(err) {

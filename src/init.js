@@ -22,7 +22,7 @@ module.exports = function createProject(name) {
     var templateDir = path.join(__dirname, '../scaffolds/project');
     var promises = [];
 
-    log('Blanka', 'Creating project files');
+    log('Blanca', 'Creating project files');
 
     // Get the name from the current folder if none given
     name = name || process.cwd().split(path.sep).pop();
@@ -41,7 +41,7 @@ module.exports = function createProject(name) {
                     var tmpl;
                     var relPath = file.replace(templateDir + '/', '');
                     var dest = path.join(process.cwd(), relPath);
-                    
+
                     tmpl = swig.compileFile(file);
 
                     // Skip existing files
@@ -70,18 +70,18 @@ module.exports = function createProject(name) {
 
     // Perform npm install
     promises.push(new Promise(function(resolve) {
-        log('Blanka', 'Installing npm packages');
+        log('Blanca', 'Installing npm packages');
         exec('npm install', function() {
-            log('Blanka', 'npm packages installed');
+            log('Blanca', 'npm packages installed');
             resolve();
         });
     }));
 
     // Perform bower install
     promises.push(new Promise(function(resolve) {
-        log('Blanka', 'Installing bower packages');
+        log('Blanca', 'Installing bower packages');
         exec('bower install', function() {
-            log('Blanka', 'Bower packages installed');
+            log('Blanca', 'Bower packages installed');
             resolve();
         });
     }));
@@ -90,15 +90,15 @@ module.exports = function createProject(name) {
     Promise.all(promises)
         .then(function() {
             exec('git init', function() {
-                
+
             });
         })
         .then(function() {
-            log('Blanka', 'Project initialized. Run "blanka debug" to begin.');
+            log('Blanca', 'Project initialized. Run "blanca debug" to begin.');
             process.exit(0);
         })
         .catch(function(err) {
-            log('Blanka', err, 'error');
+            log('Blanca', err, 'error');
             process.exit(1);
         });
 };

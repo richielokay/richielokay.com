@@ -22,7 +22,7 @@ var groups = {
     Browserify: clc.xterm(136).bold,
     Time: clc.xterm(11).bold,
     Assets: clc.xterm(105).bold,
-    Blanka: clc.green.bold,
+    Blanca: clc.green.bold,
     Gzip: clc.xterm(7).bold,
     Resources: clc.xterm(157).bold,
     Test: clc.greenBright.bold,
@@ -49,8 +49,7 @@ module.exports = function log(group, message, severity, notify) {
                 notifier.notify({
                     type: 'error',
                     title: group,
-                    message: 'Error - See the terminal for more info...',
-                    icon: path.join(__dirname, '../bin/sfa3_blanka-1.gif')
+                    message: 'Error - See the terminal for more info...'
                 });
                 break;
             default:
@@ -62,12 +61,11 @@ module.exports = function log(group, message, severity, notify) {
         notifier.notify({
             type: 'info',
             title: group,
-            message: message,
-            icon: path.join(__dirname, '../bin/sfa3_blanka-1.gif')
+            message: message
         });
     }
 
-    group = group || 'Blanka';
+    group = group || 'Blanca';
 
     // Conditionally apply colors
     if (process.env.COLORS === false) {

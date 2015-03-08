@@ -6,7 +6,7 @@
  ******************/
 
 var program = require('commander');
-var blanka = require('../src/blanka-cli');
+var blanca = require('../src/blanca-cli');
 
 /*************
  *  Program  *
@@ -20,17 +20,17 @@ program.version('0.3.0');
 
 program.command('build [name]')
     .action(function(name) {
-        blanka.build(name);
+        blanca.build(name);
     });
 
 program.command('debug')
     .action(function() {
-        blanka.build('debug');
+        blanca.build('debug');
     });
 
 program.command('test [name]')
     .action(function(name) {
-        blanka.test(name);
+        blanca.test(name);
     });
 
 program.command('module [name]')
@@ -40,12 +40,12 @@ program.command('module [name]')
             return;
         }
 
-        blanka.createModule(name);
+        blanca.createModule(name);
     });
 
 program.command('init [name]')
     .action(function(name) {
-        blanka.init(name);
+        blanca.init(name);
     });
 
 /*************
