@@ -1,0 +1,62 @@
+---
+##########
+# Builds #
+##########
+
+builds:
+
+  # GENERAL
+  general:
+    src: app
+    styles:
+      include_paths:
+        - vendor
+        - app/styles
+    pre_tasks:
+      - npm install
+      - bower install
+      - gulp vendor
+
+  # DEBUG
+  debug:
+    dest: dist/debug
+    scripts:
+      debug: true
+    styles:
+      sourcemaps: true
+      output_style: nested
+    env:
+      NODE_ENV: development
+      ASSETS_URL: /assets/
+    html:
+      lr_snippet: true
+    assets:
+      src: assets
+      dest: dist/debug/assets
+    server:
+      port: 7070
+      lr_port: 35729
+
+  # PROD
+  prod:
+    dest: dist/prod
+    versioning: true
+    scripts:
+      uglify: true
+    styles:
+      output_style: compressed
+    env:
+      NODE_ENV: production
+      ASSETS_URL: /assets/
+
+#############
+# Resources #
+#############
+
+resources:
+
+  greenhouse:
+    loader: resources/greenhouse.js
+
+  main_api:
+    src: http://path/to/api
