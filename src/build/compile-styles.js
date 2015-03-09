@@ -93,7 +93,7 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
                 dest[filename] = result.css;
 
                 // Optionally write map
-                if (styleSettings.debug) {
+                if (debug) {
                     dest[filename + '.map'] = JSON.stringify(result.map);
                 }
             },

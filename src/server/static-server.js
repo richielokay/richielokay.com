@@ -30,7 +30,8 @@ module.exports = function(context) {
         // Set up the static server
         port = settings.server.port;
         appServer = new staticServer.Server(servePath, {
-            gzip: settings.gzip
+            gzip: settings.gzip,
+            cache: 0
         });
 
         // Set up the http server
