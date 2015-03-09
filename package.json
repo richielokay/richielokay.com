@@ -1,6 +1,6 @@
 {
   "name": "blanca",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Blanca builds your static websites",
   "main": "index.js",
   "bin": {
