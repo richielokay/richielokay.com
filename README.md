@@ -1,6 +1,6 @@
-# blanka
+# blanca
 
-Blanka builds your static web sites. You write Handlebars, SASS, and Browserified JavaScript. Blanka builds compliant front-end code ready for distribution on a static host such as AWS S3+CloudFront.
+Blanca builds your static web sites. You write Handlebars, SASS, and Browserified JavaScript. Blanca builds compliant front-end code ready for distribution on a static host such as AWS S3+CloudFront.
 
 Additional features:
 
@@ -16,17 +16,17 @@ Additional features:
 
 # Install
 
-```$ npm install blanka -g```
+```$ npm install blanca -g```
 
 # Quick Start
 
 From an empty project folder, run
 
-```$ blanka init```
+```$ blanca init```
 
 Then run
 
-```$ blanka debug```
+```$ blanca debug```
 
 Assuming the server and Livereload ports are available, you should see:
 
@@ -40,19 +40,19 @@ You can navigate to the page by visiting ```http://localhost:8080``` in your bro
 
 ```Ctrl-C``` will exit the process. To run a production build, run
 
-```$ blanka build prod```
+```$ blanca build prod```
 
 # Project Scaffolding
 
-## $ blanka init [name]
+## $ blanca init [name]
 
 To create a new project, create a new project folder, and from this folder run:
 
-```$ blanka init```
+```$ blanca init```
 
-By default, Blanka will use the name of the folder as the name of the project. If you would like to override this, run
+By default, Blanca will use the name of the folder as the name of the project. If you would like to override this, run
 
-```$ blanka init [name]```
+```$ blanca init [name]```
 
 A new project is scaffolded containing several files and a folder structure for a basic website.
 
@@ -73,7 +73,7 @@ Both npm and bower package management systems are used. The following files are 
 
 ### builds.json
 
-The ```builds.json``` file is the primary configuration file for blanka. It describes the various build outputs and their respective settings. For example, it's possible to describe unique debug and production builds.
+The ```builds.json``` file is the primary configuration file for blanca. It describes the various build outputs and their respective settings. For example, it's possible to describe unique debug and production builds.
 
 ### resources.json
 
@@ -132,9 +132,9 @@ In production environments, any number of means could be used to serve up assets
 
 # Running Builds
 
-## $ blanka build [name]
+## $ blanca build [name]
 
-Blanka is capable of running several builds. Each build can be configured, allowing for unique debug and production build targets.
+Blanca is capable of running several builds. Each build can be configured, allowing for unique debug and production build targets.
 
 Each build is configured using ```builds.json```. The default file is as follows:
 
@@ -191,11 +191,11 @@ Each build is configured using ```builds.json```. The default file is as follows
 
 This file describes two builds, "debug" and "prod". These can each be run using
 
-```$ blanka build debug```
+```$ blanca build debug```
 
 and
 
-```$ blanka build prod```
+```$ blanca build prod```
 
 Each aspect of the build can be configured including SASS compilation, HTML generation, and browserified javascript. Environment variables are set and are accessible within the app code using ```process.env.ENV_VAR```. Optional static debug servers may also be configured, enabling file watching and LiveReload.
 
@@ -205,7 +205,7 @@ In all source files, assets may be referred to using the ```assets://``` convent
 
 ## Versioning
 
-Versioning is handled by Blanka to facilitate version consistency and cache busting. This is useful for deploying to a global edge cache network such as AWS CloudFront.
+Versioning is handled by Blanca to facilitate version consistency and cache busting. This is useful for deploying to a global edge cache network such as AWS CloudFront.
 
 Versions are handled using the first 8 characters of the git hash. Currently, only a versioned prefix is supported. In the builds.json file, set ```versioning: true```. When building js or css files, they will be placed inside a versioned parent folder. Additionally, all index.html files will refer to the versioned path. The distribution output may look like this:
 
@@ -329,11 +329,11 @@ Setting ```"extension": true``` results in the addition of a .gz extension to al
 
 # Modules
 
-Blanka facilitates a "just enough framework" architecture based on modules. Browserify allows for the inclusion of dependencies from both the npm and bower package management ecosystems. Additionally, web modules from within the project's ```app/modules``` folder are automatically made available.
+Blanca facilitates a "just enough framework" architecture based on modules. Browserify allows for the inclusion of dependencies from both the npm and bower package management ecosystems. Additionally, web modules from within the project's ```app/modules``` folder are automatically made available.
 
 To create a new module, run
 
-```$ blanka module [name]```
+```$ blanca module [name]```
 
 from the project folder. A new module will be scaffolded, including the following files:
 
@@ -410,7 +410,7 @@ If you would like to use a template other than ```index.hbs```, for example ```b
 
 ## Module Execution
 
-It's helpful to understand how modules are loaded and executed on the client. Unlike many frameworks, Blanka renders the DOM at build time. All modular HTML and partials are already in the document prior to being sent to the client. If no dynamic client-side template rendering is necessary, the Handlebars run-time is absent from the front-end build.
+It's helpful to understand how modules are loaded and executed on the client. Unlike many frameworks, Blanca renders the DOM at build time. All modular HTML and partials are already in the document prior to being sent to the client. If no dynamic client-side template rendering is necessary, the Handlebars run-time is absent from the front-end build.
 
 Modules are made available to the application build and are exposed as ```modules/<name>```. Modular code may be imported using:
 
@@ -459,7 +459,7 @@ It's often useful to pull down content from an external resource on the web prio
 
 ### Automatic loading using "src"
 
-You may load data using both http and https using the "src" property. Blanka uses node's native http modules to populate the build context.
+You may load data using both http and https using the "src" property. Blanca uses node's native http modules to populate the build context.
 
 ### Custom loading using "loader"
 
@@ -509,15 +509,15 @@ You can use this data as the context for your module templates as follows:
 
 # Testing
 
-## blanka test [name] [filename]
+### blanca test [name] [filename]
 
-Blanka comes with basic support for running tests. When running
+Blanca comes with basic support for running tests. When running
 
-```$ blanka test [name]```
+```$ blanca test [name]```
 
 a static server is created pointing to the specified build output in the ```dist/``` folder. A top-level test runner, typically ```tests/index.js``` is run unless a filename is specified. For example, to run only ```tests/functional.js``` on the production build:
 
-```$ blanka test prod functional```
+```$ blanca test prod functional```
 
 ## How Tests Work
 
