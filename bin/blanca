@@ -12,7 +12,7 @@ var blanca = require('../src/blanca-cli');
  *  Program  *
  *************/
 
-program.version('0.3.3');
+program.version('0.3.4');
 
 /***********
  *  Build  *
