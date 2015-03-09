@@ -33,7 +33,7 @@ module.exports = function(context) {
     if (!settings) { return context; }
 
     if (settings.lrPort) {
-        startLivereload(context.dest, settings.lrPort);    
+        startLivereload(context.dest, settings.lrPort);
     }
 
     return context;

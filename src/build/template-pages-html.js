@@ -26,6 +26,7 @@ function recursiveTemplate(context, src, dest, compile) {
     var defaults = src['defaults.json'] ? JSON.parse(src['defaults.json']) : {};
     var page = dest._page = dest._page || {};
     var settings = context.settings;
+    var lrPort = settings.server ? settings.server.lrPort : null;
 
     // Check if livereload is used
     try { lr = settings.html.lrSnippet; }
@@ -51,11 +52,11 @@ function recursiveTemplate(context, src, dest, compile) {
             extend(page, defaults, pages[i][pageName]);
             html = template(page);
 
-            if (lr) { html = injectLrSnippet(html); }
+            if (lr) { html = injectLrSnippet(html, lrPort); }
             dest[pageName + '.html'] = html;
         }
     }
-    
+
     // Continue recursion
     for (var j in src) {
         if (src[j] === Object(src[j])) {

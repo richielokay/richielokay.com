@@ -5,7 +5,7 @@
  * the distribution folder.
  *
  *     site/** /*.hbs --> dist/[build]/** /*.html
- * 
+ *
  */
 
 /******************
@@ -32,6 +32,7 @@ function recursiveTemplate(context, src, dest, compile) {
     var page = dest._page = dest._page || content;
     var pages = src['pages.json'] ? JSON.parse(src['pages.json']) : {};
     var settings = context.settings;
+    var lrPort = settings.server ? settings.server.lrPort : null;
 
     // Append pages
     if (pages) { page._pages = pages; }
@@ -49,7 +50,7 @@ function recursiveTemplate(context, src, dest, compile) {
         if (i === 'index.hbs') {
             template = compile(src[i]);
             html = template(page);
-            if (lr) { html = injectLrSnippet(html); }
+            if (lr) { html = injectLrSnippet(html, lrPort); }
             dest[filename] = html;
             continue;
         }

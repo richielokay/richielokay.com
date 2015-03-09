@@ -17,9 +17,7 @@ module.exports = function(context) {
     if (context.settings.logOutput) {
         return new Promise(function(resolve, reject) {
             fs.writeFile(dest, JSON.stringify(context, null, 4), function(err) {
-                if (err) {
-                    reject('[write-context.js] ' + err);
-                }
+                if (err) { reject('[write-context.js] ' + err); }
                 else { resolve(context); }
             });
         });
