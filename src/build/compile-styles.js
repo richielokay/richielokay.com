@@ -16,7 +16,7 @@ var neat = require('node-neat');
  ***************/
 
 /**
- * 
+ *
  * @param {type} [name] [description]
  */
 function appendModuleImports(style, modPath, modules) {
@@ -25,7 +25,7 @@ function appendModuleImports(style, modPath, modules) {
     style += '\n';
 
     for (var i in modules) {
-        name = 
+        name =
         thisPath = path.join(modPath, i, 'main.scss');
 
         if (modules[i].sass) {
@@ -37,7 +37,7 @@ function appendModuleImports(style, modPath, modules) {
 }
 
 /**
- * 
+ *
  * @param {type} [name] [description]
  */
 function recursiveCompileSass(context, src, dest, promises, crumbs) {
@@ -98,8 +98,14 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
                 }
             },
             error: function(error) {
-                var file = error.file.replace(process.cwd() + path.sep, '');
-                var msg = '"' + error.message + '" in ' + file + ' on line ' + error.line;  
+                var file, msg;
+
+                if (error.file) {
+                    file = error.file.replace(process.cwd() + path.sep, '');
+                    msg = '"' + error.message + '" in ' + file + ' on line ' + error.line;
+                } else {
+                    msg = error.message || 'Unknown error';
+                }
 
                 log('SASS', msg, 'error');
                 resolve();
