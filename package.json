@@ -4,7 +4,7 @@
   "description": "Blanca builds your static websites",
   "main": "index.js",
   "bin": {
-    "blanka": "./bin/blanca"
+    "blanca": "./bin/blanca"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
