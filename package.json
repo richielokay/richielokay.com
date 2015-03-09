@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rvangundy/blanca.git"
+    "url": "https://github.com/bounceexchange/blanca.git"
   },
   "author": "Ryan VanGundy",
   "bugs": {
-    "url": "https://github.com/rvangundy/blanca/issues"
+    "url": "https://github.com/bounceexchange/blanca/issues"
   },
-  "homepage": "https://github.com/rvangundy/blanca",
+  "homepage": "https://github.com/bounceexchange/blanca",
   "engines": {
     "node": "~0.10.35"
   },
