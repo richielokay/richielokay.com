@@ -20,14 +20,13 @@ Additional features:
 
 # Quick Start
 
-From an empty project folder, run 
+From an empty project folder, run
 
 ```$ blanka init```
 
 Then run
 
 ```$ blanka debug```
-
 
 Assuming the server and Livereload ports are available, you should see:
 
@@ -299,7 +298,7 @@ In addition to scripts located under the ```site/``` folder, dependencies on mod
 
 ## Including Assets
 
-Assets may be included in each build. They are copied from the source to the destination paths. 
+Assets may be included in each build. They are copied from the source to the destination paths.
 
 #### Settings
 
@@ -369,7 +368,7 @@ Here is a sample module that generates a button, located in  ```app/modules/myBu
 module.exports = function(element) { // <-- The top-level element, <button>
     element.addEventListener('click', function() {
         console.log('Don\'t do that!');
-    }, false);  
+    }, false);
 };
 ```
 
@@ -508,9 +507,9 @@ You can use this data as the context for your module templates as follows:
 {{ module-articles data="blogs" }}
 ```
 
-## Testing
+# Testing
 
-### blanka test [name] [filename]
+## blanka test [name] [filename]
 
 Blanka comes with basic support for running tests. When running
 
@@ -520,9 +519,9 @@ a static server is created pointing to the specified build output in the ```dist
 
 ```$ blanka test prod functional```
 
-### How Tests Work
+## How Tests Work
 
-#### Test Runner
+### Test Runner
 
 Tests should be run from a top-level runner. This runner calls additional step files that may perform any number of test steps. The runner instantiates the test environment prior to running steps. The following is a sample runner that runs a single validation step:
 
