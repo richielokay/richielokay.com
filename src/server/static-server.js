@@ -42,9 +42,10 @@ module.exports = function(context) {
                     // Make sure to send source maps appropriately
                     if (path.extname(request.url) === '.map') {
                         appServer.serveFile(request.url, 200, {
-                            headers: { 'Content-Type:': 'application/octet-stream' }
+                            headers: { 'Content-Type': 'application/octet-stream' }
                         }, request, response);
                     } else { appServer.serve(request, response); }
+
                 }).resume();
             }).listen(port, function() {
                 log('Server', 'Serving at http://localhost:' + port);
