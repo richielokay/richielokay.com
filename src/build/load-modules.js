@@ -33,7 +33,7 @@ function handlebarsCompile(content) {
 }
 
 /**
- * 
+ *
  * @param {type} [name] [description]
  */
 function moduleHelper(context, module, object) {
@@ -63,7 +63,8 @@ function moduleHelper(context, module, object) {
     page._modules[name] = module;
 
     // Combine data
-    page = extend(page, defaults, data, hash);
+    page = extend(page, defaults, hash);
+    page.data = data;
 
     // Generate the HTML
     html = template ? template(page) : '<span></span>';
@@ -77,7 +78,7 @@ function moduleHelper(context, module, object) {
 }
 
 /**
- * 
+ *
  * @param {type} [name] [description]
  */
 function recursiveLoad(context, files, modules, registerHelper, crumbs) {
