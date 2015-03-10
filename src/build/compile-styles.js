@@ -20,12 +20,11 @@ var neat = require('node-neat');
  * @param {type} [name] [description]
  */
 function appendModuleImports(style, modPath, modules) {
-    var thisPath, name;
+    var thisPath;
 
     style += '\n';
 
     for (var i in modules) {
-        name =
         thisPath = path.join(modPath, i, 'main.scss');
 
         if (modules[i].sass) {
@@ -88,13 +87,21 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
             sourceComments: debug,
             sourceMap: debug,
             success: function(result) {
+                var json;
+
                 resolve();
 
                 dest[filename] = result.css;
 
+                if (typeof result.map === 'string') {
+                    json = result.map;
+                } else {
+                    json = JSON.stringify(result.map);
+                }
+
                 // Optionally write map
                 if (debug) {
-                    dest[filename + '.map'] = JSON.stringify(result.map);
+                    dest[filename + '.map'] = json;
                 }
             },
             error: function(error) {

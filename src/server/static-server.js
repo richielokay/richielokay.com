@@ -38,14 +38,7 @@ module.exports = function(context) {
             // Set up the http server
             context.server = http.createServer(function(request, response) {
                 request.addListener('end', function() {
-
-                    // Make sure to send source maps appropriately
-                    if (path.extname(request.url) === '.map') {
-                        appServer.serveFile(request.url, 200, {
-                            headers: { 'Content-Type': 'application/octet-stream' }
-                        }, request, response);
-                    } else { appServer.serve(request, response); }
-
+                    appServer.serve(request, response);
                 }).resume();
             }).listen(port, function() {
                 log('Server', 'Serving at http://localhost:' + port);
