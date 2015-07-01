@@ -76,49 +76,51 @@ function recursiveCompileSass(context, src, dest, promises, crumbs) {
         filename);
 
     // Asynchronously render CSS
-    promises.push(new Promise(function(resolve) {
-        sass.render({
-            file: srcPath,
-            data: sassSheet,
-            outFile: destPath,
-            includePaths: includePaths || [],
-            outputStyle: styleSettings.outputStyle || 'nested',
-            omitSourceMapUrl: !debug,
-            sourceComments: debug,
-            sourceMap: debug,
-            success: function(result) {
-                var json;
+    if (sassSheet) {
+        promises.push(new Promise(function(resolve) {
+            sass.render({
+                file: srcPath,
+                data: sassSheet,
+                outFile: destPath,
+                includePaths: includePaths || [],
+                outputStyle: styleSettings.outputStyle || 'nested',
+                omitSourceMapUrl: !debug,
+                sourceComments: debug,
+                sourceMap: debug,
+                success: function(result) {
+                    var json;
 
-                resolve();
+                    resolve();
 
-                dest[filename] = result.css;
+                    dest[filename] = result.css;
 
-                if (typeof result.map === 'string') {
-                    json = result.map;
-                } else {
-                    json = JSON.stringify(result.map);
+                    if (typeof result.map === 'string') {
+                        json = result.map;
+                    } else {
+                        json = JSON.stringify(result.map);
+                    }
+
+                    // Optionally write map
+                    if (debug) {
+                        dest[filename + '.map'] = json;
+                    }
+                },
+                error: function(error) {
+                    var file, msg;
+
+                    if (error.file) {
+                        file = error.file.replace(process.cwd() + path.sep, '');
+                        msg = '"' + error.message + '" in ' + file + ' on line ' + error.line;
+                    } else {
+                        msg = error.message || 'Unknown error';
+                    }
+
+                    log('SASS', msg, 'error');
+                    resolve();
                 }
-
-                // Optionally write map
-                if (debug) {
-                    dest[filename + '.map'] = json;
-                }
-            },
-            error: function(error) {
-                var file, msg;
-
-                if (error.file) {
-                    file = error.file.replace(process.cwd() + path.sep, '');
-                    msg = '"' + error.message + '" in ' + file + ' on line ' + error.line;
-                } else {
-                    msg = error.message || 'Unknown error';
-                }
-
-                log('SASS', msg, 'error');
-                resolve();
-            }
-        });
-    }));
+            });
+        }));
+    }
 
     // Continue recursion
     for (var j in src) {

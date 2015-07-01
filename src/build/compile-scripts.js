@@ -99,14 +99,15 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
     w.transform(envify);
     w.transform(debowerify);
 
-    // Add polyfills
-    w.add(path.join(__dirname, '..', 'client', 'polyfills'));
-
-    // Add module bootloader
-    w.add(path.join(__dirname, '..', 'client', 'run-modules.js'));
-
     // Add index.js if it exists
     if (index) {
+
+        // Add polyfills
+        w.add(path.join(__dirname, '..', 'client', 'polyfills'));
+
+        // Add module bootloader
+        w.add(path.join(__dirname, '..', 'client', 'run-modules.js'));
+
         w.add(path.join(basedir, 'index.js'), {
             basedir: basedir
         });
@@ -127,45 +128,47 @@ function recursiveCompile(context, src, dest, promises, callback, crumbs) {
     }
 
     // Add bundle process to promises
-    promises.push(new Promise(function(w, resolve, reject) {
-        function bundle() {
-            w.bundle(function(err, buffer) {
-                var content, filename;
+    if (index) {
+        promises.push(new Promise(function(w, resolve, reject) {
+            function bundle() {
+                w.bundle(function(err, buffer) {
+                    var content, filename;
 
-                // Version filename
-                filename = 'index.js';
+                    // Version filename
+                    filename = 'index.js';
 
-                if (err) {
-                    reject('[compile-scripts.js] ' + err);
-                } else {
-                    content = buffer.toString();
+                    if (err) {
+                        reject('[compile-scripts.js] ' + err);
+                    } else {
+                        content = buffer.toString();
 
-                    // Uglify the script
-                    if (settings.scripts.uglify) {
-                        content = uglify.minify(content, {fromString: true});
-                        content = content.code;
+                        // Uglify the script
+                        if (settings.scripts.uglify) {
+                            content = uglify.minify(content, {fromString: true});
+                            content = content.code;
+                        }
+
+                        dest[filename] = content;
+
+                        resolve();
                     }
+                });
+            }
 
-                    dest[filename] = content;
+            bundle();
 
-                    resolve();
-                }
-            });
-        }
+            // Establish watch callback
+            if (callback) {
+                w.on('update', callback);
 
-        bundle();
+                // Close existing bundle watchers
+                if (dest._bundle) { dest._bundle.close(); }
 
-        // Establish watch callback
-        if (callback) {
-            w.on('update', callback);
-
-            // Close existing bundle watchers
-            if (dest._bundle) { dest._bundle.close(); }
-
-            // Establish the bundle watcher
-            dest._bundle = w;
-        }
-    }.bind(null, w)));
+                // Establish the bundle watcher
+                dest._bundle = w;
+            }
+        }.bind(null, w)));
+    }
 
     // Continue recursion
     for (var j in src) {

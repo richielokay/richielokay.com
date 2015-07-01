@@ -28,7 +28,6 @@ var triggerLivereload = require('../server/trigger-livereload');
 var copyAssets = require('./copy-assets');
 var log = require('../logger');
 var gzip = require('./gzip-compress');
-var listBowerComponents = require('./list-bower-components');
 var loadResources = require('./load-resources');
 var includeVersion = require('./include-version');
 var versionPrefix = require('./version-prefix');
@@ -75,38 +74,6 @@ function updateNoScripts(context, file, evt) {
         .then(loadModules)
         .then(templateSiteHTML)
         .then(templatePages)
-        .then(compileStyles)
-        .then(injectScripts)
-        .then(replaceAssets)
-        .then(versionPrefix)
-        .then(gzip)
-        .then(writeDest)
-        .then(triggerLivereload)
-        .then(writeContext)
-        .then(function(context) {
-            log('Blanca', 'Built in ' + (Date.now() - start) / 1000 + 's');
-            return Promise.resolve(context);
-        })
-        .catch(function(err) {
-            if (err) { console.log(err); }
-        });
-}
-
-/**
- * Runs updates
- * @param {Object} context The context to update
- */
-function update(context, file, evt) {
-    var start = Date.now();
-
-    return updateApp(context, file, evt)
-        .then(includeVersion)
-        .then(loadPartials)
-        .then(loadHelpers)
-        .then(loadModules)
-        .then(templateSiteHTML)
-        .then(templatePages)
-        .then(rebuildScripts)
         .then(compileStyles)
         .then(injectScripts)
         .then(replaceAssets)
